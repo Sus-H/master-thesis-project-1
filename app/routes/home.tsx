@@ -20,7 +20,7 @@ export default function Home() {
       <Scroll_area></Scroll_area>
       <SimpleLineChart></SimpleLineChart>
     </div>
-    <div>
+    <div className="h-full w-full">
       <ReactFlowProvider>
         <DnDProvider>
           <DnDFlow />
