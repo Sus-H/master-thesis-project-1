@@ -41,7 +41,7 @@ export default function Flow() {
   const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
   
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ width: '50vw', height: '50vh' }}>
         <ReactFlowProvider>
             <ReactFlow
                 nodes={nodes}
