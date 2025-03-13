@@ -9,6 +9,7 @@ import TabComponent from "components/tabComponent";
 import DnDFlow from "components/dndFlow";
 import { DnDProvider} from 'components/dndContext';
 import { ReactFlowProvider } from "@xyflow/react";
+import { TreeList } from "components/treeList";
 
 export default function Home() {
   return <div>
@@ -19,6 +20,9 @@ export default function Home() {
       <Checkbox></Checkbox>
       <Scroll_area></Scroll_area>
       <SimpleLineChart></SimpleLineChart>
+    </div>
+    <div>
+      <TreeList></TreeList>
     </div>
     <div className="h-full w-full">
       <ReactFlowProvider>
