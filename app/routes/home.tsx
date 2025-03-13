@@ -10,6 +10,7 @@ import DnDFlow from "components/dndFlow";
 import { DnDProvider} from 'components/dndContext';
 import { ReactFlowProvider } from "@xyflow/react";
 import { TreeList } from "components/treeList";
+import HorizontalFlow from "components/horizontalFlow";
 
 export default function Home() {
   return <div>
@@ -24,13 +25,19 @@ export default function Home() {
     <div>
       <TreeList></TreeList>
     </div>
-    <div className="h-full w-full">
+    <div className="h-100">
+      <ReactFlowProvider>
+
+        <HorizontalFlow></HorizontalFlow>
+      </ReactFlowProvider>
+    </div>
+    {/* <div className="h-full w-full">
       <ReactFlowProvider>
         <DnDProvider>
           <DnDFlow />
         </DnDProvider>
       </ReactFlowProvider>
-    </div>
+    </div> */}
     <div>
      <TabComponent></TabComponent>
     </div>
