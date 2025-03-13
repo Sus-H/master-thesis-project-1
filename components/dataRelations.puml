@@ -1,0 +1,122 @@
+@startuml DHS
+
+class Data<T> {
+    + value: T
+    + data_source: DataSource
+}
+
+enum AccidentType {
+    CAR_ACCIDENT
+}
+
+enum CarAccidentType {
+    SINGLE
+    INTERSECTION
+    LONGITUDINAL
+    REAR_END
+    TRAM_OR_TRAIN
+    WILD_LIFE_ANIMAL
+    OTHER
+}
+
+enum AccidentLocation {
+    URBAN
+    RURAL
+}
+
+enum AirbagDeployment {
+    DEPLOYED
+    NOT_DEPLOYED
+    NO_AIRBAG
+}
+
+enum Sex {
+    MALE
+    FEMALE
+}
+
+enum SeatPosition {
+    FRONT_PASSENGER
+    REAR_PASSENGER
+}
+
+enum DataSource {
+    VEHICLE_TELEMETRY
+    VEHICLE_TELEMETRY_ACCELEROMETER
+    VEHICLE_TELEMETRY_GYROSCOPE
+    SMART_WATCH
+    SMART_PHONE
+    VEHICLE_PULSE_SENSOR
+}
+
+class Accident {
+    + accident_type?: Data<AccidentType>
+    + location?: Data<AccidentLocation>
+    + date?: Data<string>
+    + time?: Data<string>
+    + weather?: Data<string>
+    + road_condition?: Data<string>
+    + visibility?: Data<string>
+    + road_type?: Data<string>
+    + road_surface?: Data<string>
+    + road_alignment?: Data<string>
+    + road_profile?: Data<string>
+    + posted_speed_limit?: Data<int>
+}
+
+class CrashInformation {
+    + angle_of_impact?: Data<int>
+    + compartment_intrusion?: Data<int>
+}
+
+class Vehicle{
+    + vehicle_occupants?: Data<List<VehicleOccupant>>
+    + accident_type?: Data<CarAccidentType>
+    + airbag_deployment?: Data<AirbagDeployment>
+    + seatbelt_use?: Data<bool>
+    + direction?: Data<string>
+    + location_of_impact?: Data<string>
+    + delta_v?: Data<int>
+    + impact_forces?: Data<List<int>>
+    + model_year?: Data<int>
+    + car_weight?: Data<int>
+    + model?: Data<string>
+    + crash_information?: CrashInformation
+    + passengers?: Data<List<VehicleOccupant>>
+}
+
+class Patient {
+    + pulse?: Data<int>
+    + breathing_rate?: Data<int>
+    + identified_injuries?: Data<List<string>>
+    + sex?: Data<Sex>
+    + age?: Data<int>
+    + elderly?: Data<bool>
+}
+
+class VehicleOccupant {
+    + belt_use?: Data<bool>
+    + seat_position?: Data<SeatPosition>
+    + airbag_deployment?: Data<AirbagDeployment>
+}
+
+Vehicle --> VehicleOccupant
+VehicleOccupant --|> Patient
+
+Data *-- DataSource
+
+Vehicle o-- Data
+Patient o-- Data
+Accident o-- Data
+CrashInformation o-- Data
+VehicleOccupant o-- Data
+
+Patient --> Sex
+VehicleOccupant --> SeatPosition
+Vehicle --> AirbagDeployment
+Accident --> AccidentType
+Accident --> AccidentLocation
+Vehicle --> CarAccidentType
+Vehicle --> CrashInformation
+
+@enduml
