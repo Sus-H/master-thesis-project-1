@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import HorizontalFlow from './horizontalFlow';
 import DropdownMenuComponents from './dropdownMenuComponent';
 
+
+
 const AddNode = () => {
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
@@ -24,8 +26,8 @@ const AddNode = () => {
 
   return (
     <div>
-      <DropdownMenuComponents onAdd={onAdd} />
-      <HorizontalFlow nodes={nodes} setNodes={setNodes} edges={edges} setEdges={setEdges} />
+      {/* <DropdownMenuComponents onAdd={onAdd} />
+      <HorizontalFlow nodes={nodes} setNodes={setNodes} edges={edges} setEdges={setEdges} /> */}
     </div>
   );
 };

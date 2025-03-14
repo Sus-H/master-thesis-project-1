@@ -1,32 +1,21 @@
-export function TreeList() {
-  return <div>
-  <ul className="tree">
-    <li>
-        <details open>
-        <summary>Giant planets</summary>
-        <ul>
-            <li>
-            <details>
-                <summary>Gas giants</summary>
-                <ul>
-                <li>Jupiter</li>
-                <li>Saturn</li>
-                </ul>
-            </details>
-            </li>
-            <li>
-            <details>
-                <summary>Ice giants</summary>
-                <ul>
-                <li>Uranus</li>
-                <li>Neptune</li>
-                </ul>
-            </details>
-            </li>
-        </ul>
-        </details>
-    </li>
-    </ul>
-  </div>      
-}
+import React, { useState } from 'react';
 
+export const addElementToTreeList = (setTreeList, element) => {
+  setTreeList((prevList) => [...prevList, element]);
+};
+
+const TreeList = () => {
+  const [treeList, setTreeList] = useState([]);
+
+  return (
+    <div>
+      <ul>
+        {treeList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TreeList;

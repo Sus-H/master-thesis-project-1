@@ -1,64 +1,98 @@
 import "app/style.css";
 import { DropdownMenu } from "radix-ui";
 import {
-    HamburgerMenuIcon,
-    DotFilledIcon,
-    CheckIcon,
-    ChevronRightIcon,
+  CheckIcon,
 } from "@radix-ui/react-icons";
-import React from "react";
+import React, { useState } from "react";
 
+export let accidentItems: string[] = [
+  "Delta-V",
+  "Uppmätt hastighet",
+  "Accelorometer",
+  "Fordonsdetaljer",
+];
+export let locationItems: string[] = [
+  "Transport till trauma center",
+  "Transportsträcka till trauma center",
+  "Hastighetsgräns",
+  "Position",
+  "Väder",
+  "Tid",
+];
+
+export let involvedItems: string[] = [
+  "Medelålder",
+  "Kön",
+  "Säkerhetsbälte",
+  "Position i bil",
+];
+
+function createMenuItems(items: string[], checkedStates: { [key: string]: boolean }, setCheckedStates: (item: string, checked: boolean) => void, label: string) {
+  return (
+    <>
+      <DropdownMenu.Label className="DropdownMenuLabel">{label}</DropdownMenu.Label>
+      {items.map((item) => (
+        <DropdownMenu.CheckboxItem
+          key={item}
+          className="DropdownMenuCheckboxItem"
+          checked={checkedStates[item]}
+          onCheckedChange={(checked) => setCheckedStates(item, checked)}
+          onSelect={(event) => event.preventDefault()}
+        >
+          <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+            <CheckIcon />
+          </DropdownMenu.ItemIndicator>
+          {item}
+        </DropdownMenu.CheckboxItem>
+      ))}
+    </>
+  );
+}
 
 function DropdownMenuParameters() {
-    const [open, setOpen] = React.useState(false);
-    const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
-    const [urlsChecked, setUrlsChecked] = React.useState(false);
-    return (
-        <DropdownMenu.Root>
-            <DropdownMenu.Trigger asChild>
-                <p onClick={() => setOpen(true)}>Välj Parametrar</p>
-            </DropdownMenu.Trigger>
+  const [open, setOpen] = useState(false);
 
+  const [checkedStates, setCheckedStates] = useState<{ [key: string]: boolean }>({
+    "Delta-V": false,
+    "Uppmätt hastighet": false,
+    "Accelorometer": false,
+    "Fordonsdetaljer": false,
+    "Transport till trauma center": false,
+    "Transportsträcka till trauma center": false,
+    "Hastighetsgräns": false,
+    "Position": false,
+    "Väder": false,
+    "Tid": false,
+    "Medelålder": false,
+    "Kön": false,
+    "Säkerhetsbälte": false,
+    "Position i bil": false,
+  });
 
-            <DropdownMenu.Portal>
-                <DropdownMenu.Content className="DropdownMenuContent">
-                    <DropdownMenu.Separator className="DropdownMenuSeparator" />
-                    <DropdownMenu.Label className="DropdownMenuLabel">
-                        People
-                    </DropdownMenu.Label>
+  const setCheckedState = (item: string, checked: boolean) => {
+    setCheckedStates((prevState) => ({
+      ...prevState,
+      [item]: checked,
+    }));
+  };
 
-                    <DropdownMenu.CheckboxItem
-                        className="DropdownMenuCheckboxItem"
-                        checked={bookmarksChecked}
-                        onCheckedChange={setBookmarksChecked}
-                        onSelect={(event) => event.preventDefault()}
-                    >
-                        <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-                            <CheckIcon />
-                        </DropdownMenu.ItemIndicator>
-                        Show Bookmarks <div className="RightSlot">⌘+B</div>
-                    </DropdownMenu.CheckboxItem>
-                    <DropdownMenu.CheckboxItem
-                        className="DropdownMenuCheckboxItem"
-                        checked={urlsChecked}
-                        onCheckedChange={setUrlsChecked}
-                        onSelect={(event) => event.preventDefault()}
-                    >
-                        <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-                            <CheckIcon />
-                        </DropdownMenu.ItemIndicator>
-                        Show Full URLs
-                    </DropdownMenu.CheckboxItem>
-
-                    <DropdownMenu.Separator className="DropdownMenuSeparator" />
-
-                    <DropdownMenu.Label className="DropdownMenuLabel">
-                        People
-                    </DropdownMenu.Label>
-                </DropdownMenu.Content>
-            </DropdownMenu.Portal>
-        </DropdownMenu.Root>
-    );
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger asChild>
+        <p onClick={() => setOpen(true)}>Välj Parametrar</p>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content className="DropdownMenuContent">
+          <DropdownMenu.Separator className="DropdownMenuSeparator" />
+          {createMenuItems(accidentItems, checkedStates, setCheckedState, "Accident")}
+          <DropdownMenu.Separator className="DropdownMenuSeparator" />
+          {createMenuItems(locationItems, checkedStates, setCheckedState, "Location")}
+          <DropdownMenu.Separator className="DropdownMenuSeparator" />
+          {createMenuItems(involvedItems, checkedStates, setCheckedState, "Involved")}
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
 }
 
 export default DropdownMenuParameters;

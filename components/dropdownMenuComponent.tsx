@@ -1,27 +1,90 @@
 import "app/style.css";
-import { DropdownMenu } from "radix-ui";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
-  HamburgerMenuIcon,
-  DotFilledIcon,
   CheckIcon,
-  ChevronRightIcon,
+  PlusIcon,
 } from "@radix-ui/react-icons";
 import React, { useState } from "react";
-import TransitionsSnackbar from "./snackbar";
+import { addNode } from "./horizontalFlow";
+import { addElementToTreeList } from "./treeList";
+import TreeList from "./treeList";
 import HorizontalFlow from "./horizontalFlow";
 
+let peopleItems: string[] = [
+  "Kalle",
+  "Britta",
+  "Lasse",
+  "Vuxen",
+  "Barn/Ungdom",
+  "65+ person",
+];
+
+let vehicleItems: string[] = [
+  "Bil",
+];
+
+let environmentItems: string[] = [
+  "Plats",
+  "Väder",
+];
+
+let medicalData: string[] = [
+  "Patient Journal Data",
+];
+
+function createMenuItems(items: string[], checkedStates: { [key: string]: boolean }, setCheckedStates: (item: string, checked: boolean) => void, label: string, handleItemClick: (item: string) => void) {
+  return (
+    <>
+      <DropdownMenu.Label className="DropdownMenuLabel">{label}</DropdownMenu.Label>
+      {items.map((item) => (
+        <DropdownMenu.Item
+          key={item}
+          className="DropdownMenuItem"
+          onSelect={(event) => {
+            event.preventDefault();
+            handleItemClick(item);
+          }}
+        >
+          <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+            {checkedStates[item] ? <CheckIcon /> : <PlusIcon />}
+          </DropdownMenu.ItemIndicator>
+          {item}
+        </DropdownMenu.Item>
+      ))}
+    </>
+  );
+}
 
 function DropdownMenuComponents() {
   const [open, setOpen] = useState(false);
-  const [bookmarksChecked, setBookmarksChecked] = useState(true);
-  const [urlsChecked, setUrlsChecked] = useState(false);
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const handleSnackbarOpen = () => setSnackbarOpen(true);
-  const handleSnackbarClose = () => setSnackbarOpen(false);
-  
-  const handleAddComponent = () => {
-    handleSnackbarOpen();
-    HorizontalFlow();
+  const [treeList, setTreeList] = useState([]);
+  const [checkedStates, setCheckedStates] = useState<{ [key: string]: boolean }>({
+    "Kalle": false,
+    "Britta": false,
+    "Lasse": false,
+    "Vuxen": false,
+    "Barn/Ungdom": false,
+    "65+ person": false,
+    "Bil": false,
+    "Plats": false,
+    "Väder": false,
+    "Patient Journal Data": false,
+  });
+
+  const setCheckedState = (item: string, checked: boolean) => {
+    setCheckedStates((prevState) => ({
+      ...prevState,
+      [item]: checked,
+    }));
+  };
+
+  const handleItemClick = (item: string) => {
+    setCheckedState(item, true);
+    addNode(setNodes);
+    addElementToTreeList(setTreeList, item);
+    setTimeout(() => {
+      setCheckedState(item, false);
+    }, 5000);
   };
 
   return (
@@ -33,54 +96,20 @@ function DropdownMenuComponents() {
 
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="DropdownMenuContent">
+            Välj komponenter till din simulering
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
-            <DropdownMenu.Label className="DropdownMenuLabel">Personer</DropdownMenu.Label>
-
-            <DropdownMenu.CheckboxItem
-              className="DropdownMenuCheckboxItem"
-              checked={bookmarksChecked}
-              onCheckedChange={setBookmarksChecked}
-              onSelect={(event) => event.preventDefault()}
-            >
-              <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-                <CheckIcon />
-              </DropdownMenu.ItemIndicator>
-              Kalle <div className="RightSlot">⌘+B</div>
-            </DropdownMenu.CheckboxItem>
-            <DropdownMenu.CheckboxItem
-              className="DropdownMenuCheckboxItem"
-              checked={urlsChecked}
-              onCheckedChange={setUrlsChecked}
-              onSelect={(event) => event.preventDefault()}
-            >
-              <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-                <CheckIcon />
-              </DropdownMenu.ItemIndicator>
-              Lasse
-            </DropdownMenu.CheckboxItem>
-
-            <DropdownMenu.CheckboxItem
-              className="DropdownMenuCheckboxItem"
-              onSelect={handleAddComponent}
-            >
-              <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-                <CheckIcon />
-              </DropdownMenu.ItemIndicator>
-              Lägg till komponent
-            </DropdownMenu.CheckboxItem>
-
+            {createMenuItems(peopleItems, checkedStates, setCheckedState, "Personer", handleItemClick)}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
-
-            <DropdownMenu.Label className="DropdownMenuLabel">People</DropdownMenu.Label>
+            {createMenuItems(vehicleItems, checkedStates, setCheckedState, "Fordon", handleItemClick)}
+            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+            {createMenuItems(environmentItems, checkedStates, setCheckedState, "Miljö", handleItemClick)}
+            <DropdownMenu.Separator className="DropdownMenuSeparator" />
+            {createMenuItems(medicalData, checkedStates, setCheckedState, "Medicinsk Data", handleItemClick)}
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
-
-      <TransitionsSnackbar
-        open={snackbarOpen}
-        onClose={handleSnackbarClose}
-        message="Komponent tillagd"
-      />
+      <TreeList treeList={treeList} />
+      <HorizontalFlow />
     </div>
   );
 }

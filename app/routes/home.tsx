@@ -6,6 +6,7 @@ import SimpleLineChart from "components/lineChart";
 import { ReactFlowProvider } from "@xyflow/react";
 import HorizontalFlow from "components/horizontalFlow";
 
+
 export default function Home() {
   return (
     <div className="h-screen w-screen">
