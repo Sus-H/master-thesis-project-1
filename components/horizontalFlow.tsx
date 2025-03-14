@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import {
   Background,
   MiniMap,
+  type MiniMapProps,
   Controls,
   ReactFlow,
   useNodesState,
@@ -138,11 +139,9 @@ const initialEdges = [
 const HorizontalFlow = () => {
   const reactFlowWrapper = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const { screenToFlowPosition } = useReactFlow();
   const { setViewport } = useReactFlow();
-
-  
 
 //   Save and Restore
   const [rfInstance, setRfInstance] = useState(null);
@@ -199,24 +198,24 @@ const HorizontalFlow = () => {
         };
      
         restoreFlow();
-      }, [setNodes, setViewport]);
+      }, [setNodes, setEdges, setViewport,]);
      
-      const onAdd = useCallback(() => {
-        const newNode = {
-          id: getNodeId(),
-          data: { label: 'Added node' },
-          position: {
-            sourcePosition: 'right',
-            targetPosition: 'left',
-            x: (Math.random() - 0.5) * 400,
-            y: (Math.random() - 0.5) * 400,
-          },
-        };
-        setNodes((nds) => nds.concat(newNode));
-      }, [setNodes]);
+      // const onAdd = useCallback(() => {
+      //   const newNode = {
+      //     id: getNodeId(),
+      //     data: { label: 'Added node' },
+      //     position: {
+      //       sourcePosition: 'right',
+      //       targetPosition: 'left',
+      //       x: (Math.random() - 0.5) * 400,
+      //       y: (Math.random() - 0.5) * 400,
+      //     },
+      //   };
+      //   setNodes((nds) => nds.concat(newNode));
+      // }, [setNodes]);
  
   return (
-    <ReactFlow className="wrapper" ref={reactFlowWrapper}
+    <ReactFlow className="wrapper flex" ref={reactFlowWrapper}
       nodes={nodes}
       edges={edges}
       onInit={setRfInstance}
@@ -231,12 +230,12 @@ const HorizontalFlow = () => {
       nodeOrigin={nodeOrigin}
       >
         <Background />
-        <MiniMap/>
+        <MiniMap pannable={true} position='bottom-left'/>
         <Controls/>
-          <Panel position="top-right">
-            <button className="border" onClick={onSave}>save</button>
-            <button className="border" onClick={onRestore}>restore</button>
-            <button className="border" onClick={onAdd}>add node</button>
+          <Panel position="top-left" className='grid gap-5'>
+            <button className="border hover:bg-amber-400 active:bg-blue-700" onClick={onSave}>save</button>
+            <button className="border hover:bg-amber-400 active:bg-blue-700" onClick={onRestore}>restore</button>
+            <button className="border hover:bg-amber-400 active:bg-blue-700" onClick={onAdd}>add node</button>
           </Panel>
       </ReactFlow>  
   );
