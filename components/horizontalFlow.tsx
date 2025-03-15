@@ -16,7 +16,7 @@ import "@xyflow/react/dist/style.css";
 
 const getNodeId = () => `randomnode_${+new Date()}`;
 
-export const addNode = (setNodes) => {
+export const addNode = (setNodes, name) => {
   const newNode = {
     id: getNodeId(),
     data: { label: "Added node" },
@@ -235,6 +235,7 @@ const HorizontalFlow = () => {
         style={{ backgroundColor: "#F7F9FB" }}
         onConnectEnd={onConnectEnd}
         fitViewOptions={{ padding: 2 }}
+        // nodeOrigin={nodeOrigin}
       >
         <Background />
         <MiniMap

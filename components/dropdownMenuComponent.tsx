@@ -3,6 +3,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
 import HorizontalFlow from "./horizontalFlow";
+import addNode from "./horizontalFlow";
 
 let peopleItems: string[] = [
   "Kalle",
@@ -77,7 +78,7 @@ function DropdownMenuComponents() {
 
   const handleItemClick = (item: string) => {
     setCheckedState(item, true);
-    // addNode(setNodes);
+    addNode(setNodes);
     // addElementToTreeList(setTreeList, item);
     setTimeout(() => {
       setCheckedState(item, false);
