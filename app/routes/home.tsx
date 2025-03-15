@@ -1,7 +1,6 @@
 import React from "react";
 import { TopBar } from "components/topBar";
-import Scroll_area from "components/scroll_area";
-import HorizontalFlow from "components/horizontalFlow";
+import Scroll_area from "components/sideBarLeft";
 import { ReactFlowProvider } from "@xyflow/react";
 import MindMap from "components/mindMap";
 

@@ -1,12 +1,6 @@
 import { ScrollArea } from "radix-ui";
 import Slider from "components/slider";
-import TreeListComponent from "components/treeList";
-
-
-
-// const TAGS = Array.from({ length: 50 }).map(
-// 	(_, i, a) => `v1.2.0-beta.${a.length - i}`,
-// );
+import * as exampleData from "components/exampleData";
 
 export default () => (
   <ScrollArea.Root className="h-screen w-[200px] overflow-hidden bg-white border">
@@ -20,24 +14,48 @@ export default () => (
           <Slider></Slider>
         </div>
         <div className="components-list-view">
-            Components
+          Scenario 1, Bilolycka
+          <ul className="tree">
+            <li>
+              <details open>
+                <summary>{exampleData.vehicle_1.model?.value}</summary>
+                <ul>
+                  <li>
+                    <details open>
+                      <summary>{exampleData.occupant_1.name}</summary>
+                      <ul>
+                        <li>Kön: {exampleData.occupant_1.sex?.value}</li>
+                        <li>Ålder: {exampleData.occupant_1.age?.value}</li>
+                        <li>Bälte: {exampleData.occupant_1.belt_use?.value}</li>
+                        <li>Säte: {exampleData.occupant_1.seat_position?.value}</li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>
+                    <details open>
+                      <summary>{exampleData.occupant_2.name}</summary>
+                      <ul>
+                        <li>Uranus</li>
+                        <li>Neptune</li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>
+                    <details open>
+                      <summary>{exampleData.occupant_3.name}</summary>
+                      <ul>
+                        <li>Uranus</li>
+                        <li>Neptune</li>
+                      </ul>
+                    </details>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
         </div>
         <div className="components-list-view">
-        <TreeListComponent></TreeListComponent>
         </div>
-        <div className="components-list-view">
-        </div>
-        {/* <div className="text-[15px] font-medium leading-[18px] text-violet11">
-                Tags
-            </div>
-            {TAGS.map((tag) => (
-                <div
-                    className="mt-2.5 border-t border-t-mauve6 pt-2.5 text-[13px] leading-[18px] text-mauve12"
-                    key={tag}
-                >
-                    {tag}
-                </div>
-            ))} */}
       </div>
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar

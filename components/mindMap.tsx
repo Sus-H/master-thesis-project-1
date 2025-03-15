@@ -5,9 +5,12 @@ import {
   useNodesState,
   useEdgesState,
   addEdge,
+  MiniMap,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { initialNodes, initialEdges } from './exampleData';
+import { initialNodes } from './nodes';
+import { initialEdges } from './edges';
+
  
 const MindMap = () => {
   const [nodes, _, onNodesChange] = useNodesState(initialNodes);
@@ -29,6 +32,7 @@ const MindMap = () => {
       style={{ backgroundColor: "#F7F9FB" }}
       >
         <Background />
+        <MiniMap position='bottom-left' pannable/>
       </ReactFlow>  
   );
 };

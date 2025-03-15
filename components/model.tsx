@@ -9,7 +9,7 @@ export enum DataSource {
 }
 
 export enum AccidentType {
-    CAR_ACCIDENT,
+    CAR_ACCIDENT = "Bilolycka",
 }
 
 export enum CarAccidentType {
@@ -40,13 +40,13 @@ export enum AirbagDeployment {
 }
 
 export enum Sex {
-    MALE,
-    FEMALE,
+    MALE = "Man",
+    FEMALE = "Kvinna",
 }
 
 export enum SeatPosition {
-    FRONT_PASSENGER,
-    REAR_PASSENGER,
+    FRONT_PASSENGER = "Fram",
+    REAR_PASSENGER = "Bak",
 }
 
 export interface Data<T> {
@@ -67,8 +67,8 @@ export interface Scenario {
     road_alignment?: Data<string>;
     road_profile?: Data<string>;
     posted_speed_limit?: Data<number>;
-    vehicles?: Data<Array<Vehicle>>;
-    pedestrians?: Data<Array<Patient>>;
+    vehicles?: Data<Vehicle[]>;
+    pedestrians?: Data<Patient>[];
     minutes_to_trauma_center?: Number
     distance_to_major_trauma_center_km?: Number
 }
@@ -79,8 +79,8 @@ export interface CrashInformation {
 }
 
 export interface Vehicle {
-    vehicle_occupants?: Data<Array<VehicleOccupant>>;
-    accident_type?: Data<Array<CarAccidentType>>;
+    vehicle_occupants?: Data<VehicleOccupant[]>;
+    accident_type?: Data<CarAccidentType[]>;
     airbag_deployment?: Data<AirbagDeployment>;
     seatbelt_use?: Data<boolean>;
     direction?: Data<string>;
@@ -88,7 +88,7 @@ export interface Vehicle {
     location_of_impact?: Data<string>;
     vehicle_speed_kmph?: Data<number>;
     delta_v_kmph?: Data<number>;
-    impact_forces_g?: Array<Data<number>>;
+    impact_forces_g?: Data<number>[];
     model_year?: Data<number>;
     car_weight_kg?: Data<number>;
     registration_number?: Data<string>;
@@ -103,11 +103,11 @@ export interface Patient {
     elderly?: Data<boolean>;
     pulse?: Data<number>;
     breathing_rate?: Data<number>;
-    identified_injuries?: Data<Array<string>>;
+    identified_injuries?: Data<string[]>;
 }
 
 export interface VehicleOccupant extends Patient{
-    belt_use?: Data<boolean>;
+    belt_use?: Data<string>;
     seat_position?: Data<SeatPosition>;
     airbag_deployment?: Data<AirbagDeployment>;
 }
