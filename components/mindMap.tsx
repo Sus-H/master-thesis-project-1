@@ -6,6 +6,7 @@ import {
   useEdgesState,
   addEdge,
   MiniMap,
+  Controls,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { initialNodes } from './nodes';
@@ -30,8 +31,11 @@ const MindMap = () => {
       fitView
       attributionPosition="bottom-left"
       style={{ backgroundColor: "#F7F9FB" }}
+      // snapToGrid={true}
+      // snapGrid={[20, 20]}
       >
         <Background />
+        <Controls position='top-left'/>
         <MiniMap position='bottom-left' pannable/>
       </ReactFlow>  
   );

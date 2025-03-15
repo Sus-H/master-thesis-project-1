@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 let peopleItems: string[] = [
   "Kalle",
-  "Britta",
+  "Birgit",
   "Lasse",
   "Vuxen",
   "Barn/Ungdom",
@@ -88,7 +88,7 @@ function DropdownMenuComponents() {
         onOpenChange={setOpen}
       >
         <DropdownMenu.Trigger asChild>
-          <p onClick={() => setOpen(true)}>Lägg till komponenter</p>
+          <p onClick={() => setOpen(true)}><img src="images/add_component.svg" className="inline"/>Lägg till komponenter</p>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>

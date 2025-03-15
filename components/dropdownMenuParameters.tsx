@@ -79,7 +79,7 @@ function DropdownMenuParameters() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <p onClick={() => setOpen(true)}>Välj Parametrar</p>
+        <p onClick={() => setOpen(true)}><img src="images/Sliders.svg" className="inline"/> Välj Parametrar</p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content className="DropdownMenuContent">

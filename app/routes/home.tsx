@@ -19,9 +19,8 @@ export default function Home() {
             </ReactFlowProvider>
           </div>
         </div>
-        <div className="summary absolute right-0 z-10 bg-white h-screen">
-          Summering här borta
-          {/* <SimpleLineChart></SimpleLineChart> */}
+        <div className="summary absolute right-0 z-10 bg-white h-screen px-10 py-5">
+          <p>Summering här borta</p>
         </div>
       </div>
     </div>

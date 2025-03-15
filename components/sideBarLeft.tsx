@@ -1,5 +1,5 @@
 import { ScrollArea } from "radix-ui";
-import Slider from "components/slider";
+import {SliderComponent} from "components/slider";
 import * as exampleData from "components/exampleData";
 import { addChild, createNode, type Node } from "./treeNode";
 
@@ -30,9 +30,9 @@ export default () => (
         <div>Simulation Data</div>
         <div className="parameter-sliders grid gap-5">
           Parameters
-          <Slider></Slider>
-          <Slider></Slider>
-          <Slider></Slider>
+          <div>
+            <SliderComponent/>
+          </div>
         </div>
         <div className="components-list-view">
           Scenario 1, Bilolycka
