@@ -16,7 +16,7 @@ export const initialNodes = [
       id: 'horizontal-2',
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
-      data: { label: 'Bil 1' },
+      data: { label: 'Volvo XC60' },
       position: { x: 250, y: 0 },
       draggable: false,
     },

@@ -1,9 +1,30 @@
 import { ScrollArea } from "radix-ui";
 import Slider from "components/slider";
 import * as exampleData from "components/exampleData";
+import { addChild, createNode, type Node } from "./treeNode";
+
+function NodeComponent({ node }: { node: Node }) {
+
+  if (node.children.length === 0) {
+    return <li>{node.name}</li>;
+  }
+
+  return (
+    <li>
+      <details open={node.expanded}>
+        <summary>{node.name}</summary>
+        <ul>
+          {node.children.map((child) => (
+            <NodeComponent key={child.name} node={child} />
+          ))}
+        </ul>
+      </details>
+    </li>
+  );
+}
 
 export default () => (
-  <ScrollArea.Root className="h-screen w-[200px] overflow-hidden bg-white border">
+  <ScrollArea.Root className="h-screen w-[250px] overflow-hidden bg-white border">
     <ScrollArea.Viewport className="size-full rounded">
       <div className="px-5 py-[15px]">
         <div>Simulation Data</div>
@@ -31,15 +52,7 @@ export default () => (
                       </ul>
                     </details>
                   </li>
-                  <li>
-                    <details open>
-                      <summary>{exampleData.occupant_2.name}</summary>
-                      <ul>
-                        <li>Uranus</li>
-                        <li>Neptune</li>
-                      </ul>
-                    </details>
-                  </li>
+                    <NodeComponent node={addChild( createNode( "haha"), createNode("child"))} />
                   <li>
                     <details open>
                       <summary>{exampleData.occupant_3.name}</summary>

@@ -2,23 +2,6 @@ import "app/style.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
-// import TreeListComponent from "./treeListComponent";
-// import { TreeList, Leaf } from "./treeList";
-
-
-// // Instantiate TreeList and add example data
-// const treeList = new TreeList("Giant planets");
-// const gasGiants = new Leaf("Gas giants");
-// gasGiants.children.push(new Leaf("Jupiter"));
-// gasGiants.children.push(new Leaf("Saturn"));
-
-// const iceGiants = new Leaf("Ice giants");
-// iceGiants.children.push(new Leaf("Uranus"));
-// iceGiants.children.push(new Leaf("Neptune"));
-
-// treeList.addLeaf(gasGiants);
-// treeList.addLeaf(iceGiants);
-
 
 let peopleItems: string[] = [
   "Kalle",
@@ -146,7 +129,6 @@ function DropdownMenuComponents() {
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
-      {/* <TreeList treeList={treeList} /> */}
     </div>
   );
 }
