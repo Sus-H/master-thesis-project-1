@@ -1,6 +1,6 @@
 import { ScrollArea } from "radix-ui";
 import Slider from "components/slider";
-import { TreeList } from "components/treeList";
+import TreeListComponent from "components/treeList";
 
 
 
@@ -21,13 +21,11 @@ export default () => (
         </div>
         <div className="components-list-view">
             Components
-          <TreeList></TreeList>
         </div>
         <div className="components-list-view">
-          <TreeList></TreeList>
+        <TreeListComponent></TreeListComponent>
         </div>
         <div className="components-list-view">
-          <TreeList></TreeList>
         </div>
         {/* <div className="text-[15px] font-medium leading-[18px] text-violet11">
                 Tags

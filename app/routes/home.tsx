@@ -3,6 +3,7 @@ import { TopBar } from "components/topBar";
 import Scroll_area from "components/scroll_area";
 import HorizontalFlow from "components/horizontalFlow";
 import { ReactFlowProvider } from "@xyflow/react";
+import MindMap from "components/mindMap";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         <div className="components-mind-map-view z-0">
           <div className="h-screen w-screen">
             <ReactFlowProvider>
-              <HorizontalFlow></HorizontalFlow>
+              <MindMap></MindMap>
             </ReactFlowProvider>
           </div>
         </div>

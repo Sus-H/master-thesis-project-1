@@ -78,8 +78,6 @@ function DropdownMenuComponents() {
 
   const handleItemClick = (item: string) => {
     setCheckedState(item, true);
-    addNode(setNodes);
-    // addElementToTreeList(setTreeList, item);
     setTimeout(() => {
       setCheckedState(item, false);
     }, 5000);
