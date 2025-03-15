@@ -221,7 +221,6 @@ const HorizontalFlow = () => {
   }, [setNodes]);
 
   return (
-    <ReactFlowProvider>
       <ReactFlow
         className="wrapper flex"
         ref={reactFlowWrapper}
@@ -236,7 +235,6 @@ const HorizontalFlow = () => {
         style={{ backgroundColor: "#F7F9FB" }}
         onConnectEnd={onConnectEnd}
         fitViewOptions={{ padding: 2 }}
-        nodeOrigin={nodeOrigin}
       >
         <Background />
         <MiniMap
@@ -268,7 +266,6 @@ const HorizontalFlow = () => {
           </button>
         </Panel>
       </ReactFlow>
-    </ReactFlowProvider>
   );
 };
 

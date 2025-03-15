@@ -1,11 +1,8 @@
 import React from "react";
 import { TopBar } from "components/topBar";
-import Checkbox from "components/checkbox";
 import Scroll_area from "components/scroll_area";
-import SimpleLineChart from "components/lineChart";
-import { ReactFlowProvider } from "@xyflow/react";
 import HorizontalFlow from "components/horizontalFlow";
-
+import { ReactFlowProvider } from "@xyflow/react";
 
 export default function Home() {
   return (
@@ -23,7 +20,7 @@ export default function Home() {
           </div>
         </div>
         <div className="summary absolute right-0 z-10 bg-white h-screen">
-            Summering här borta
+          Summering här borta
           {/* <SimpleLineChart></SimpleLineChart> */}
         </div>
       </div>
