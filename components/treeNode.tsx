@@ -1,12 +1,12 @@
 export interface Node {
-  name: string;
+  content: string;
   children: Node[];
   expanded: boolean;
 }
 
-export function createNode(name: string): Node {
+export function createNode(content: string): Node {
   return {
-    name,
+    content,
     children: [],
     expanded: false,
   };

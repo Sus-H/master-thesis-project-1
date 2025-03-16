@@ -2,8 +2,9 @@ import "app/style.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
+import { DataContext, type DataContextType } from "./dataContext";
 
-let peopleItems: string[] = [
+const peopleItems: string[] = [
   "Kalle",
   "Birgit",
   "Lasse",
@@ -12,11 +13,11 @@ let peopleItems: string[] = [
   "65+ person",
 ];
 
-let vehicleItems: string[] = ["Bil"];
+const vehicleItems: string[] = ["Bil"];
 
-let environmentItems: string[] = ["Plats", "Väder"];
+const environmentItems: string[] = ["Plats", "Väder"];
 
-let medicalData: string[] = ["Patient Journal Data"];
+const medicalData: string[] = ["Patient Journal Data"];
 
 function createMenuItems(
   items: string[],
@@ -78,7 +79,7 @@ function DropdownMenuComponents() {
     setCheckedState(item, true);
     setTimeout(() => {
       setCheckedState(item, false);
-    }, 5000);
+    }, 5000);  
   };
 
   return (
@@ -90,7 +91,6 @@ function DropdownMenuComponents() {
         <DropdownMenu.Trigger asChild>
           <p onClick={() => setOpen(true)}><img src="images/add_component.svg" className="inline"/>Lägg till komponenter</p>
         </DropdownMenu.Trigger>
-
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="DropdownMenuContent">
             Välj komponenter till din simulering

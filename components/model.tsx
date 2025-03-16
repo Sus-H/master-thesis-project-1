@@ -54,6 +54,13 @@ export interface Data<T> {
     data_source: DataSource;
 }
 
+export interface Simulation {
+    scenarios: Scenario[];
+    persons: Patient[];
+    vehicles: Vehicle[];
+
+}
+
 export interface Scenario {
     accident_type?: Data<AccidentType>;
     location?: Data<AccidentLocation>;
@@ -69,6 +76,7 @@ export interface Scenario {
     posted_speed_limit?: Data<number>;
     vehicles?: Data<Vehicle[]>;
     pedestrians?: Data<Patient>[];
+    patient?: Data<Patient>[];
     minutes_to_trauma_center?: Number
     distance_to_major_trauma_center_km?: Number
 }
