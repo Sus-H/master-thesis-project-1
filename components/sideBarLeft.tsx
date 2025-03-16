@@ -1,11 +1,10 @@
 import { ScrollArea } from "radix-ui";
-import {SliderComponent} from "components/slider";
+import { SliderComponent } from "components/slider";
 import * as exampleData from "components/exampleData";
 import { addChild, createNode, type Node } from "./treeNode";
 import type { Patient, Scenario, Simulation, Vehicle } from "./model";
 
 function NodeComponent({ node }: { node: Node }) {
-
   if (node.children.length === 0) {
     return <li>{node.content}</li>;
   }
@@ -16,7 +15,10 @@ function NodeComponent({ node }: { node: Node }) {
         <summary>{node.content}</summary>
         <ul>
           {node.children.map((child) => (
-            <NodeComponent key={child.content} node={child} />
+            <NodeComponent
+              key={child.content}
+              node={child}
+            />
           ))}
         </ul>
       </details>
@@ -24,39 +26,48 @@ function NodeComponent({ node }: { node: Node }) {
   );
 }
 
-function createScenarioNode(scenario: Scenario){
-  let parentNode = createNode("Scenario")
-  let children = Object.entries(scenario).map(([key, value]) => createNode(value))
-  children.forEach((child) => addChild(parentNode, child))
-  return <NodeComponent node={parentNode} />
+function createScenarioNode(scenario: Scenario) {
+  let parentNode = createNode("Scenario");
+  Object.entries(scenario).forEach(([key, value]) => {
+    parentNode = addChild(parentNode, createNode(`${key}: ${value}`))
+  }
+);
+  return <NodeComponent node={parentNode} />;
 }
 
-function createPatientNode(patient: Patient){
-  let parentNode = createNode("Patient")
-  let children = Object.entries(patient).map(([key, value]) => createNode(value))
-  children.forEach((child) => addChild(parentNode, child))
-  return <NodeComponent node={parentNode} />
+function createPatientNode(patient: Patient) {
+  let parentNode = createNode("Patient");
+  let children = Object.entries(patient).map(([key, value]) =>
+    createNode(`${key}: ${value}`)
+  );
+  children.forEach((child) => addChild(parentNode, child));
+  return <NodeComponent node={parentNode} />;
 }
 
-function createVehicleNode(vehicle: Vehicle){
-  let parentNode = createNode("Vehicle")
-  let children = Object.entries(vehicle).map(([key, value]) => createNode(value))
-  children.forEach((child) => addChild(parentNode, child))
-  return <NodeComponent node={parentNode} />
+function createVehicleNode(vehicle: Vehicle) {
+  let parentNode = createNode("Vehicle");
+  let children = Object.entries(vehicle).map(([key, value]) =>
+    createNode(`${key}: ${value}`)
+  );
+  children.forEach((child) => addChild(parentNode, child));
+  return <NodeComponent node={parentNode} />;
 }
 
+function TreeComponent({ data }: { data: Simulation }) {
+  let scenarios = data.scenarios;
+  let patients = data.persons;
+  let vehicles = data.vehicles;
 
-
-function TreeComponent(data: Simulation){
-  let scenarios = data.scenarios
-  let patients = data.persons
-  let vehicles = data.vehicles
-
-  return(
+  return (
     <ul className="tree">
-      <NodeComponent node={addChild( createNode("Parent"), createNode("child"))} />
+      {scenarios &&
+        scenarios.map((scenario) => createScenarioNode(scenario))}
+      {patients &&
+        patients.map((patient) => createPatientNode(patient))}
+      {vehicles &&
+        vehicles.map((vehicle) => createVehicleNode(vehicle))}
     </ul>
-  )
+  );
 }
 
 export default (data: Simulation) => (
@@ -67,16 +78,16 @@ export default (data: Simulation) => (
         <div className="parameter-sliders grid gap-5">
           Parameters
           <div>
-            <SliderComponent name="param"/>
+            <SliderComponent name="param" />
           </div>
         </div>
         <div className="components-list-view">
           Scenario 1, Bilolycka
-          <TreeComponent scenarios={}> </TreeComponent>
-
+          <TreeComponent
+            data={{ scenarios: [exampleData.scenario_1] }}
+          />
         </div>
-        <div className="components-list-view">
-        </div>
+        <div className="components-list-view"></div>
       </div>
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar

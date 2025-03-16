@@ -55,9 +55,9 @@ export interface Data<T> {
 }
 
 export interface Simulation {
-    scenarios: Scenario[];
-    persons: Patient[];
-    vehicles: Vehicle[];
+    scenarios?: Scenario[];
+    persons?: Patient[];
+    vehicles?: Vehicle[];
 
 }
 
