@@ -4,9 +4,9 @@ import * as exampleData from "components/exampleData";
 import { addChild, createNode, type Node } from "./treeNode";
 import type { Patient, Scenario, Simulation, Vehicle } from "./model";
 import DropdownMenuParameters from "./dropdownMenuParameters";
-import ToggleGroupButton from "./toggleButton";
 import SelectComponent from "./selectComponent";
 import { translate } from "./languageMap";
+import SwitchButton from "./switchButton";
 
 function NodeComponent({ node }: { node: Node }) {
   if (node.children.length === 0) {
@@ -46,10 +46,7 @@ function createBasicNode(data: any, parentNodeName: string) {
     .map(([key, value]) =>
       createNode(`${translate(key)}: ${value.value}`)
     )
-    .reduce(
-      addChild,
-      createNode(parentNodeName)
-    );
+    .reduce(addChild, createNode(parentNodeName));
 }
 
 function createScenarioNode(scenario: Scenario) {
@@ -61,19 +58,15 @@ function createScenarioNode(scenario: Scenario) {
   );
 
   const vehicles: Vehicle[] = scenario.vehicles?.value || [];
-  const vehicleNodes: Node[] = vehicles.map(
-    createVehicleNode
-  );
+  const vehicleNodes: Node[] = vehicles.map(createVehicleNode);
   const scenarioNodeWithVehicles = vehicleNodes.reduce(
     addChild,
-    scenarioNode,
+    scenarioNode
   );
 
   const patients: Patient[] =
     scenario.pedestrians?.map((patient) => patient.value) || [];
-  const patientNodes: Node[] = patients.map(
-    createPatientNode
-  );
+  const patientNodes: Node[] = patients.map(createPatientNode);
   const scenarioNodeWithChildren = patientNodes.reduce(
     addChild,
     scenarioNodeWithVehicles
@@ -90,9 +83,7 @@ function createPatientNode(patient: Patient) {
 function createVehicleNode(vehicle: Vehicle) {
   const vehicleNodeName: string = vehicle.model?.value || "Vehicle";
   const patients: Patient[] = vehicle.vehicle_occupants?.value || [];
-  const patientNodes: Node[] = patients.map(
-    createPatientNode
-  );
+  const patientNodes: Node[] = patients.map(createPatientNode);
   const vehicleForces =
     vehicle.impact_forces_g?.map(
       (vehicleForce) => vehicleForce.value
@@ -103,10 +94,7 @@ function createVehicleNode(vehicle: Vehicle) {
     )
     .reduce(addChild, createBasicNode(vehicle, vehicleNodeName));
 
-  return patientNodes.reduce(
-    addChild,
-    vehicleNode
-  );
+  return patientNodes.reduce(addChild, vehicleNode);
 }
 
 function TreeComponent({ data }: { data: Simulation }) {
@@ -141,7 +129,7 @@ export default (data: Simulation) => (
           <SelectComponent></SelectComponent>
         </div>
         <div>
-          <ToggleGroupButton></ToggleGroupButton>
+          <SwitchButton></SwitchButton>
         </div>
         <button className="hover:underline">
           <DropdownMenuParameters />
