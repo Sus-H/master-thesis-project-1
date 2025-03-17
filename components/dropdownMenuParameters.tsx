@@ -1,8 +1,6 @@
-import "app/style.css";
+import "app/styles.css";
 import { DropdownMenu } from "radix-ui";
-import {
-  CheckIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
 
 export let accidentItems: string[] = [
@@ -27,16 +25,25 @@ export let involvedItems: string[] = [
   "Position i bil",
 ];
 
-function createMenuItems(items: string[], checkedStates: { [key: string]: boolean }, setCheckedStates: (item: string, checked: boolean) => void, label: string) {
+function createMenuItems(
+  items: string[],
+  checkedStates: { [key: string]: boolean },
+  setCheckedStates: (item: string, checked: boolean) => void,
+  label: string
+) {
   return (
     <>
-      <DropdownMenu.Label className="DropdownMenuLabel">{label}</DropdownMenu.Label>
+      <DropdownMenu.Label className="DropdownMenuLabel">
+        {label}
+      </DropdownMenu.Label>
       {items.map((item) => (
         <DropdownMenu.CheckboxItem
           key={item}
           className="DropdownMenuCheckboxItem"
           checked={checkedStates[item]}
-          onCheckedChange={(checked) => setCheckedStates(item, checked)}
+          onCheckedChange={(checked) =>
+            setCheckedStates(item, checked)
+          }
           onSelect={(event) => event.preventDefault()}
         >
           <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -52,20 +59,22 @@ function createMenuItems(items: string[], checkedStates: { [key: string]: boolea
 function DropdownMenuParameters() {
   const [open, setOpen] = useState(false);
 
-  const [checkedStates, setCheckedStates] = useState<{ [key: string]: boolean }>({
+  const [checkedStates, setCheckedStates] = useState<{
+    [key: string]: boolean;
+  }>({
     "Delta-V": false,
     "Uppmätt hastighet": false,
-    "Accelorometer": false,
-    "Fordonsdetaljer": false,
+    Accelorometer: false,
+    Fordonsdetaljer: false,
     "Transport till trauma center": false,
     "Transportsträcka till trauma center": false,
-    "Hastighetsgräns": false,
-    "Position": false,
-    "Väder": false,
-    "Tid": false,
-    "Medelålder": false,
-    "Kön": false,
-    "Säkerhetsbälte": false,
+    Hastighetsgräns: false,
+    Position: false,
+    Väder: false,
+    Tid: false,
+    Medelålder: false,
+    Kön: false,
+    Säkerhetsbälte: false,
     "Position i bil": false,
   });
 
@@ -79,16 +88,37 @@ function DropdownMenuParameters() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <p onClick={() => setOpen(true)}><img src="images/Sliders.svg" className="inline"/> Välj Parametrar</p>
+        <p onClick={() => setOpen(true)}>
+          <img
+            src="images/Sliders.svg"
+            className="inline"
+          />{" "}
+          Välj Parametrar
+        </p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content className="DropdownMenuContent">
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
-          {createMenuItems(accidentItems, checkedStates, setCheckedState, "Accident")}
+          {createMenuItems(
+            accidentItems,
+            checkedStates,
+            setCheckedState,
+            "Accident"
+          )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
-          {createMenuItems(locationItems, checkedStates, setCheckedState, "Location")}
+          {createMenuItems(
+            locationItems,
+            checkedStates,
+            setCheckedState,
+            "Location"
+          )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
-          {createMenuItems(involvedItems, checkedStates, setCheckedState, "Involved")}
+          {createMenuItems(
+            involvedItems,
+            checkedStates,
+            setCheckedState,
+            "Involved"
+          )}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

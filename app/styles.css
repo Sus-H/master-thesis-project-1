@@ -1,12 +1,10 @@
-@import url('./xy-theme.css');
+@import url("./xy-theme.css");
 
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
-
-
 
 /* @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
@@ -25,13 +23,12 @@ body {
 .rhombus {
   height: 200px; /* adjust to control the size  */
   aspect-ratio: 1;
-  clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%);
-  background: #88A65E;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: #88a65e;
 }
 
 /* CHARTS */
 :root {
-
   --background: oklch(1 0 0);
 
   --foreground: oklch(0.145 0 0);
@@ -100,7 +97,6 @@ body {
 }
 
 .dark {
-
   --background: oklch(0.145 0 0);
 
   --foreground: oklch(0.985 0 0);
@@ -167,7 +163,6 @@ body {
 }
 
 @theme inline {
-
   --color-background: var(--background);
 
   --color-foreground: var(--foreground);
@@ -230,7 +225,9 @@ body {
 
   --color-sidebar-primary: var(--sidebar-primary);
 
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary-foreground: var(
+    --sidebar-primary-foreground
+  );
 
   --color-sidebar-accent: var(--sidebar-accent);
 
@@ -251,25 +248,24 @@ body {
   }
 }
 
- 
 .dndflow {
   flex-direction: column;
   display: flex;
   flex-grow: 1;
   height: 70vh;
 }
- 
+
 .dndflow aside {
   border-right: 1px solid #eee;
   padding: 15px 10px;
   font-size: 12px;
   background: #fcfcfc;
 }
- 
+
 .dndflow aside .description {
   margin-bottom: 10px;
 }
- 
+
 .dndflow .dndnode {
   height: 20px;
   padding: 4px;
@@ -281,29 +277,29 @@ body {
   align-items: center;
   cursor: grab;
 }
- 
+
 .dndflow .dndnode.input {
   border-color: #0041d0;
 }
- 
+
 .dndflow .dndnode.output {
   border-color: #ff0072;
 }
- 
+
 .dndflow .reactflow-wrapper {
   flex-grow: 1;
   height: 100%;
 }
- 
+
 .dndflow .selectall {
   margin-top: 10px;
 }
- 
+
 @media screen and (min-width: 768px) {
   .dndflow {
     flex-direction: row;
   }
- 
+
   .dndflow aside {
     width: 20%;
     max-width: 250px;
@@ -336,7 +332,7 @@ body {
 }
 
 .tree ul li::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: calc(var(--spacing) / -2);
@@ -367,7 +363,7 @@ body {
 
 .tree li::after,
 .tree summary::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: calc(var(--spacing) / 2 - var(--radius));
@@ -380,7 +376,7 @@ body {
 
 .tree summary::before {
   z-index: 1;
-  background: #696 url('images/expand-collapse.svg') 0 0;
+  background: #6e56cf url("images/expand-collapse.svg") 0 0;
 }
 
 .tree details[open] > summary::before {
@@ -388,176 +384,317 @@ body {
 }
 
 /* Dropdown Menu */
-
-@import "@radix-ui/colors/black-alpha.css";
-@import "@radix-ui/colors/mauve.css";
-@import "@radix-ui/colors/violet.css";
-
-/* reset */
-
 .DropdownMenuContent,
 .DropdownMenuSubContent {
-	min-width: 220px;
-	background-color: white;
-	border-radius: 6px;
-	padding: 5px;
-	box-shadow:
-		0px 10px 38px -10px rgba(22, 23, 24, 0.35),
-		0px 10px 20px -15px rgba(22, 23, 24, 0.2);
-	animation-duration: 400ms;
-	animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-	will-change: transform, opacity;
+  min-width: 220px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 .DropdownMenuContent[data-side="top"],
 .DropdownMenuSubContent[data-side="top"] {
-	animation-name: slideDownAndFade;
+  animation-name: slideDownAndFade;
 }
 .DropdownMenuContent[data-side="right"],
 .DropdownMenuSubContent[data-side="right"] {
-	animation-name: slideLeftAndFade;
+  animation-name: slideLeftAndFade;
 }
 .DropdownMenuContent[data-side="bottom"],
 .DropdownMenuSubContent[data-side="bottom"] {
-	animation-name: slideUpAndFade;
+  animation-name: slideUpAndFade;
 }
 .DropdownMenuContent[data-side="left"],
 .DropdownMenuSubContent[data-side="left"] {
-	animation-name: slideRightAndFade;
+  animation-name: slideRightAndFade;
 }
 
 .DropdownMenuItem,
 .DropdownMenuCheckboxItem,
 .DropdownMenuRadioItem,
 .DropdownMenuSubTrigger {
-	font-size: 13px;
-	line-height: 1;
-	color: var(--violet-11);
-	border-radius: 3px;
-	display: flex;
-	align-items: center;
-	height: 25px;
-	padding: 0 5px;
-	position: relative;
-	padding-left: 25px;
-	user-select: none;
-	outline: none;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--violet-11);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 0 5px;
+  position: relative;
+  padding-left: 25px;
+  user-select: none;
+  outline: none;
 }
 .DropdownMenuSubTrigger[data-state="open"] {
-	background-color: var(--violet-4);
-	color: var(--violet-11);
+  background-color: var(--violet-4);
+  color: var(--violet-11);
 }
 .DropdownMenuItem[data-disabled],
 .DropdownMenuCheckboxItem[data-disabled],
 .DropdownMenuRadioItem[data-disabled],
 .DropdownMenuSubTrigger[data-disabled] {
-	color: var(--mauve-8);
-	pointer-events: none;
+  color: var(--mauve-8);
+  pointer-events: none;
 }
 .DropdownMenuItem[data-highlighted],
 .DropdownMenuCheckboxItem[data-highlighted],
 .DropdownMenuRadioItem[data-highlighted],
 .DropdownMenuSubTrigger[data-highlighted] {
-	background-color: var(--violet-9);
-	color: var(--violet-1);
+  background-color: var(--violet-9);
+  color: var(--violet-1);
 }
 
 .DropdownMenuLabel {
-	padding-left: 25px;
-	font-size: 12px;
-	line-height: 25px;
-	color: var(--mauve-11);
+  padding-left: 25px;
+  font-size: 12px;
+  line-height: 25px;
+  color: var(--mauve-11);
 }
 
 .DropdownMenuSeparator {
-	height: 1px;
-	background-color: var(--violet-6);
-	margin: 5px;
+  height: 1px;
+  background-color: var(--violet-6);
+  margin: 5px;
 }
 
 .DropdownMenuItemIndicator {
-	position: absolute;
-	left: 0;
-	width: 25px;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .DropdownMenuArrow {
-	fill: white;
+  fill: white;
 }
 
 .IconButton {
-	font-family: inherit;
-	border-radius: 100%;
-	height: 35px;
-	width: 35px;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--violet-11);
-	background-color: white;
-	box-shadow: 0 2px 10px var(--black-a7);
+  font-family: inherit;
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--violet-11);
+  background-color: white;
+  box-shadow: 0 2px 10px var(--black-a7);
 }
 .IconButton:hover {
-	background-color: var(--violet-3);
+  background-color: var(--violet-3);
 }
 .IconButton:focus {
-	box-shadow: 0 0 0 2px black;
+  box-shadow: 0 0 0 2px black;
 }
 
 .RightSlot {
-	margin-left: auto;
-	padding-left: 20px;
-	color: var(--mauve-11);
+  margin-left: auto;
+  padding-left: 20px;
+  color: var(--mauve-11);
 }
 [data-highlighted] > .RightSlot {
-	color: white;
+  color: white;
 }
 [data-disabled] .RightSlot {
-	color: var(--mauve-8);
+  color: var(--mauve-8);
 }
 
 @keyframes slideUpAndFade {
-	from {
-		opacity: 0;
-		transform: translateY(2px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideRightAndFade {
-	from {
-		opacity: 0;
-		transform: translateX(-2px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideDownAndFade {
-	from {
-		opacity: 0;
-		transform: translateY(-2px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideLeftAndFade {
-	from {
-		opacity: 0;
-		transform: translateX(2px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* TOGGLE BUTTON */
+
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+.ToggleGroup {
+  display: inline-flex;
+  background-color: var(--mauve-6);
+  border-radius: 4px;
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+
+.ToggleGroupItem {
+  background-color: white;
+  color: var(--mauve-11);
+  height: 35px;
+  width: 45px;
+  display: flex;
+  font-size: 15px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1px;
+  user-select: none;
+  transition: all 0.5s ease;
+}
+.ToggleGroupItem:first-child {
+  margin-left: 0;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+}
+.ToggleGroupItem:last-child {
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+.ToggleGroupItem:hover {
+  background-color: var(--violet-3);
+}
+.ToggleGroupItem[data-state="on"] {
+  background-color: var(--violet-5);
+  color: var(--violet-11);
+}
+.ToggleGroupItem:focus {
+  position: relative;
+  box-shadow: 0 0 0 2px black;
+}
+
+/* SELECT COMPONENT */
+/* reset */
+
+.SelectTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 13px;
+  line-height: 1;
+  height: 35px;
+  gap: 5px;
+  background-color: white;
+  color: var(--violet-11);
+  box-shadow: 0 2px 10px var(--black-a7);
+}
+.SelectTrigger:hover {
+  background-color: var(--mauve-3);
+}
+.SelectTrigger:focus {
+  box-shadow: 0 0 0 2px black;
+}
+.SelectTrigger[data-placeholder] {
+  color: var(--violet-9);
+}
+
+.SelectIcon {
+  color: Var(--violet-11);
+}
+
+.SelectContent {
+  overflow: hidden;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  animation-name: slideUpAndFade;
+}
+
+.SelectViewport {
+  padding: 5px;
+}
+
+.SelectItem {
+  font-size: 13px;
+  line-height: 1;
+  color: var(--violet-11);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 0 35px 0 25px;
+  position: relative;
+  user-select: none;
+}
+.SelectItem[data-disabled] {
+  color: var(--mauve-8);
+  pointer-events: none;
+}
+.SelectItem[data-highlighted] {
+  outline: none;
+  background-color: var(--violet-9);
+  color: var(--violet-1);
+}
+
+.SelectLabel {
+  padding: 0 25px;
+  font-size: 12px;
+  line-height: 25px;
+  color: var(--mauve-11);
+}
+
+.SelectSeparator {
+  height: 1px;
+  background-color: var(--violet-6);
+  margin: 5px;
+}
+
+.SelectItemIndicator {
+  position: absolute;
+  left: 0;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SelectScrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  background-color: white;
+  color: var(--violet-11);
+  cursor: default;
 }

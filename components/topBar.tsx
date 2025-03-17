@@ -4,14 +4,13 @@ import DropdownMenuParameters from "./dropdownMenuParameters";
 
 export function TopBar() {
   return <div>
-    <div className="p-2">
+    <div className="z-6 p-2">
       <div className="flex items-center mx-5 justify-between">
         <div>
           <p><img src="images/DHS_Icon.svg" alt="" className="inline"/> Min nya simulering</p>
         </div>
         <div className="flex gap-5">
           <button className="hover:underline"><DropdownMenuComponents/></button>
-          <button className="hover:underline"><DropdownMenuParameters/></button>
           
           <NavButton to="/page_algorithm_browser"> <img src="images/Book_open.svg" className="inline" /> Algoritm Utforskaren</NavButton>
           <button className="hover:underline"> <img src="images/Folder_plus.svg" className="inline" /> Importera Extern Data </button>

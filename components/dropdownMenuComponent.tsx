@@ -1,4 +1,4 @@
-import "app/style.css";
+import "app/styles.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
@@ -79,17 +79,23 @@ function DropdownMenuComponents() {
     setCheckedState(item, true);
     setTimeout(() => {
       setCheckedState(item, false);
-    }, 5000);  
+    }, 5000);
   };
 
   return (
-    <div>
+    <div className="z-50">
       <DropdownMenu.Root
         open={open}
         onOpenChange={setOpen}
       >
         <DropdownMenu.Trigger asChild>
-          <p onClick={() => setOpen(true)}><img src="images/add_component.svg" className="inline"/>Lägg till komponenter</p>
+          <p onClick={() => setOpen(true)}>
+            <img
+              src="images/add_component.svg"
+              className="inline"
+            />
+            Lägg till komponenter
+          </p>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="DropdownMenuContent">
