@@ -121,7 +121,7 @@ function TreeComponent({ data }: { data: Simulation }) {
 }
 
 export default (data: Simulation) => (
-  <ScrollArea.Root className="h-screen w-[300px] overflow-hidden bg-white border">
+  <ScrollArea.Root className="h-screen w-[300px] overflow-hidden bg-white">
     <ScrollArea.Viewport className="size-full rounded">
       <div className="grid grid-cols-1 gap-5 px-5 py-5">
         <div>Simulation Data</div>

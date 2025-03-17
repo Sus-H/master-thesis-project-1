@@ -27,7 +27,7 @@ export function SliderComponent({ name }: { name: string }) {
           ))}
         </Slider.Track>
         <Slider.Thumb
-          className="block border-3 border-purple-300 inset-y-0 size-5 rounded-full bg-[#6E56CF] shadow-[0_2px_10px] shadow-purple-950   hover:bg-violet3 focus: focus: focus:outline-none"
+          className="block border-5 border-purple-300/100 inset-y-0 size-6 rounded-full bg-[#6E56CF] shadow-[0_2px_10px] shadow-purple-950   hover:bg-violet3 focus: focus: focus:outline-none"
           aria-label="Volume"
         />
       </Slider.Root>

@@ -7,7 +7,9 @@ import MindMap from "components/mindMap";
 export default function Home() {
   return (
     <div className="h-screen w-screen">
-      <TopBar />
+      <div className="shadow-md z-40 mb-0.5">
+        <TopBar />
+      </div>
       <div className="flex">
         <div className="">
           <Scroll_area></Scroll_area>
@@ -20,7 +22,6 @@ export default function Home() {
         <div className="bg-white h-screen px-10 py-5">
           <p className="text-2xl">Visa summering</p>
           <div className="">
-
             <p>Summering här borta</p>
             <p>Involverade människor: 3 patienter</p>
             <p>Involverade Fordon: 1 Bil (Volvo XC60), krock</p>

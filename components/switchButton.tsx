@@ -10,13 +10,13 @@ const SwitchButton = () => (
         htmlFor="airplane-mode"
         style={{ paddingRight: 15 }}
       >
-        Airplane mode
+        Miljö
       </label>
       <Switch.Root
         className="SwitchRoot relative"
         id="airplane-mode"
       >
-        <div className="relative grid grid-cols-2 text-xs text-[#e1e1e1] z-40">
+        <div className="relative grid grid-cols-2 text-xs text-white z-40">
           <p>Urban</p>
           <p>Lantlig</p>
         </div>

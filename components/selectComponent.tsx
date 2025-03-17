@@ -14,7 +14,7 @@ const SelectComponent = () => (
       className="SelectTrigger"
       aria-label="Food"
     >
-      <Select.Value placeholder="Select a fruit…" />
+      <Select.Value placeholder="Välj typ av olycka..." />
       <Select.Icon className="SelectIcon">
         <ChevronDownIcon />
       </Select.Icon>
@@ -27,41 +27,24 @@ const SelectComponent = () => (
         <Select.Viewport className="SelectViewport">
           <Select.Group>
             <Select.Label className="SelectLabel">
-              Fruits
+              SINGEL
             </Select.Label>
-            <SelectItem value="apple">Apple</SelectItem>
-            <SelectItem value="banana">Banana</SelectItem>
-            <SelectItem value="blueberry">Blueberry</SelectItem>
-            <SelectItem value="grapes">Grapes</SelectItem>
-            <SelectItem value="pineapple">Pineapple</SelectItem>
+            <SelectItem value="Krock med fast objekt">
+              {" "}
+              Krock med fast objekt{" "}
+            </SelectItem>
+            <SelectItem value="Vilt">Vilt</SelectItem>
           </Select.Group>
 
           <Select.Separator className="SelectSeparator" />
 
           <Select.Group>
             <Select.Label className="SelectLabel">
-              Vegetables
+              MED FORDON
             </Select.Label>
-            <SelectItem value="aubergine">Aubergine</SelectItem>
-            <SelectItem value="broccoli">Broccoli</SelectItem>
-            <SelectItem
-              value="carrot"
-              disabled
-            >
-              Carrot
-            </SelectItem>
-            <SelectItem value="courgette">Courgette</SelectItem>
-            <SelectItem value="leek">Leek</SelectItem>
-          </Select.Group>
-
-          <Select.Separator className="SelectSeparator" />
-
-          <Select.Group>
-            <Select.Label className="SelectLabel">Meat</Select.Label>
-            <SelectItem value="beef">Beef</SelectItem>
-            <SelectItem value="chicken">Chicken</SelectItem>
-            <SelectItem value="lamb">Lamb</SelectItem>
-            <SelectItem value="pork">Pork</SelectItem>
+            <SelectItem value="Möte">Möte</SelectItem>
+            <SelectItem value="Korsning">Korsning</SelectItem>
+            <SelectItem value="Omkörning">Omkörning</SelectItem>
           </Select.Group>
         </Select.Viewport>
         <Select.ScrollDownButton className="SelectScrollButton">
