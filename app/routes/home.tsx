@@ -19,7 +19,7 @@ export default function Home() {
             </ReactFlowProvider>
           </div>
         </div>
-        <div className="summary w-[400px] absolute right-0 z-10 bg-white h-screen px-10 py-5">
+        {/* <div className="summary w-[400px] absolute right-0 z-10 bg-white h-screen px-10 py-5">
           <p className="text-2xl">Visa summering</p>
           <p>Summering här borta</p>
           <p>Involverade människor: 3 patienter</p>
@@ -36,7 +36,7 @@ export default function Home() {
             1 Ambulans: Patient, (Bakre passagerare)Chans för
             överlevnad 3%{" "}
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

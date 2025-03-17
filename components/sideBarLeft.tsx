@@ -47,7 +47,7 @@ function createBasicNode(data: any, parentNodeName: string) {
       createNode(`${translate(key)}: ${value.value}`)
     )
     .reduce(
-      (parent, child) => addChild(parent, child),
+      addChild,
       createNode(parentNodeName)
     );
 }
@@ -61,21 +61,21 @@ function createScenarioNode(scenario: Scenario) {
   );
 
   const vehicles: Vehicle[] = scenario.vehicles?.value || [];
-  const vehicleNodes: Node[] = vehicles.map((vehicle) =>
-    createVehicleNode(vehicle)
+  const vehicleNodes: Node[] = vehicles.map(
+    createVehicleNode
   );
   const scenarioNodeWithVehicles = vehicleNodes.reduce(
-    (parent, child) => addChild(parent, child),
-    scenarioNode
+    addChild,
+    scenarioNode,
   );
 
   const patients: Patient[] =
     scenario.pedestrians?.map((patient) => patient.value) || [];
-  const patientNodes: Node[] = patients.map((patient) =>
-    createPatientNode(patient)
+  const patientNodes: Node[] = patients.map(
+    createPatientNode
   );
   const scenarioNodeWithChildren = patientNodes.reduce(
-    (parent, child) => addChild(parent, child),
+    addChild,
     scenarioNodeWithVehicles
   );
 
@@ -90,8 +90,8 @@ function createPatientNode(patient: Patient) {
 function createVehicleNode(vehicle: Vehicle) {
   const vehicleNodeName: string = vehicle.model?.value || "Vehicle";
   const patients: Patient[] = vehicle.vehicle_occupants?.value || [];
-  const patientNodes: Node[] = patients.map((patient) =>
-    createPatientNode(patient)
+  const patientNodes: Node[] = patients.map(
+    createPatientNode
   );
   const vehicleForces =
     vehicle.impact_forces_g?.map(
@@ -104,7 +104,7 @@ function createVehicleNode(vehicle: Vehicle) {
     .reduce(addChild, createBasicNode(vehicle, vehicleNodeName));
 
   return patientNodes.reduce(
-    (parent, child) => addChild(parent, child),
+    addChild,
     vehicleNode
   );
 }
