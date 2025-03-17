@@ -88,6 +88,6 @@ export const scenario_1: Model.Scenario = {
   road_condition: datasource_other("Dry"),
   visibility: datasource_other("Good"),
   posted_speed_limit: datasource_other(70),
-  distance_to_major_trauma_center_km: 34.5,
+  distance_to_major_trauma_center_km: datasource_other(34.5),
   vehicles: datasource_other([vehicle_1]),
 };

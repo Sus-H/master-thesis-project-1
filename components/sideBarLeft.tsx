@@ -26,32 +26,34 @@ function NodeComponent({ node }: { node: Node }) {
   );
 }
 
+
+
+function createBasicNode(data: any, parentNodeName: string) {
+  const unpackedData: string[] = [
+    "model", "name", "pedestrians", "vehicles", "vehicle_occupants", "accident_type",
+  ];
+  return Object.entries(data).filter(([key, value]) => !unpackedData.includes(key))
+    .map(([key, value]) => createNode(`${key}: ${value.value}`))
+    .reduce((parent, child) => addChild(parent, child), createNode(parentNodeName));
+}
+
 function createScenarioNode(scenario: Scenario) {
-  let parentNode = createNode("Scenario");
-  Object.entries(scenario).forEach(([key, value]) => {
-    parentNode = addChild(parentNode, createNode(`${key}: ${value}`))
-  }
-);
-  return <NodeComponent node={parentNode} />;
+  const scenarioNodeName = scenario.accident_type?.value || "Scenario";
+  const scenarioNode = createBasicNode(scenario, scenarioNodeName);
+  const vehicleNodes = scenario.vehicles?.value || [];
+  const vehicleNode = vehicleNodes.map((vehicle) => createVehicleNode(vehicle));
+  return createBasicNode(scenario, scenarioNodeName);
 }
 
 function createPatientNode(patient: Patient) {
-  let parentNode = createNode("Patient");
-  let children = Object.entries(patient).map(([key, value]) =>
-    createNode(`${key}: ${value}`)
-  );
-  children.forEach((child) => addChild(parentNode, child));
-  return <NodeComponent node={parentNode} />;
+  const patientNodeName: string = patient.name || "Patient";
+  return createBasicNode(patient, patientNodeName);
 }
 
 function createVehicleNode(vehicle: Vehicle) {
-  let parentNode = createNode("Vehicle");
-  let children = Object.entries(vehicle).map(([key, value]) =>
-    createNode(`${key}: ${value}`)
-  );
-  children.forEach((child) => addChild(parentNode, child));
-  return <NodeComponent node={parentNode} />;
-}
+  const vehicleNodeName: string = vehicle.model?.value || "Vehicle";
+  return createBasicNode(vehicle, vehicleNodeName)
+};
 
 function TreeComponent({ data }: { data: Simulation }) {
   let scenarios = data.scenarios;
@@ -61,11 +63,11 @@ function TreeComponent({ data }: { data: Simulation }) {
   return (
     <ul className="tree">
       {scenarios &&
-        scenarios.map((scenario) => createScenarioNode(scenario))}
+        scenarios.map((scenario) => <NodeComponent node={createScenarioNode(scenario)} />)}
       {patients &&
-        patients.map((patient) => createPatientNode(patient))}
+        patients.map((patient) => <NodeComponent node={createPatientNode(patient)} />)}
       {vehicles &&
-        vehicles.map((vehicle) => createVehicleNode(vehicle))}
+        vehicles.map((vehicle) => <NodeComponent node={createVehicleNode(vehicle)} />)}
     </ul>
   );
 }
@@ -84,7 +86,7 @@ export default (data: Simulation) => (
         <div className="components-list-view">
           Scenario 1, Bilolycka
           <TreeComponent
-            data={{ scenarios: [exampleData.scenario_1] }}
+            data={{ scenarios: [exampleData.scenario_1], persons: [exampleData.occupant_2], vehicles: [exampleData.vehicle_1] }}
           />
         </div>
         <div className="components-list-view"></div>

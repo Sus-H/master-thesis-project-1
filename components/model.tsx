@@ -77,8 +77,8 @@ export interface Scenario {
     vehicles?: Data<Vehicle[]>;
     pedestrians?: Data<Patient>[];
     patient?: Data<Patient>[];
-    minutes_to_trauma_center?: Number
-    distance_to_major_trauma_center_km?: Number
+    minutes_to_trauma_center?: Data<Number>;
+    distance_to_major_trauma_center_km?: Data<Number>;
 }
 
 export interface CrashInformation {
@@ -105,7 +105,7 @@ export interface Vehicle {
 }
 
 export interface Patient {
-    name?: String
+    name?: string
     sex?: Data<Sex>;
     age?: Data<number>;
     elderly?: Data<boolean>;
@@ -114,7 +114,7 @@ export interface Patient {
     identified_injuries?: Data<string[]>;
 }
 
-export interface VehicleOccupant extends Patient{
+export interface VehicleOccupant extends Patient {
     belt_use?: Data<string>;
     seat_position?: Data<SeatPosition>;
     airbag_deployment?: Data<AirbagDeployment>;

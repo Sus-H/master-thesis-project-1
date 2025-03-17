@@ -8,7 +8,7 @@ export function createNode(content: string): Node {
   return {
     content,
     children: [],
-    expanded: false,
+    expanded: true,
   };
 }
 
