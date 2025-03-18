@@ -28,6 +28,7 @@ function NodeComponent({ node }: { node: Node }) {
     </li>
   );
 }
+import { useState } from "react";
 
 function TreeComponent() {
   const [nodeTree, _] = useContext(NodeStateContext) ?? [createNode("Root"), (_) => { }];
@@ -38,8 +39,12 @@ function TreeComponent() {
   );
 }
 
+
+let paramSliderNames: string[] = []
+const [paramSliders, setParamSliders] = useState();
+
 export default () => (
-  <ScrollArea.Root className="h-screen w-[300px] overflow-hidden bg-white">
+  <ScrollArea.Root className="h-screen w-[300px] bg-white">
     <ScrollArea.Viewport className="size-full rounded">
       <div className="grid grid-cols-1 gap-5 px-5 py-5">
         <div>Simulation Data</div>
@@ -54,7 +59,7 @@ export default () => (
         </button>
         <div className="parameter-sliders grid gap-5">
           <div>
-            <SliderComponent name="param" />
+            <SliderComponent name={name} />
           </div>
         </div>
         <div className="components-list-view">

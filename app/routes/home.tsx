@@ -8,12 +8,11 @@ import { scenario_1 } from "components/exampleData";
 import { NodeStateContext } from "components/nodeStateContext";
 
 export default function Home() {
-  const [nodeTree, setNodeTree] = useState(
-    createScenarioNode(scenario_1)
-  );
+  const [nodeTree, setNodeTree] = useState(createScenarioNode(scenario_1));
+
 
   return (
-    <div className="h-screen w-screen">
+    <div className="">
       <NodeStateContext.Provider value={[nodeTree, setNodeTree]}>
         <div className="shadow-md z-40 mb-0.5">
           <TopBar />

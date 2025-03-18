@@ -29,7 +29,8 @@ function createMenuItems(
   items: string[],
   checkedStates: { [key: string]: boolean },
   setCheckedStates: (item: string, checked: boolean) => void,
-  label: string
+  label: string,
+  handleItemClick: (item: string) => void // Added handleItemClick
 ) {
   return (
     <>
@@ -41,9 +42,10 @@ function createMenuItems(
           key={item}
           className="DropdownMenuCheckboxItem"
           checked={checkedStates[item]}
-          onCheckedChange={(checked) =>
-            setCheckedStates(item, checked)
-          }
+          onCheckedChange={(checked) => {
+            setCheckedStates(item, checked);
+            handleItemClick(item);
+          }}
           onSelect={(event) => event.preventDefault()}
         >
           <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
@@ -85,6 +87,8 @@ function DropdownMenuParameters() {
     }));
   };
 
+  const handleItemClick = (item: string) => {};
+
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
@@ -103,21 +107,24 @@ function DropdownMenuParameters() {
             accidentItems,
             checkedStates,
             setCheckedState,
-            "Accident"
+            "Accident",
+            handleItemClick // Pass handleItemClick to createMenuItems
           )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             locationItems,
             checkedStates,
             setCheckedState,
-            "Location"
+            "Location",
+            handleItemClick // Pass handleItemClick to createMenuItems
           )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             involvedItems,
             checkedStates,
             setCheckedState,
-            "Involved"
+            "Involved",
+            handleItemClick // Pass handleItemClick to createMenuItems
           )}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
