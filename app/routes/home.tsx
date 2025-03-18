@@ -16,17 +16,11 @@ export default function Home() {
     <div className="h-screen w-screen">
       <NodeStateContext.Provider value={[nodeTree, setNodeTree]}>
         <div className="shadow-md z-40 mb-0.5">
-          <TopBar
-            nodeTree={nodeTree}
-            setNodeTree={setNodeTree}
-          />
+          <TopBar />
         </div>
         <div className="flex">
           <div className="">
-            <Scroll_area
-              nodeTree={nodeTree}
-              setNodeTree={setNodeTree}
-            ></Scroll_area>
+            <Scroll_area></Scroll_area>
           </div>
           <div className="h-screen w-screen">
             <ReactFlowProvider>

@@ -1,9 +1,11 @@
 import { ScrollArea } from "radix-ui";
 import { SliderComponent } from "components/slider";
-import { type Node } from "./treeNode";
+import { createNode, type Node } from "./treeNode";
 import DropdownMenuParameters from "./dropdownMenuParameters";
 import SelectComponent from "./selectComponent";
 import SwitchButton from "./switchButton";
+import { useContext } from "react";
+import { NodeStateContext } from "./nodeStateContext";
 
 function NodeComponent({ node }: { node: Node }) {
   if (node.children.length === 0) {
@@ -27,13 +29,8 @@ function NodeComponent({ node }: { node: Node }) {
   );
 }
 
-function TreeComponent({
-  nodeTree,
-  setNodeTree,
-}: {
-  nodeTree: Node;
-  setNodeTree: (newTree: Node) => void;
-}) {
+function TreeComponent() {
+  const [nodeTree, _] = useContext(NodeStateContext) ?? [createNode("Root"), (_) => { }];
   return (
     <ul className="tree">
       <NodeComponent node={nodeTree} />
@@ -41,13 +38,7 @@ function TreeComponent({
   );
 }
 
-export default ({
-  nodeTree,
-  setNodeTree,
-}: {
-  nodeTree: Node;
-  setNodeTree: (newTree: Node) => void;
-}) => (
+export default () => (
   <ScrollArea.Root className="h-screen w-[300px] overflow-hidden bg-white">
     <ScrollArea.Viewport className="size-full rounded">
       <div className="grid grid-cols-1 gap-5 px-5 py-5">
@@ -68,10 +59,7 @@ export default ({
         </div>
         <div className="components-list-view">
           Scenario
-          <TreeComponent
-            nodeTree={nodeTree}
-            setNodeTree={setNodeTree}
-          />
+          <TreeComponent />
         </div>
         <div className="components-list-view"></div>
       </div>
