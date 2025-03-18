@@ -1,10 +1,10 @@
-export interface Node {
+export interface TreeNode {
   content: string;
-  children: Node[];
+  children: TreeNode[];
   expanded: boolean;
 }
 
-export function createNode(content: string): Node {
+export function createNode(content: string): TreeNode {
   return {
     content,
     children: [],
@@ -12,14 +12,17 @@ export function createNode(content: string): Node {
   };
 }
 
-export function addChild(parent: Node, child: Node): Node {
+export function addChild(
+  parent: TreeNode,
+  child: TreeNode
+): TreeNode {
   return {
     ...parent,
     children: [...parent.children, child],
-  }
+  };
 }
 
-export function toggleExpanded(node: Node): Node {
+export function toggleExpanded(node: TreeNode): TreeNode {
   return {
     ...node,
     expanded: !node.expanded,

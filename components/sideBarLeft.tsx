@@ -1,6 +1,6 @@
 import { ScrollArea } from "radix-ui";
 import { SliderComponent } from "components/slider";
-import { createNode, type Node } from "./treeNode";
+import { createNode, type TreeNode } from "./treeNode";
 import DropdownMenuParameters from "./dropdownMenuParameters";
 import SelectComponent from "./selectComponent";
 import SwitchButton from "./switchButton";
@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { NodeStateContext } from "./nodeStateContext";
 import { useState } from "react";
 
-function NodeComponent({ node }: { node: Node }) {
+function NodeComponent({ node }: { node: TreeNode }) {
   if (node.children.length === 0) {
     return <li>{node.content}</li>;
   }
@@ -74,10 +74,10 @@ export default function SideBarLeft() {
             <SwitchButton></SwitchButton>
           </div>
           <button className="hover:underline">
-              <DropdownMenuParameters
-                checkedStates={checkedStates}
-                setCheckedStates={setCheckedStates}
-              />
+            <DropdownMenuParameters
+              checkedStates={checkedStates}
+              setCheckedStates={setCheckedStates}
+            />
           </button>
           <div className="grid gap-5">
             <div className="">

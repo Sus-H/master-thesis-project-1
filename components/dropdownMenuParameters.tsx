@@ -101,21 +101,21 @@ function DropdownMenuParameters({
             accidentItems,
             checkedStates,
             setCheckedState,
-            "Accident"
+            "Olycka"
           )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             locationItems,
             checkedStates,
             setCheckedState,
-            "Location"
+            "Plats"
           )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             involvedItems,
             checkedStates,
             setCheckedState,
-            "Involved"
+            "Involverade"
           )}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

@@ -1,4 +1,4 @@
-import { addChild, createNode, type Node } from "./treeNode";
+import { addChild, createNode, type TreeNode } from "./treeNode";
 import type { Patient, Scenario, Simulation, Vehicle } from "./model";
 import { translate } from "./languageMap";
 
@@ -24,13 +24,13 @@ function createBasicNode(data: any, parentNodeName: string) {
 export function createScenarioNode(scenario: Scenario) {
   const scenarioNodeName: string =
     scenario.accident_type?.value || "Scenario";
-  const scenarioNode: Node = createBasicNode(
+  const scenarioNode: TreeNode = createBasicNode(
     scenario,
     scenarioNodeName
   );
 
   const vehicles: Vehicle[] = scenario.vehicles?.value || [];
-  const vehicleNodes: Node[] = vehicles.map(createVehicleNode);
+  const vehicleNodes: TreeNode[] = vehicles.map(createVehicleNode);
   const scenarioNodeWithVehicles = vehicleNodes.reduce(
     addChild,
     scenarioNode
@@ -38,7 +38,7 @@ export function createScenarioNode(scenario: Scenario) {
 
   const patients: Patient[] =
     scenario.pedestrians?.map((patient) => patient.value) || [];
-  const patientNodes: Node[] = patients.map(createPatientNode);
+  const patientNodes: TreeNode[] = patients.map(createPatientNode);
   const scenarioNodeWithChildren = patientNodes.reduce(
     addChild,
     scenarioNodeWithVehicles
@@ -55,7 +55,7 @@ export function createPatientNode(patient: Patient) {
 export function createVehicleNode(vehicle: Vehicle) {
   const vehicleNodeName: string = vehicle.model?.value || "Vehicle";
   const patients: Patient[] = vehicle.vehicle_occupants?.value || [];
-  const patientNodes: Node[] = patients.map(createPatientNode);
+  const patientNodes: TreeNode[] = patients.map(createPatientNode);
   const vehicleForces =
     vehicle.impact_forces_g?.map(
       (vehicleForce) => vehicleForce.value

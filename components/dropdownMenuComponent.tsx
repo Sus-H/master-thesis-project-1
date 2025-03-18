@@ -3,7 +3,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
 import { addChild, createNode } from "./treeNode";
-import { type Node } from "./treeNode";
+import { type TreeNode } from "./treeNode";
 import * as Model from "components/model";
 import {
   occupant_1,
@@ -70,8 +70,8 @@ function DropdownMenuComponents({
   nodeTree,
   setNodeTree,
 }: {
-  nodeTree: Node;
-  setNodeTree: (newTree: Node) => void;
+  nodeTree: TreeNode;
+  setNodeTree: (newTree: TreeNode) => void;
 }) {
   const [open, setOpen] = useState(false);
   const [treeList, setTreeList] = useState([]);
