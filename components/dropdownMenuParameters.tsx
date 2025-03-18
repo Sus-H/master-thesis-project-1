@@ -2,6 +2,7 @@ import "app/styles.css";
 import { DropdownMenu } from "radix-ui";
 import { CheckIcon } from "@radix-ui/react-icons";
 import React, { useState } from "react";
+import { SliderComponent } from "./slider";
 
 export let accidentItems: string[] = [
   "Delta-V",
@@ -25,69 +26,62 @@ export let involvedItems: string[] = [
   "Position i bil",
 ];
 
+function createMenuItem(
+  item: string,
+  checkedStates: { [key: string]: boolean },
+  setCheckedStates: (item: string, checked: boolean) => void
+) {
+  return (
+    <DropdownMenu.CheckboxItem
+      key={item}
+      className="DropdownMenuCheckboxItem"
+      checked={checkedStates[item]}
+      onCheckedChange={(checked) => {
+        setCheckedStates(item, checked);
+      }}
+      onSelect={(event) => event.preventDefault()}
+    >
+      <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+        <CheckIcon />
+      </DropdownMenu.ItemIndicator>
+      {item}
+    </DropdownMenu.CheckboxItem>
+  );
+}
+
 function createMenuItems(
   items: string[],
   checkedStates: { [key: string]: boolean },
   setCheckedStates: (item: string, checked: boolean) => void,
-  label: string,
-  handleItemClick: (item: string) => void // Added handleItemClick
+  label: string
 ) {
   return (
     <>
       <DropdownMenu.Label className="DropdownMenuLabel">
         {label}
       </DropdownMenu.Label>
-      {items.map((item) => (
-        <DropdownMenu.CheckboxItem
-          key={item}
-          className="DropdownMenuCheckboxItem"
-          checked={checkedStates[item]}
-          onCheckedChange={(checked) => {
-            setCheckedStates(item, checked);
-            handleItemClick(item);
-          }}
-          onSelect={(event) => event.preventDefault()}
-        >
-          <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-            <CheckIcon />
-          </DropdownMenu.ItemIndicator>
-          {item}
-        </DropdownMenu.CheckboxItem>
-      ))}
+      {items.map((item) =>
+        createMenuItem(item, checkedStates, setCheckedStates)
+      )}
     </>
   );
 }
 
-function DropdownMenuParameters() {
+function DropdownMenuParameters({
+  checkedStates,
+  setCheckedStates,
+}: {
+  checkedStates: { [key: string]: boolean };
+  setCheckedStates: (newState: { [key: string]: boolean }) => void;
+}) {
   const [open, setOpen] = useState(false);
 
-  const [checkedStates, setCheckedStates] = useState<{
-    [key: string]: boolean;
-  }>({
-    "Delta-V": false,
-    "Uppmätt hastighet": false,
-    Accelorometer: false,
-    Fordonsdetaljer: false,
-    "Transport till trauma center": false,
-    "Transportsträcka till trauma center": false,
-    Hastighetsgräns: false,
-    Position: false,
-    Väder: false,
-    Tid: false,
-    Medelålder: false,
-    Kön: false,
-    Säkerhetsbälte: false,
-    "Position i bil": false,
-  });
-
   const setCheckedState = (item: string, checked: boolean) => {
-    setCheckedStates((prevState) => ({
-      ...prevState,
+    setCheckedStates({
+      ...checkedStates,
       [item]: checked,
-    }));
+    });
   };
-
-  const handleItemClick = (item: string) => {};
 
   return (
     <DropdownMenu.Root>
@@ -107,24 +101,21 @@ function DropdownMenuParameters() {
             accidentItems,
             checkedStates,
             setCheckedState,
-            "Accident",
-            handleItemClick // Pass handleItemClick to createMenuItems
+            "Accident"
           )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             locationItems,
             checkedStates,
             setCheckedState,
-            "Location",
-            handleItemClick // Pass handleItemClick to createMenuItems
+            "Location"
           )}
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             involvedItems,
             checkedStates,
             setCheckedState,
-            "Involved",
-            handleItemClick // Pass handleItemClick to createMenuItems
+            "Involved"
           )}
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TopBar } from "components/topBar";
-import Scroll_area from "components/sideBarLeft";
+import SideBarLeft from "components/sideBarLeft";
 import { ReactFlowProvider } from "@xyflow/react";
 import MindMap from "components/mindMap";
 import { createScenarioNode } from "components/createNode";
@@ -8,8 +8,9 @@ import { scenario_1 } from "components/exampleData";
 import { NodeStateContext } from "components/nodeStateContext";
 
 export default function Home() {
-  const [nodeTree, setNodeTree] = useState(createScenarioNode(scenario_1));
-
+  const [nodeTree, setNodeTree] = useState(
+    createScenarioNode(scenario_1)
+  );
 
   return (
     <div className="">
@@ -19,7 +20,7 @@ export default function Home() {
         </div>
         <div className="flex">
           <div className="">
-            <Scroll_area></Scroll_area>
+            <SideBarLeft></SideBarLeft>
           </div>
           <div className="h-screen w-screen">
             <ReactFlowProvider>

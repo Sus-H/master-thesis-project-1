@@ -1,11 +1,17 @@
 import { Slider } from "radix-ui";
 
-export function SliderComponent({ name }: { name: string }) {
+export function SliderComponent({
+  name,
+  checkedStates,
+}: {
+  name: string;
+  checkedStates: { [key: string]: boolean };
+}) {
   const steps = 5;
   const max = 100;
   const stepSize = max / steps;
   return (
-    <div>
+    <div hidden={!checkedStates[name]}>
       <p>{name}</p>
       <Slider.Root
         className="relative flex h-5 w-[200px] touch-none select-none content-center place-items-center"
