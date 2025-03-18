@@ -95,7 +95,7 @@ function DropdownMenuParameters({
         </p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="DropdownMenuContent">
+        <DropdownMenu.Content className="DropdownMenuContent absolute -right-70">
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             accidentItems,
