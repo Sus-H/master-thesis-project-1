@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { TopBar } from "components/topBar";
 import Scroll_area from "components/sideBarLeft";
 import { ReactFlowProvider } from "@xyflow/react";
 import MindMap from "components/mindMap";
+import { createNode } from "components/treeNode";
+import { createScenarioNode } from "components/createNode";
+import { scenario_1 } from "components/exampleData";
 
 export default function Home() {
+  const [nodeTree, setNodeTree] = useState(
+    createScenarioNode(scenario_1)
+  );
+
   return (
     <div className="h-screen w-screen">
       <div className="shadow-md z-40 mb-0.5">
-        <TopBar />
+        <TopBar
+          nodeTree={nodeTree}
+          setNodeTree={setNodeTree}
+        />
       </div>
       <div className="flex">
         <div className="">
-          <Scroll_area></Scroll_area>
+          <Scroll_area
+            nodeTree={nodeTree}
+            setNodeTree={setNodeTree}
+          ></Scroll_area>
         </div>
         <div className="h-screen w-screen">
           <ReactFlowProvider>

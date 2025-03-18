@@ -24,7 +24,6 @@ export const languageMap: Record<string, string> = {
   RIGHT_TURN: "Höger sväng",
   HIT_FIXED_OBJECT: "Kollision med fast objekt",
   RIGHT_ANGLE: "Rät vinkel",
-  OTHER: "Annat",
 
   // AccidentLocation translations
   URBAN: "Stad",

@@ -1,8 +1,14 @@
 import { NavButton } from "./nav-button";
 import DropdownMenuComponents from "./dropdownMenuComponent";
-import DropdownMenuParameters from "./dropdownMenuParameters";
+import { type Node } from "./treeNode";
 
-export function TopBar() {
+export function TopBar({
+  nodeTree,
+  setNodeTree,
+}: {
+  nodeTree: Node;
+  setNodeTree: (newTree: Node) => void;
+}) {
   return (
     <div>
       <div className="z-6 p-2">
@@ -19,7 +25,10 @@ export function TopBar() {
           </div>
           <div className="flex gap-5">
             <button className="hover:underline">
-              <DropdownMenuComponents />
+              <DropdownMenuComponents
+                nodeTree={nodeTree}
+                setNodeTree={setNodeTree}
+              />
             </button>
 
             <NavButton to="/page_algorithm_browser">

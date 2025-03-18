@@ -1,11 +1,8 @@
 import { ScrollArea } from "radix-ui";
 import { SliderComponent } from "components/slider";
-import * as exampleData from "components/exampleData";
-import { addChild, createNode, type Node } from "./treeNode";
-import type { Patient, Scenario, Simulation, Vehicle } from "./model";
+import { type Node } from "./treeNode";
 import DropdownMenuParameters from "./dropdownMenuParameters";
 import SelectComponent from "./selectComponent";
-import { translate } from "./languageMap";
 import SwitchButton from "./switchButton";
 
 function NodeComponent({ node }: { node: Node }) {
@@ -30,97 +27,27 @@ function NodeComponent({ node }: { node: Node }) {
   );
 }
 
-// Process k:v data to strings to display visually
-function createBasicNode(data: any, parentNodeName: string) {
-  const unpackedData: string[] = [
-    "model",
-    "name",
-    "pedestrians",
-    "vehicles",
-    "vehicle_occupants",
-    "accident_type",
-    "impact_forces_g",
-  ];
-  return Object.entries(data)
-    .filter(([key, value]) => !unpackedData.includes(key))
-    .map(([key, value]) =>
-      createNode(`${translate(key)}: ${value.value}`)
-    )
-    .reduce(addChild, createNode(parentNodeName));
-}
-
-function createScenarioNode(scenario: Scenario) {
-  const scenarioNodeName: string =
-    scenario.accident_type?.value || "Scenario";
-  const scenarioNode: Node = createBasicNode(
-    scenario,
-    scenarioNodeName
-  );
-
-  const vehicles: Vehicle[] = scenario.vehicles?.value || [];
-  const vehicleNodes: Node[] = vehicles.map(createVehicleNode);
-  const scenarioNodeWithVehicles = vehicleNodes.reduce(
-    addChild,
-    scenarioNode
-  );
-
-  const patients: Patient[] =
-    scenario.pedestrians?.map((patient) => patient.value) || [];
-  const patientNodes: Node[] = patients.map(createPatientNode);
-  const scenarioNodeWithChildren = patientNodes.reduce(
-    addChild,
-    scenarioNodeWithVehicles
-  );
-
-  return scenarioNodeWithChildren;
-}
-
-function createPatientNode(patient: Patient) {
-  const patientNodeName: string = patient.name || "Patient";
-  return createBasicNode(patient, patientNodeName);
-}
-
-function createVehicleNode(vehicle: Vehicle) {
-  const vehicleNodeName: string = vehicle.model?.value || "Vehicle";
-  const patients: Patient[] = vehicle.vehicle_occupants?.value || [];
-  const patientNodes: Node[] = patients.map(createPatientNode);
-  const vehicleForces =
-    vehicle.impact_forces_g?.map(
-      (vehicleForce) => vehicleForce.value
-    ) || [];
-  const vehicleNode = vehicleForces
-    .map((vehicleForce) =>
-      createNode(`${translate("impact_forces_g")}: ${vehicleForce}`)
-    )
-    .reduce(addChild, createBasicNode(vehicle, vehicleNodeName));
-
-  return patientNodes.reduce(addChild, vehicleNode);
-}
-
-function TreeComponent({ data }: { data: Simulation }) {
-  let scenarios = data.scenarios;
-  let patients = data.persons;
-  let vehicles = data.vehicles;
-
+function TreeComponent({
+  nodeTree,
+  setNodeTree,
+}: {
+  nodeTree: Node;
+  setNodeTree: (newTree: Node) => void;
+}) {
   return (
     <ul className="tree">
-      {scenarios &&
-        scenarios.map((scenario) => (
-          <NodeComponent node={createScenarioNode(scenario)} />
-        ))}
-      {patients &&
-        patients.map((patient) => (
-          <NodeComponent node={createPatientNode(patient)} />
-        ))}
-      {vehicles &&
-        vehicles.map((vehicle) => (
-          <NodeComponent node={createVehicleNode(vehicle)} />
-        ))}
+      <NodeComponent node={nodeTree} />
     </ul>
   );
 }
 
-export default (data: Simulation) => (
+export default ({
+  nodeTree,
+  setNodeTree,
+}: {
+  nodeTree: Node;
+  setNodeTree: (newTree: Node) => void;
+}) => (
   <ScrollArea.Root className="h-screen w-[300px] overflow-hidden bg-white">
     <ScrollArea.Viewport className="size-full rounded">
       <div className="grid grid-cols-1 gap-5 px-5 py-5">
@@ -142,9 +69,8 @@ export default (data: Simulation) => (
         <div className="components-list-view">
           Scenario
           <TreeComponent
-            data={{
-              scenarios: [exampleData.scenario_1],
-            }}
+            nodeTree={nodeTree}
+            setNodeTree={setNodeTree}
           />
         </div>
         <div className="components-list-view"></div>
