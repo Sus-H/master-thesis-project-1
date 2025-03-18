@@ -1,14 +1,10 @@
 import { NavButton } from "./nav-button";
 import DropdownMenuComponents from "./dropdownMenuComponent";
-import { type Node } from "./treeNode";
+import { useContext } from "react";
+import { NodeStateContext } from "./nodeStateContext";
 
-export function TopBar({
-  nodeTree,
-  setNodeTree,
-}: {
-  nodeTree: Node;
-  setNodeTree: (newTree: Node) => void;
-}) {
+export function TopBar() {
+  const [nodeTree, setNodeTree] = useContext(NodeStateContext);
   return (
     <div>
       <div className="p-2">
