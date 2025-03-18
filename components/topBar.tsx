@@ -11,7 +11,7 @@ export function TopBar({
 }) {
   return (
     <div>
-      <div className="z-6 p-2">
+      <div className="p-2">
         <div className="flex items-center mx-5 justify-between">
           <div>
             <p>

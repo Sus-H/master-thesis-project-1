@@ -8,12 +8,11 @@ import { createScenarioNode } from "components/createNode";
 import { scenario_1 } from "components/exampleData";
 
 export default function Home() {
-  const [nodeTree, setNodeTree] = useState(
-    createScenarioNode(scenario_1)
-  );
+  const [nodeTree, setNodeTree] = useState(createScenarioNode(scenario_1));
+
 
   return (
-    <div className="h-screen w-screen">
+    <div className="">
       <div className="shadow-md z-40 mb-0.5">
         <TopBar
           nodeTree={nodeTree}
@@ -32,7 +31,7 @@ export default function Home() {
             <MindMap></MindMap>
           </ReactFlowProvider>
         </div>
-        <div className="bg-white h-screen px-10 py-5">
+        <div className="bg-white px-10 py-5">
           <p className="text-2xl">Visa summering</p>
           <div className="">
             <p>Summering här borta</p>
