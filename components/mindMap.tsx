@@ -18,26 +18,31 @@ import { addChild, createNode, type TreeNode } from "./treeNode";
 function createMindMapNodes(
   node: TreeNode,
   x: number = 0,
-  y: number = 0
-) {
+  y: number = 0,
+): any {
+  if (node.children.length === 0) {
+    return [];
+  }
   const nodeList = [
     {
       id: `horizontal-${node.content}`,
       type: "Scenario 1",
       data: { label: node.content },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
       position: { x, y },
       draggable: true,
     },
   ];
 
   const nodeChildren = node.children.flatMap((child) =>
-    createMindMapNodes(child, x + 80, y + 80)
+    createMindMapNodes(child, x + 160, y)
   );
 
   return nodeList.concat(nodeChildren);
 }
 
-function createMindMapEdges(node: TreeNode) {
+function createMindMapEdges(node: TreeNode): any {
   return node.children.flatMap((child) => {
     const childEdges = createMindMapEdges(child);
     const childEdge = {
@@ -77,8 +82,8 @@ const MindMap = () => {
       fitView
       attributionPosition="bottom-left"
       style={{ backgroundColor: "#F7F9FB" }}
-      // snapToGrid={true}
-      // snapGrid={[20, 20]}
+    // snapToGrid={true}
+    // snapGrid={[20, 20]}
     >
       <Background />
       <Controls position="top-left" />
