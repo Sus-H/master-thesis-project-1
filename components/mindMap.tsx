@@ -37,7 +37,7 @@ function createMindMapNodes(
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
       position: { x, y },
-      draggable: true,
+      draggable: false,
     },
   ];
 
@@ -45,9 +45,9 @@ function createMindMapNodes(
 
   const childOffset = (children.length - 1) * 40;
 
-  const nodeChildren = children.flatMap((child, i) => {
-    return createMindMapNodes(child, x + 160, y - childOffset + i * 80, `${id}-${i}`);
-  });
+  const nodeChildren = children.flatMap((child, i) =>
+    createMindMapNodes(child, x + 250, y - childOffset + i * 80, `${id}-${i}`)
+  );
 
   return nodeList.concat(nodeChildren);
 }
@@ -58,7 +58,7 @@ function createMindMapEdges(nodes: Node[]): Edge[] {
     if (node.id.includes('-')) {
       const parentId = node.id.substring(0, node.id.lastIndexOf('-'));
       edges.push({
-        id: `${parentId}-${node.id}`,
+        id: `${parentId}--${node.id}`,
         source: parentId,
         target: node.id,
         animated: true,
@@ -74,7 +74,7 @@ const MindMap = () => {
   const mindMapNodes = createMindMapNodes(nodeTree);
   const mindMapEdges = createMindMapEdges(mindMapNodes);
 
-  const [nodes, __, onNodesChange] = useNodesState(mindMapNodes);
+  // const [nodes, setNodes, onNodesChange] = useNodesState(mindMapNodes);
   const [edges, setEdges, onEdgesChange] =
     useEdgesState(mindMapEdges);
   const onConnect = useCallback(
@@ -84,9 +84,9 @@ const MindMap = () => {
 
   return (
     <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
+      nodes={mindMapNodes}
+      edges={mindMapEdges}
+      // onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
       fitView
