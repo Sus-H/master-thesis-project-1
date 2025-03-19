@@ -10,10 +10,8 @@ import {
   Position,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { initialNodes } from "./nodes";
-import { initialEdges } from "./edges";
 import { NodeStateContext } from "./nodeStateContext";
-import { addChild, createNode, type TreeNode } from "./treeNode";
+import { type TreeNode } from "./treeNode";
 
 function createMindMapNodes(
   node: TreeNode,
@@ -55,14 +53,11 @@ function createMindMapEdges(node: TreeNode): any {
   });
 }
 
-const test1: TreeNode = createNode("TestNode1");
-const test2: TreeNode = createNode("TestNode2");
 
 const MindMap = () => {
-  const [nodeTree, setNodeTree] = useContext(NodeStateContext);
-  const displayedNode = nodeTree;
-  const mindMapNodes = createMindMapNodes(displayedNode);
-  const mindMapEdges = createMindMapEdges(displayedNode);
+  const [nodeTree, __] = useContext(NodeStateContext);
+  const mindMapNodes = createMindMapNodes(nodeTree);
+  const mindMapEdges = createMindMapEdges(nodeTree);
 
   const [nodes, _, onNodesChange] = useNodesState(mindMapNodes);
   const [edges, setEdges, onEdgesChange] =

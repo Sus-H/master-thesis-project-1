@@ -1,6 +1,6 @@
 import React from "react";
-import { createNode, type treeNode } from "./treeNode";
+import { createNode, type TreeNode } from "./treeNode";
 
 export const NodeStateContext = React.createContext<
-  [treeNode, (newNode: treeNode) => void]
->([createNode("Root"), (_) => {}]);
+  [TreeNode, (newNode: TreeNode) => void]
+>([createNode("Root"), (_) => { }]);

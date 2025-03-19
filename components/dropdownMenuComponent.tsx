@@ -28,11 +28,11 @@ const environmentItems: string[] = ["Plats", "Väder"];
 
 const medicalData: string[] = ["Patient Journal Data"];
 
-const zip = (a, b) => a.map((k, i) => [k, b[i]]);
+const zip = <T, U>(a: T[], b: U[]): [T, U][] => a.map((k, i) => [k, b[i]]);
 
 function createMenuItems(
   itemNames: string[],
-  items: Model.Patient[] | Model.Vehicle[] | string[],
+  items: (Model.Patient | Model.Vehicle | string)[],
   checkedStates: { [key: string]: boolean },
   setCheckedStates: (item: string, checked: boolean) => void,
   label: string,
@@ -74,7 +74,6 @@ function DropdownMenuComponents({
   setNodeTree: (newTree: TreeNode) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [treeList, setTreeList] = useState([]);
   const [checkedStates, setCheckedStates] = useState<{
     [key: string]: boolean;
   }>({
@@ -100,12 +99,12 @@ function DropdownMenuComponents({
   const handleItemClick = (
     item: string | Model.Patient | Model.Vehicle
   ) => {
-    if (item instanceof string)
+    if (typeof item === 'string')
       setNodeTree(addChild(nodeTree, createNode(item)));
-    if (item in peopleItems)
-      setNodeTree(addChild(nodeTree, createPatientNode(item)));
-    if (item in vehicleItems)
-      setNodeTree(addChild(nodeTree, createVehicleNode(item)));
+    if (peopleItems.includes(item as Model.Patient))
+      setNodeTree(addChild(nodeTree, createPatientNode(item as Model.Patient)));
+    if (vehicleItems.includes(item as Model.Vehicle))
+      setNodeTree(addChild(nodeTree, createVehicleNode(item as Model.Vehicle)));
   };
 
   return (
@@ -128,7 +127,7 @@ function DropdownMenuComponents({
             Välj komponenter till din simulering
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
-              [occupant_1.name, occupant_2.name, occupant_3.name],
+              [occupant_1.name ?? "Unknown", occupant_2.name ?? "Unknown", occupant_3.name ?? "Unknown"],
               peopleItems,
               checkedStates,
               setCheckedState,
@@ -137,7 +136,7 @@ function DropdownMenuComponents({
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
-              [vehicle_1.model?.value],
+              [vehicle_1.model?.value ?? "Unknown"],
               vehicleItems,
               checkedStates,
               setCheckedState,
@@ -147,6 +146,7 @@ function DropdownMenuComponents({
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
               environmentItems,
+              environmentItems,
               checkedStates,
               setCheckedState,
               "Miljö",
@@ -154,6 +154,7 @@ function DropdownMenuComponents({
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
+              medicalData,
               medicalData,
               checkedStates,
               setCheckedState,
