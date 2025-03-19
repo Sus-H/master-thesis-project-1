@@ -70,11 +70,11 @@ function createMindMapEdges(nodes: Node[]): Edge[] {
 
 
 const MindMap = () => {
-  const [nodeTree, __] = useContext(NodeStateContext);
+  const [nodeTree, _] = useContext(NodeStateContext);
   const mindMapNodes = createMindMapNodes(nodeTree);
   const mindMapEdges = createMindMapEdges(mindMapNodes);
 
-  const [nodes, _, onNodesChange] = useNodesState(mindMapNodes);
+  const [nodes, __, onNodesChange] = useNodesState(mindMapNodes);
   const [edges, setEdges, onEdgesChange] =
     useEdgesState(mindMapEdges);
   const onConnect = useCallback(
