@@ -13,10 +13,17 @@ import "@xyflow/react/dist/style.css";
 import { NodeStateContext } from "./nodeStateContext";
 import { type TreeNode } from "./treeNode";
 
+
+function hasChild(node: TreeNode): boolean {
+  return node.children.length !== 0;
+}
+
+
 function createMindMapNodes(
   node: TreeNode,
   x: number = 0,
   y: number = 0,
+
 ): any {
   if (node.children.length === 0) {
     return [];
@@ -33,8 +40,9 @@ function createMindMapNodes(
     },
   ];
 
-  const nodeChildren = node.children.flatMap((child) =>
-    createMindMapNodes(child, x + 160, y)
+  const nodeChildren = node.children.filter(hasChild).flatMap((child, i) => {
+    return createMindMapNodes(child, x + 160, y + i * 80);
+  }
   );
 
   return nodeList.concat(nodeChildren);
