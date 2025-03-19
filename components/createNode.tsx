@@ -1,5 +1,5 @@
 import { addChild, createNode, type TreeNode } from "./treeNode";
-import type { Patient, Scenario, Simulation, Vehicle } from "./model";
+import type { Patient, Scenario, Vehicle } from "./model";
 import { translate } from "./languageMap";
 
 // Process k:v data to strings to display visually
@@ -14,9 +14,9 @@ function createBasicNode(data: any, parentNodeName: string) {
     "impact_forces_g",
   ];
   return Object.entries(data)
-    .filter(([key, value]) => !unpackedData.includes(key))
+    .filter(([key, _]) => !unpackedData.includes(key))
     .map(([key, value]) =>
-      createNode(`${translate(key)}: ${value.value}`)
+      createNode(`${translate(key)}: ${(value as { value: string }).value}`)
     )
     .reduce(addChild, createNode(parentNodeName));
 }

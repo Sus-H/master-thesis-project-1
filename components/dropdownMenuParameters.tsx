@@ -1,8 +1,7 @@
 import "app/styles.css";
 import { DropdownMenu } from "radix-ui";
 import { CheckIcon } from "@radix-ui/react-icons";
-import React, { useState } from "react";
-import { SliderComponent } from "./slider";
+import { useState } from "react";
 
 export let accidentItems: string[] = [
   "Delta-V",
@@ -74,7 +73,7 @@ function DropdownMenuParameters({
   checkedStates: { [key: string]: boolean };
   setCheckedStates: (newState: { [key: string]: boolean }) => void;
 }) {
-  const [open, setOpen] = useState(false);
+  const [_, setOpen] = useState(false);
 
   const setCheckedState = (item: string, checked: boolean) => {
     setCheckedStates({

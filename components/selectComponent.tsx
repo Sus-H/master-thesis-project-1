@@ -55,7 +55,13 @@ const SelectComponent = () => (
   </Select.Root>
 );
 
-const SelectItem = React.forwardRef(
+interface SelectItemProps {
+  children: React.ReactNode;
+  className?: string;
+  value: string;
+}
+
+const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
   ({ children, className, ...props }, forwardedRef) => {
     return (
       <Select.Item

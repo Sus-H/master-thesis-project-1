@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ToggleGroup } from "radix-ui";
 import "app/styles.css";
 

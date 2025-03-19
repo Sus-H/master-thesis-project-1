@@ -1,7 +1,7 @@
 import "app/styles.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
-import React, { useState } from "react";
+import { useState } from "react";
 import { addChild, createNode } from "./treeNode";
 import { type TreeNode } from "./treeNode";
 import * as Model from "components/model";
@@ -33,8 +33,6 @@ const zip = <T, U>(a: T[], b: U[]): [T, U][] => a.map((k, i) => [k, b[i]]);
 function createMenuItems(
   itemNames: string[],
   items: (Model.Patient | Model.Vehicle | string)[],
-  checkedStates: { [key: string]: boolean },
-  setCheckedStates: (item: string, checked: boolean) => void,
   label: string,
   handleItemClick: (
     item: string | Model.Patient | Model.Vehicle
@@ -57,7 +55,7 @@ function createMenuItems(
           }}
         >
           <DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-            {checkedStates[itemName] ? <CheckIcon /> : <PlusIcon />}
+            {false ? <CheckIcon /> : <PlusIcon />}
           </DropdownMenu.ItemIndicator>
           {itemName}
         </DropdownMenu.Item>
@@ -74,27 +72,6 @@ function DropdownMenuComponents({
   setNodeTree: (newTree: TreeNode) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [checkedStates, setCheckedStates] = useState<{
-    [key: string]: boolean;
-  }>({
-    Kalle: false,
-    Britta: false,
-    Lasse: false,
-    Vuxen: false,
-    "Barn/Ungdom": false,
-    "65+ person": false,
-    Bil: false,
-    Plats: false,
-    Väder: false,
-    "Patient Journal Data": false,
-  });
-
-  const setCheckedState = (item: string, checked: boolean) => {
-    setCheckedStates((prevState) => ({
-      ...prevState,
-      [item]: checked,
-    }));
-  };
 
   const handleItemClick = (
     item: string | Model.Patient | Model.Vehicle
@@ -129,37 +106,33 @@ function DropdownMenuComponents({
             {createMenuItems(
               [occupant_1.name ?? "Unknown", occupant_2.name ?? "Unknown", occupant_3.name ?? "Unknown"],
               peopleItems,
-              checkedStates,
-              setCheckedState,
+
               "Personer",
-              handleItemClick
+              handleItemClick,
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
               [vehicle_1.model?.value ?? "Unknown"],
               vehicleItems,
-              checkedStates,
-              setCheckedState,
+
               "Fordon",
-              handleItemClick
+              handleItemClick,
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
               environmentItems,
               environmentItems,
-              checkedStates,
-              setCheckedState,
+
               "Miljö",
-              handleItemClick
+              handleItemClick,
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
               medicalData,
               medicalData,
-              checkedStates,
-              setCheckedState,
+
               "Medicinsk Data",
-              handleItemClick
+              handleItemClick,
             )}
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
