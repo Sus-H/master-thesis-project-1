@@ -8,10 +8,12 @@ import {
   MiniMap,
   Controls,
   Position,
+  type Edge,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { NodeStateContext } from "./nodeStateContext";
 import { type TreeNode } from "./treeNode";
+import { type Node } from '@xyflow/react';
 
 
 function hasChild(node: TreeNode): boolean {
@@ -23,15 +25,14 @@ function createMindMapNodes(
   node: TreeNode,
   x: number = 0,
   y: number = 0,
-
-): any {
+  id: string = "0"
+): Node[] {
   if (node.children.length === 0) {
     return [];
   }
-  const nodeList = [
+  const nodeList: Node[] = [
     {
-      id: `horizontal-${node.content}`,
-      type: "Scenario 1",
+      id: id,
       data: { label: node.content },
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
@@ -40,32 +41,38 @@ function createMindMapNodes(
     },
   ];
 
-  const nodeChildren = node.children.filter(hasChild).flatMap((child, i) => {
-    return createMindMapNodes(child, x + 160, y + i * 80);
-  }
-  );
+  const children = node.children.filter(hasChild);
+
+  const childOffset = (children.length - 1) * 40;
+
+  const nodeChildren = children.flatMap((child, i) => {
+    return createMindMapNodes(child, x + 160, y - childOffset + i * 80, `${id}-${i}`);
+  });
 
   return nodeList.concat(nodeChildren);
 }
 
-function createMindMapEdges(node: TreeNode): any {
-  return node.children.flatMap((child) => {
-    const childEdges = createMindMapEdges(child);
-    const childEdge = {
-      id: `horizontal-e${node.content}-${child.content}`,
-      source: `horizontal-${node.content}`,
-      target: `horizontal-${child.content}`,
-      animated: true,
-    };
-    return [...childEdges, childEdge];
+function createMindMapEdges(nodes: Node[]): Edge[] {
+  const edges: Edge[] = [];
+  nodes.forEach((node) => {
+    if (node.id.includes('-')) {
+      const parentId = node.id.substring(0, node.id.lastIndexOf('-'));
+      edges.push({
+        id: `${parentId}-${node.id}`,
+        source: parentId,
+        target: node.id,
+        animated: true,
+      });
+    }
   });
+  return edges;
 }
 
 
 const MindMap = () => {
   const [nodeTree, __] = useContext(NodeStateContext);
   const mindMapNodes = createMindMapNodes(nodeTree);
-  const mindMapEdges = createMindMapEdges(nodeTree);
+  const mindMapEdges = createMindMapEdges(mindMapNodes);
 
   const [nodes, _, onNodesChange] = useNodesState(mindMapNodes);
   const [edges, setEdges, onEdgesChange] =
