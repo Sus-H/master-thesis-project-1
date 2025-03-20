@@ -5,7 +5,7 @@ import {
     type OnEdgesChange,
     type OnConnect,
   } from '@xyflow/react';
-   
+
   export type AppNode = Node;
    
   export type AppState = {
