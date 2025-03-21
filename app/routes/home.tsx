@@ -7,7 +7,7 @@ import { createScenarioNode } from "components/createNode";
 import { scenario_1 } from "components/exampleData";
 import { NodeStateContext } from "components/nodeStateContext";
 import { NavButton } from "components/nav-button";
-import { DenseTable } from "components/tableComponent";
+// import { DenseTable } from "components/tableComponent";
 
 export default function Home() {
   const [nodeTree, setNodeTree] = useState(
@@ -29,11 +29,11 @@ export default function Home() {
               <MindMap></MindMap>
             </ReactFlowProvider>
           </div>
-          <div className="bg-white h-screen px-10 py-5">
+          <div className="bg-white h-screen px-10 py-5 max-w-64">
             <NavButton to="/page_summary">
               <p className="text-2xl">Visa Detaljerad summering</p>
             </NavButton>
-            <DenseTable></DenseTable>
+            {/* <DenseTable></DenseTable> */}
           </div>
         </div>
       </NodeStateContext.Provider>

@@ -50,11 +50,11 @@ export const vehicle_1: Model.Vehicle = {
   model_year: datasource_other(2015),
   car_weight_kg: datasource_other(1850),
   registration_number: datasource_other("MIR 593"),
-  vehicle_occupants: datasource_other([
-    occupant_1,
-    occupant_2,
-    occupant_3,
-  ]),
+  // vehicle_occupants: datasource_other([
+  //   occupant_1,
+  //   occupant_2,
+  //   occupant_3,
+  // ]),
   vehicle_speed_kmph: datasource_telemetry(71.78),
   delta_v_kmph: datasource_telemetry(71.78),
   impact_forces_g: [
@@ -89,5 +89,5 @@ export const scenario_1: Model.Scenario = {
   visibility: datasource_other("Bra"),
   posted_speed_limit: datasource_other(70),
   distance_to_major_trauma_center_km: datasource_other(34.5),
-  vehicles: datasource_other([vehicle_1]),
+  // vehicles: datasource_other([vehicle_1]),
 };

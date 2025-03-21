@@ -18,6 +18,7 @@ const algorithms = [
       origin: "Utvecklad av Emergency Response Systems Inc.",
       cost: "500 USD per licens årligen",
     },
+    certificates: ["ISO 13485:2016", "CE-certifierad", "FDA-godkänd"],
     image: "/images/algorithm_image_1.jpg",
   },
   {
@@ -28,6 +29,7 @@ const algorithms = [
       origin: "Skapad av Global Health Analytics",
       cost: "700 USD per licens årligen",
     },
+    certificates: ["ISO 9001:2015", "CE-certifierad"],
     image: "/images/algorithm_image_4.jpg",
   },
   {
@@ -38,6 +40,7 @@ const algorithms = [
       origin: "Designad av Rapid Response Labs",
       cost: "600 USD per licens årligen",
     },
+    certificates: ["ISO 27001:2013", "CE-certifierad"],
     image: "/images/algorithm_image_3.jpg",
   },
   {
@@ -48,6 +51,7 @@ const algorithms = [
       origin: "Utvecklad av OnStar Corporation",
       cost: "800 USD per licens årligen",
     },
+    certificates: ["ISO 22301:2019", "FDA-godkänd"],
     image: "/images/algorithm_image_4.jpg",
   },
   {
@@ -58,6 +62,7 @@ const algorithms = [
       origin: "Skapad av Telematics Solutions Ltd.",
       cost: "900 USD per licens årligen",
     },
+    certificates: ["ISO 13485:2016", "CE-certifierad"],
     image: "/images/algorithm_image_4.jpg",
   },
   {
@@ -68,6 +73,7 @@ const algorithms = [
       origin: "Utvecklad av Nidhimoto Research Group",
       cost: "400 USD per licens årligen",
     },
+    certificates: ["ISO 9001:2015", "CE-certifierad"],
     image: "/images/algorithm_image_1.jpg",
   },
 ];
@@ -115,10 +121,10 @@ export default function AlgorithmCards() {
               image={algorithm.image}
               alt={algorithm.title}
               sx={{
-                width: "100%", // Ensures the image takes the full width of the card
-                height: "140px", // Sets a fixed height for all images
-                objectFit: "cover", // Ensures the image fills the div while maintaining aspect ratio
-                backgroundColor: "var(--gray-5)", // Optional: fallback background color
+                width: "100%",
+                height: "140px",
+                objectFit: "cover",
+                backgroundColor: "var(--gray-5)",
               }}
             />
             <CardHeader
@@ -201,17 +207,37 @@ export default function AlgorithmCards() {
               <strong>Origin:</strong>{" "}
               {selectedAlgorithm.details.origin}
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+            >
               <strong>Cost:</strong> {selectedAlgorithm.details.cost}
             </Typography>
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+            >
+              <strong>Certificates:</strong>
+            </Typography>
+            <ul>
+              {selectedAlgorithm.certificates.map(
+                (certificate, index) => (
+                  <li key={index}>
+                    <Typography variant="body2">
+                      {certificate}
+                    </Typography>
+                  </li>
+                )
+              )}
+            </ul>
           </>
         ) : (
           <Typography
             variant="body1"
             color="text.secondary"
           >
-            Click on a card to see more information about the
-            algorithm.
+            Klicka på ett kort för att se mer information om
+            algoritmen.
           </Typography>
         )}
       </Box>
