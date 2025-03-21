@@ -1,4 +1,4 @@
-import { ScrollArea } from "radix-ui";
+import { ScrollArea, Separator } from "radix-ui";
 import { SliderComponent } from "components/slider";
 import { createNode, type TreeNode } from "./treeNode";
 import DropdownMenuParameters from "./dropdownMenuParameters";
@@ -9,6 +9,8 @@ import { NodeStateContext } from "./nodeStateContext";
 import { useState } from "react";
 import { createScenarioNode } from "./createNode";
 import { scenario_1 } from "./exampleData";
+import { SelectSeparator } from "@radix-ui/react-select";
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 
 function NodeComponent({ node }: { node: TreeNode }) {
   if (node.children.length === 0) {
@@ -69,7 +71,8 @@ export default function SideBarLeft() {
   return (
     <ScrollArea.Root className="h-screen w-[300px] bg-white">
       <ScrollArea.Viewport className="size-full rounded">
-        <div className="grid grid-cols-1 gap-5 px-5 py-5">
+        <div className="grid grid-cols-1 gap-2 px-5 py-3">
+          <div className="grid grid-cols-3 ">
           <button
             className="border hover:underline active:bg-amber-700"
             onClick={undoNode}
@@ -90,19 +93,15 @@ export default function SideBarLeft() {
           >
             Återställ
           </button>
-          <div>Simulation Data</div>
-          <div className="h-full w-full">
-            <SelectComponent></SelectComponent>
           </div>
-          <button className="hover:underline">
+          <h5>Simuleringsparametrar</h5>
+          <button className="hover:underline flex">
             <DropdownMenuParameters
               checkedStates={checkedStates}
               setCheckedStates={setCheckedStates}
             />
           </button>
-          <div>
-            <SwitchButton></SwitchButton>
-          </div>
+            <SelectComponent></SelectComponent>
           <div className="grid gap-5">
             <div className="">
               {Object.entries(checkedStates).map(([name, _]) => (
@@ -113,6 +112,7 @@ export default function SideBarLeft() {
               ))}
             </div>
           </div>
+            <SwitchButton></SwitchButton>
           <div className="">
             Scenario
             <TreeComponent />

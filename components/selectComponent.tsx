@@ -12,7 +12,6 @@ const SelectComponent = () => (
   <Select.Root>
     <Select.Trigger
       className="SelectTrigger"
-      aria-label="Food"
     >
       <Select.Value placeholder="Välj typ av olycka..." />
       <Select.Icon className="SelectIcon">

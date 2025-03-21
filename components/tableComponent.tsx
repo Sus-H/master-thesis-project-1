@@ -19,6 +19,7 @@ const THEME = {
   `,
   Body: `
     display: table-row-group;
+    
   `,
   Row: `
     display: table-row;
@@ -117,36 +118,30 @@ const denseNodes = [
   {
     id: "2",
     faktor: "Förare (16 år)",
-    sirp: "🔴 Omedelbar vård (Prioritet 1) – Hög risk för inre blödningar, snabb transport krävs.",
+    sirp: "🔴Prioritet 1",
     osisp:
-      "🔴 Omedelbar vård (Prioritet 1) – Hög sannolikhet för försämring.",
+      "🔴Prioritet 1",
   },
   {
     id: "3",
     faktor: "Framsätespassagerare (44 år)",
-    sirp: "🟡 Brådskande vård (Prioritet 2) – Kräver övervakning men är stabil.",
+    sirp: "🟡Prioritet 2",
     osisp:
-      "🟡 Brådskande vård (Prioritet 2) – Transporteras efter kritiska patienter.",
+      "🟡 Prioritet 2",
   },
   {
     id: "4",
     faktor: "Baksätespassagerare (70 år)",
-    sirp: "🔴 Omedelbar vård (Prioritet 1) – Skörhet ökar dödlighetsrisken.",
+    sirp: "🔴Prioritet 1",
     osisp:
-      "🔴 Omedelbar vård (Prioritet 1) – Ålder och skador kräver prioritet.",
+      "🔴Prioritet 1",
   },
   {
     id: "5",
     faktor: "Antal ambulanser",
-    sirp: "🚑 3 ambulanser – Två för Prioritet 1, en för Prioritet 2.",
+    sirp: "🚑 3 ambulanser",
     osisp:
-      "🚑 2 ambulanser – Samtransport av stabila patienter vid behov.",
-  },
-  {
-    id: "6",
-    faktor: "Användning av helikopter",
-    sirp: "🚁 Möjlig användning för 70-åringen om förseningar uppstår.",
-    osisp: "🚁 Större sannolikhet att aktivera lufttransport tidigt.",
+      "🚑 2 ambulanser",
   },
 ];
 
@@ -197,6 +192,7 @@ export const DenseTableComponent = () => {
       display: table;
       width: 50%;
       border-collapse: collapse;
+      font-size: 14px
     `,
     Header: `
       display: table-header-group;
@@ -211,6 +207,7 @@ export const DenseTableComponent = () => {
       display: table-cell;
       padding: 8px;
       border: 1px solid var(--theme-ui-colors-border);
+      font-size: 12px
     `,
     HeaderRow: `
       display: table-row;
@@ -235,8 +232,8 @@ export const DenseTableComponent = () => {
           <Header>
             <HeaderRow>
               <HeaderCell>Faktor</HeaderCell>
-              <HeaderCell>SIRP-algoritmen</HeaderCell>
-              <HeaderCell>OSISP-algoritmen</HeaderCell>
+              <HeaderCell>SIRP</HeaderCell>
+              <HeaderCell>OSISP</HeaderCell>
             </HeaderRow>
           </Header>
 
