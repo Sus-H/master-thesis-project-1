@@ -7,6 +7,8 @@ import SwitchButton from "./switchButton";
 import { useContext } from "react";
 import { NodeStateContext } from "./nodeStateContext";
 import { useState } from "react";
+import { createScenarioNode } from "./createNode";
+import { scenario_1 } from "./exampleData";
 
 function NodeComponent({ node }: { node: TreeNode }) {
   if (node.children.length === 0) {
@@ -33,7 +35,7 @@ function NodeComponent({ node }: { node: TreeNode }) {
 function TreeComponent() {
   const [nodeTree, ..._] = useContext(NodeStateContext) ?? [
     createNode("Root"),
-    (_) => {},
+    (_) => { },
   ];
   return (
     <ul className="tree">
@@ -62,7 +64,7 @@ export default function SideBarLeft() {
     "Position i bil": false,
   });
 
-  const [, , undoNode, redoNode, ..._] = useContext(NodeStateContext);
+  const [, setNode, undoNode, redoNode, ..._] = useContext(NodeStateContext);
 
   return (
     <ScrollArea.Root className="h-screen w-[300px] bg-white">
@@ -82,7 +84,9 @@ export default function SideBarLeft() {
           </button>
           <button
             className="border hover:underline active:bg-amber-700"
-            // onClick={}
+            onClick={() => {
+              setNode(createScenarioNode(scenario_1));
+            }}
           >
             Återställ
           </button>
