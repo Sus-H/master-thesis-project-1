@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavButton } from "components/nav-button";
+import AlgorithmCards from "components/algorithmCard";
 
 export default function PageAlgorithmBrowser() {
   return (
@@ -7,6 +8,7 @@ export default function PageAlgorithmBrowser() {
       <div className="flex-1">
         <h1>Welcome to the Algorithm Browser</h1>
         <NavButton to="/">Home</NavButton>
+        <AlgorithmCards></AlgorithmCards>
       </div>
     </div>
   );

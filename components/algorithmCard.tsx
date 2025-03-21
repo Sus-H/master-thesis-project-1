@@ -114,6 +114,12 @@ export default function AlgorithmCards() {
               height="140"
               image={algorithm.image}
               alt={algorithm.title}
+              sx={{
+                width: "100%", // Ensures the image takes the full width of the card
+                height: "140px", // Sets a fixed height for all images
+                objectFit: "cover", // Ensures the image fills the div while maintaining aspect ratio
+                backgroundColor: "var(--gray-5)", // Optional: fallback background color
+              }}
             />
             <CardHeader
               title={algorithm.title}
