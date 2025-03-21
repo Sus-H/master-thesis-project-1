@@ -35,8 +35,6 @@ function createMindMapNodes(
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
       position: { x, y },
-      parentId: "data",
-      extent: "parent",
       draggable: false,
     },
   ];
@@ -86,21 +84,9 @@ const MindMap = () => {
     []
   );
 
-  const dataNode: Node = {
-    id: "data",
-    data: { label: "Data" },
-    position: { x: 0, y: 0 },
-    style: {
-      width: 750,
-      height: 320,
-    },
-    type: "group",
-    draggable: false,
-  };
-
   return (
     <ReactFlow
-      nodes={[dataNode, ...mindMapNodes]}
+      nodes={mindMapNodes}
       edges={mindMapEdges}
       // onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
@@ -108,8 +94,8 @@ const MindMap = () => {
       fitView
       attributionPosition="bottom-left"
       style={{ backgroundColor: "#F7F9FB" }}
-      // snapToGrid={true}
-      // snapGrid={[20, 20]}
+    // snapToGrid={true}
+    // snapGrid={[20, 20]}
     >
       <Background />
       <Controls position="top-left" />
