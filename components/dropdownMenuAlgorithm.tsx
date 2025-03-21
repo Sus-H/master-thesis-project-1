@@ -2,8 +2,10 @@ import { AlgorithmBrowser } from "./algorithmBrowser";
 import { useState } from "react";
 import "app/styles.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
+
 export const DropdownMenuAlgorithm = () => {
-  const [open, setOpen] = useState(false); // Move useState inside the component
+  const [open, setOpen] = useState(false);
 
   return (
     <DropdownMenu.Root
@@ -15,14 +17,22 @@ export const DropdownMenuAlgorithm = () => {
           <img
             src="images/Book_open.svg"
             className="inline"
+            alt="Open"
           />
           Algoritm Utforskaren
         </p>
       </DropdownMenu.Trigger>
-
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="DropdownMenuContent">
-          <AlgorithmBrowser />
+        <DropdownMenu.Content className="DropdownMenuContent relative top-10">
+          <ScrollArea.Root>
+            <ScrollArea.Viewport className="size-full rounded">
+              <AlgorithmBrowser />
+            </ScrollArea.Viewport>
+            <ScrollArea.Scrollbar orientation="vertical">
+              <ScrollArea.Thumb />
+            </ScrollArea.Scrollbar>
+            <ScrollArea.Corner />
+          </ScrollArea.Root>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

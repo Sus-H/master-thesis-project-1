@@ -159,6 +159,7 @@ export default function AlgorithmCards() {
           border: "1px solid #ddd",
           borderRadius: "8px",
           backgroundColor: "#f9f9f9",
+          width: "screen",
         }}
       >
         {selectedAlgorithm ? (

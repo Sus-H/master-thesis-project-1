@@ -3,15 +3,11 @@ import AlgorithmCards from "components/algorithmCard";
 
 export function AlgorithmBrowser() {
   return (
-    <div className="flex">
-      <div className="flex-1">
-        <h1>Welcome to the Algorithm Browser</h1>
-        <NavButton to="/">Home</NavButton>
-        <AlgorithmCards></AlgorithmCards>
-        <button className="border hover:underline active:bg-amber-700">
-          Aktivera Algoritm
-        </button>
-      </div>
+    <div className="w-screen">
+      <AlgorithmCards></AlgorithmCards>
+      <button className="border hover:underline active:bg-amber-700">
+        Aktivera Algoritm
+      </button>
     </div>
   );
 }
