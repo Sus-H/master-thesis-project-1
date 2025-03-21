@@ -1,6 +1,6 @@
 import "app/styles.css";
 import { DropdownMenu } from "radix-ui";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 
 export let accidentItems: string[] = [
@@ -91,6 +91,8 @@ function DropdownMenuParameters({
             className="inline"
           />{" "}
           Välj Parametrar
+          <ChevronDownIcon className="inline"></ChevronDownIcon>
+          
         </p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

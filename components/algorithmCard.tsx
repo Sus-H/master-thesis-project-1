@@ -83,7 +83,6 @@ export default function AlgorithmCards() {
     null | (typeof algorithms)[number]
   >(null);
 
-  // State to track enabled status for each algorithm
   const [enabledAlgorithms, setEnabledAlgorithms] = useState<{
     [key: string]: boolean;
   }>({});
@@ -95,7 +94,7 @@ export default function AlgorithmCards() {
   const handleEnableClick = (title: string) => {
     setEnabledAlgorithms((prevState) => ({
       ...prevState,
-      [title]: !prevState[title], // Toggle the enabled status
+      [title]: !prevState[title],
     }));
   };
 
@@ -123,10 +122,34 @@ export default function AlgorithmCards() {
             <CCardImage
               orientation="top"
               src={algorithm.image}
+              style={{
+                width: "100%", // Ensures the image spans the card width
+                height: "200px", // Fixed height for all images
+                objectFit: "cover", // Ensures the image scales properly without distortion
+              }}
             />
-            <CCardBody>
-              <CCardTitle>{algorithm.title}</CCardTitle>
-              <CCardText>{algorithm.description}</CCardText>
+            <CCardBody
+              style={{
+                height: "180px", // Fixed height for the text container
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between", // Ensures the button is at the bottom
+              }}
+            >
+              <div>
+                <CCardTitle>{algorithm.title}</CCardTitle>
+                <CCardText
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 3, // Limit to 3 lines of text
+                    WebkitBoxOrient: "vertical",
+                  }}
+                >
+                  {algorithm.description}
+                </CCardText>
+              </div>
               <CButton
                 color={
                   enabledAlgorithms[algorithm.title]

@@ -7,14 +7,16 @@ export function TopBar() {
     <div>
       <div className="p-2">
         <div className="flex items-center mx-5 justify-between">
-          <div>
-            <NavButton to="/home">
-              <p>
-                <img
+          <div className="flex items-center">
+          <NavButton to="/">
+            <img
                   src="images/DHS_Icon.svg"
                   alt=""
                   className="inline pr-5"
                 />
+            </NavButton>
+            <NavButton to="/home">
+              <p>
                 Min nya simulering
               </p>
             </NavButton>
@@ -34,7 +36,7 @@ export function TopBar() {
               Importera Extern Data
             </button>
           </div>
-          <div className="flex gap-5">
+          <div className="flex gap-5  items-center">
             <button className="hover:underline text-white bg-sky-500 px-2 py-1 rounded">
               <img
                 src="images/Download.svg"
@@ -55,6 +57,47 @@ export function TopBar() {
                 className="inline"
               />
               Exportera
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function TopBarStartingPage() {
+  return (
+    <div>
+      <div className="p-2">
+        <div className="flex items-center mx-5 justify-between">
+          <div className="flex items-center ">
+            <NavButton to="/">
+            <img
+                  src="images/DHS_Icon.svg"
+                  alt=""
+                  className="inline pr-5"
+                />
+            </NavButton>
+            <NavButton to="/home">
+              <p>
+                DHS Sandbox
+              </p>
+            </NavButton>
+          </div>
+          <div className="flex gap-5">
+            <button className="hover:underline text-white bg-sky-500 px-2 py-1 rounded">
+              <img
+                src="images/Globe.svg"
+                className="inline pr-2"
+              />
+              Nyheter
+            </button>
+            <button className="hover:underline text-white bg-sky-500 px-2 py-1 rounded">
+              <img
+                src="images/Bell.svg"
+                className="inline pr-2"
+              />
+              Notiser
             </button>
           </div>
         </div>

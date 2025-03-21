@@ -9,7 +9,7 @@ const SwitchButton = () => (
         htmlFor="airplane-mode"
         style={{ paddingRight: 15 }}
       >
-        Miljö
+        Olycksplats
       </label>
       <Switch.Root
         className="SwitchRoot relative"

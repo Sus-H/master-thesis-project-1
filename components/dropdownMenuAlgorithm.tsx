@@ -25,9 +25,9 @@ export const DropdownMenuAlgorithm = () => {
         </p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="DropdownMenuContent relative top-10">
+        <DropdownMenu.Content className="DropdownMenuContent relative top-10 ">
           <ScrollArea.Root>
-            <ScrollArea.Viewport className="size-full rounded">
+            <ScrollArea.Viewport className="size-full">
               <AlgorithmBrowser />
             </ScrollArea.Viewport>
             <ScrollArea.Scrollbar orientation="vertical">

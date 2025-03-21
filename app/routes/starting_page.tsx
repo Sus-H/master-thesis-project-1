@@ -1,9 +1,9 @@
-import { TopBar } from "components/topBar";
+import { TopBarStartingPage } from "components/topBar";
 
 export default function StartingPage() {
   return (
     <div>
-      <TopBar></TopBar>
+      <TopBarStartingPage></TopBarStartingPage>
     </div>
   );
 }

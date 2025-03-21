@@ -131,7 +131,9 @@ function DropdownMenuComponents() {
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="DropdownMenuContent">
-            Välj komponenter till din simulering
+            <p className="px-2 pt-2 text-xs text-gray-500">
+                Välj komponenter till din simulering
+            </p>
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
               [

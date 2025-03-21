@@ -5,7 +5,7 @@ export default function PageSummary() {
   return (
     <div>
       Summary View
-      <NavButton to="/">Home</NavButton>
+      <NavButton to="/home">Home</NavButton>
       <TableComponent></TableComponent>
     </div>
   );
