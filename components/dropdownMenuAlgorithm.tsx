@@ -3,6 +3,7 @@ import { useState } from "react";
 import "app/styles.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 export const DropdownMenuAlgorithm = () => {
   const [open, setOpen] = useState(false);
@@ -20,6 +21,7 @@ export const DropdownMenuAlgorithm = () => {
             alt="Open"
           />
           Algoritm Utforskaren
+          <ChevronDownIcon className="inline"></ChevronDownIcon>
         </p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>

@@ -8,14 +8,16 @@ export function TopBar() {
       <div className="p-2">
         <div className="flex items-center mx-5 justify-between">
           <div>
-            <p>
-              <img
-                src="images/DHS_Icon.svg"
-                alt=""
-                className="inline"
-              />
-              Min nya simulering
-            </p>
+            <NavButton to="/home">
+              <p>
+                <img
+                  src="images/DHS_Icon.svg"
+                  alt=""
+                  className="inline pr-5"
+                />
+                Min nya simulering
+              </p>
+            </NavButton>
           </div>
           <div className="flex gap-5">
             <button className="hover:underline">
@@ -24,7 +26,7 @@ export function TopBar() {
             <button className="hover:underline">
               <DropdownMenuAlgorithm />
             </button>
-            <button className="hover:underline">
+            <button className="hover:underline h-full">
               <img
                 src="images/Folder_plus.svg"
                 className="inline"
@@ -35,7 +37,7 @@ export function TopBar() {
           <div className="flex gap-5">
             <button className="hover:underline text-white bg-sky-500 px-2 py-1 rounded">
               <img
-                src="images/Share.svg"
+                src="images/Download.svg"
                 className="inline"
               />
               Ladda ner
@@ -49,7 +51,7 @@ export function TopBar() {
             </button>
             <button className="hover:underline text-white bg-sky-500 px-2 py-1 rounded">
               <img
-                src="images/Download.svg"
+                src="images/Share.svg"
                 className="inline"
               />
               Exportera

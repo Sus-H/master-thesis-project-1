@@ -1,6 +1,10 @@
 import "app/styles.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  PlusIcon,
+} from "@radix-ui/react-icons";
 import { useContext, useState } from "react";
 import { addChild, createNode, type TreeNode } from "./treeNode";
 import * as Model from "components/model";
@@ -122,6 +126,7 @@ function DropdownMenuComponents() {
               className="inline"
             />
             Lägg till komponenter
+            <ChevronDownIcon className="inline"></ChevronDownIcon>
           </p>
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>

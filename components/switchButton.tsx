@@ -15,7 +15,7 @@ const SwitchButton = () => (
         className="SwitchRoot relative"
         id="airplane-mode"
       >
-        <div className="relative grid grid-cols-2 text-xs text-white z-40">
+        <div className="relative grid grid-cols-2 text-xs text-white z-20">
           <p>Urban</p>
           <p>Lantlig</p>
         </div>
