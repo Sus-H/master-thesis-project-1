@@ -7,7 +7,7 @@ import { createScenarioNode } from "components/createNode";
 import { scenario_1 } from "components/exampleData";
 import { NodeStateContext } from "components/nodeStateContext";
 import { NavButton } from "components/nav-button";
-// import SideBarRight from "components/sideBarRight";
+import SideBarRight from "components/sideBarRight";
 
 export default function Home() {
   const [nodeTree, setNodeTree] = useState(
@@ -33,7 +33,7 @@ export default function Home() {
             <NavButton to="/page_summary">
               <p className="text-2xl">Visa Detaljerad summering</p>
             </NavButton>
-            {/* <SideBarRight></SideBarRight> */}
+            <SideBarRight></SideBarRight>
           </div>
         </div>
       </NodeStateContext.Provider>

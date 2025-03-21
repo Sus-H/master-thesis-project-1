@@ -7,6 +7,29 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
+export function DenseTableComponent() {
+  return (
+    <div>
+      <div className="flex justify-between">
+        <p>Faktor</p>
+        <p>OSIS</p>
+        <p>SIRP</p>
+      </div>
+      <div className="flex justify-between">
+        <p className="pr-10">Triage-metod</p>
+        <p>
+          Allvarlighetsbaserad triage – prioriterar livshotande fall
+          först.
+        </p>
+        <p>
+          Systembaserad triage – balanserar allvarlighetsgrad och
+          resursanvändning.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function createData(factor: string, sirp: string, osisp: string) {
   return { factor, sirp, osisp };
 }
