@@ -1,13 +1,14 @@
 import { ScrollArea } from "radix-ui";
 import { DenseTable } from "./tableComponent";
-import SimpleLineChart from "./lineChart";
+import SimpleLineChart, {
+  ResourceBarChart,
+  SurvivalLineChart,
+} from "./lineChart";
 
 const SideBarRight = () => (
-  <ScrollArea.Root className="h-screen w-[300px] bg-white">
-    <ScrollArea.Viewport className="size-full rounded">
-      <div>
-        <DenseTable></DenseTable>
-      </div>
+  <ScrollArea.Root className="h-screen bg-white">
+    <ScrollArea.Viewport className="size-full">
+      <div className=""></div>
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar orientation="horizontal">
       <ScrollArea.Thumb />

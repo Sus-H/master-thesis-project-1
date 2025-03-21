@@ -10,6 +10,7 @@ export default function PageAlgorithmBrowser() {
         <NavButton to="/">Home</NavButton>
         {/* <AlgorithmCards></AlgorithmCards> */}
       </div>
+      <button>Lägg till algoritm</button>
     </div>
   );
 }

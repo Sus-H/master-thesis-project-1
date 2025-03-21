@@ -20,32 +20,32 @@ const rows = [
 
   createData(
     "Förare (16 år)",
-    "Omedelbar vård (Prioritet 1) : Hög risk för inre blödningar, snabb transport krävs.",
-    "Omedelbar vård (Prioritet 1) : Hög sannolikhet för försämring."
+    "🔴 Omedelbar vård (Prioritet 1) – Hög risk för inre blödningar, snabb transport krävs.",
+    "🔴 Omedelbar vård (Prioritet 1) – Hög sannolikhet för försämring."
   ),
 
   createData(
     "Framsätespassagerare (44 år)",
-    "Brådskande vård (Prioritet 2) : Kräver övervakning men är stabil.",
-    "Brådskande vård (Prioritet 2) : Transporteras efter kritiska patienter."
+    "🟡 Brådskande vård (Prioritet 2) – Kräver övervakning men är stabil.",
+    "🟡 Brådskande vård (Prioritet 2) – Transporteras efter kritiska patienter."
   ),
 
   createData(
     "Baksätespassagerare (70 år)",
-    "Omedelbar vård (Prioritet 1) : Skörhet ökar dödlighetsrisken.",
-    "Omedelbar vård (Prioritet 1) : Ålder och skador kräver prioritet."
+    "🔴 Omedelbar vård (Prioritet 1) – Skörhet ökar dödlighetsrisken.",
+    "🔴 Omedelbar vård (Prioritet 1) – Ålder och skador kräver prioritet."
   ),
 
   createData(
     "Antal ambulanser",
-    "3 ambulanser : Två för Prioritet 1, en för Prioritet 2.",
-    "2 ambulanser : Samtransport av stabila patienter vid behov."
+    "🚑 3 ambulanser – Två för Prioritet 1, en för Prioritet 2.",
+    "🚑 2 ambulanser – Samtransport av stabila patienter vid behov."
   ),
 
   createData(
     "Användning av helikopter",
-    "Möjlig användning för 70-åringen om förseningar uppstår.",
-    "Större sannolikhet att aktivera lufttransport tidigt."
+    "🚁 Möjlig användning för 70-åringen om förseningar uppstår.",
+    "🚁 Större sannolikhet att aktivera lufttransport tidigt."
   ),
 
   createData(
@@ -56,20 +56,46 @@ const rows = [
 
   createData(
     "Transport till sjukhus",
-    "Direkttransport till traumacenter för kritiska patienter.",
-    "Fördelar patienter mellan olika sjukhus för att minska överbelastning."
+    "🏥 Direkttransport till traumacenter för kritiska patienter.",
+    "🏥 Fördelar patienter mellan olika sjukhus för att minska överbelastning."
   ),
 
   createData(
     "Risk för över-triagering",
-    "Risk att fler patienter klassas som ”kritiska” än nödvändigt.",
-    "Bättre balans, men kan innebära att stabila patienter får vänta längre."
+    "⚠️ Risk att fler patienter klassas som ”kritiska” än nödvändigt.",
+    "✅ Bättre balans, men kan innebära att stabila patienter får vänta längre."
   ),
 
   createData(
     "Effektivitet i räddningsinsats",
-    "Snabbast möjliga transport för de svårast skadade.",
-    "Mer balanserad process baserad på skadornas utveckling."
+    "🚑 Snabbast möjliga transport för de svårast skadade.",
+    "⏳ Mer balanserad process baserad på skadornas utveckling."
+  ),
+];
+
+const denseRows = [
+  createData(
+    "Förare (16 år)",
+    "🔴 Omedelbar vård (Prioritet 1) – Hög risk för inre blödningar, snabb transport krävs.",
+    "🔴 Omedelbar vård (Prioritet 1) – Hög sannolikhet för försämring."
+  ),
+
+  createData(
+    "Framsätespassagerare (44 år)",
+    "🟡 Brådskande vård (Prioritet 2) – Kräver övervakning men är stabil.",
+    "🟡 Brådskande vård (Prioritet 2) – Transporteras efter kritiska patienter."
+  ),
+
+  createData(
+    "Baksätespassagerare (70 år)",
+    "🔴 Omedelbar vård (Prioritet 1) – Skörhet ökar dödlighetsrisken.",
+    "🔴 Omedelbar vård (Prioritet 1) – Ålder och skador kräver prioritet."
+  ),
+
+  createData(
+    "Antal ambulanser",
+    "🚑 3 ambulanser – Två för Prioritet 1, en för Prioritet 2.",
+    "🚑 2 ambulanser – Samtransport av stabila patienter vid behov."
   ),
 ];
 
@@ -134,7 +160,7 @@ export function DenseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {denseRows.map((row) => (
             <TableRow
               key={row.factor}
               sx={{
@@ -156,3 +182,5 @@ export function DenseTable() {
     </TableContainer>
   );
 }
+
+export function sideBarTable() {}

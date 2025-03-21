@@ -50,11 +50,11 @@ export const vehicle_1: Model.Vehicle = {
   model_year: datasource_other(2015),
   car_weight_kg: datasource_other(1850),
   registration_number: datasource_other("MIR 593"),
-  // vehicle_occupants: datasource_other([
-  //   occupant_1,
-  //   occupant_2,
-  //   occupant_3,
-  // ]),
+  vehicle_occupants: datasource_other([
+    occupant_1,
+    occupant_2,
+    occupant_3,
+  ]),
   vehicle_speed_kmph: datasource_telemetry(71.78),
   delta_v_kmph: datasource_telemetry(71.78),
   impact_forces_g: [
