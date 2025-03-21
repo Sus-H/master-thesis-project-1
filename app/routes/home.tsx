@@ -22,9 +22,6 @@ export default function Home() {
         <div className="shadow-md z-40 mb-0.5">
           <TopBar />
         </div>
-        <div>
-          <AlgorithmBrowser></AlgorithmBrowser>
-        </div>
         <div className="flex">
           <div className="">
             <SideBarLeft></SideBarLeft>

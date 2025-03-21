@@ -1,5 +1,6 @@
 import { NavButton } from "./nav-button";
 import DropdownMenuComponents from "./dropdownMenuComponent";
+import { DropdownMenuAlgorithm } from "./dropdownMenuAlgorithm";
 
 export function TopBar() {
   return (
@@ -20,14 +21,9 @@ export function TopBar() {
             <button className="hover:underline">
               <DropdownMenuComponents />
             </button>
-
-            <NavButton to="/page_algorithm_browser">
-              <img
-                src="images/Book_open.svg"
-                className="inline"
-              />
-              Algoritm Utforskaren
-            </NavButton>
+            <button className="hover:underline">
+              <DropdownMenuAlgorithm />
+            </button>
             <button className="hover:underline">
               <img
                 src="images/Folder_plus.svg"
