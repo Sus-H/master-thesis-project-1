@@ -1,9 +1,8 @@
 import "app/styles.css";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
-import { addChild, createNode } from "./treeNode";
-import { type TreeNode } from "./treeNode";
+import { useContext, useState } from "react";
+import { addChild, createNode, type TreeNode } from "./treeNode";
 import * as Model from "components/model";
 import {
   occupant_1,
@@ -12,6 +11,7 @@ import {
   vehicle_1,
 } from "components/exampleData";
 import { createPatientNode, createVehicleNode } from "./createNode";
+import { NodeStateContext } from "./nodeStateContext";
 
 const peopleItems: Model.Patient[] = [
   occupant_1,
@@ -64,24 +64,34 @@ function createMenuItems(
   );
 }
 
-function DropdownMenuComponents({
-  nodeTree,
-  setNodeTree,
-}: {
-  nodeTree: TreeNode;
-  setNodeTree: (newTree: TreeNode) => void;
-}) {
+function addDeapNode(node: TreeNode, child: TreeNode): TreeNode {
+  if (node.children.filter((child) => { return ["scenario", "vehicle"].includes(child.nodeType) }).length === 0) {
+    return addChild(node, child);
+  }
+  const lastChild = node.children[node.children.length - 1];
+  return {
+    ...node,
+    children: [
+      ...node.children.slice(0, -1),
+      addDeapNode(lastChild, child),
+    ],
+  };
+}
+
+function DropdownMenuComponents() {
   const [open, setOpen] = useState(false);
+
+  const [nodeTree, setNodeTree] = useContext(NodeStateContext);
 
   const handleItemClick = (
     item: string | Model.Patient | Model.Vehicle
   ) => {
     if (typeof item === 'string')
-      setNodeTree(addChild(nodeTree, createNode(item)));
+      setNodeTree(addDeapNode(nodeTree, createNode(item)));
     if (peopleItems.includes(item as Model.Patient))
-      setNodeTree(addChild(nodeTree, createPatientNode(item as Model.Patient)));
+      setNodeTree(addDeapNode(nodeTree, createPatientNode(item as Model.Patient)));
     if (vehicleItems.includes(item as Model.Vehicle))
-      setNodeTree(addChild(nodeTree, createVehicleNode(item as Model.Vehicle)));
+      setNodeTree(addDeapNode(nodeTree, createVehicleNode(item as Model.Vehicle)));
   };
 
   return (
