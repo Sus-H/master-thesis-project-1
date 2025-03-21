@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { TopBar } from "components/topBar";
 import SideBarLeft from "components/sideBarLeft";
 import { ReactFlowProvider } from "@xyflow/react";
@@ -8,15 +7,16 @@ import { scenario_1 } from "components/exampleData";
 import { NodeStateContext } from "components/nodeStateContext";
 import { NavButton } from "components/nav-button";
 import SideBarRight from "components/sideBarRight";
+import type { TreeNode } from "components/treeNode";
+import { useHistoryState } from "@uidotdev/usehooks";
 
 export default function Home() {
-  const [nodeTree, setNodeTree] = useState(
+  const { state, set, undo, redo, clear, canUndo, canRedo } = useHistoryState(
     createScenarioNode(scenario_1)
   );
-
   return (
     <div className="">
-      <NodeStateContext.Provider value={[nodeTree, setNodeTree]}>
+      <NodeStateContext.Provider value={[state, set, undo, redo, clear, canUndo, canRedo]}>
         <div className="shadow-md z-40 mb-0.5">
           <TopBar />
         </div>

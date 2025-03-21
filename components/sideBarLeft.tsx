@@ -31,9 +31,9 @@ function NodeComponent({ node }: { node: TreeNode }) {
 }
 
 function TreeComponent() {
-  const [nodeTree, _] = useContext(NodeStateContext) ?? [
+  const [nodeTree, ..._] = useContext(NodeStateContext) ?? [
     createNode("Root"),
-    (_) => {},
+    (_) => { },
   ];
   return (
     <ul className="tree">
