@@ -23,8 +23,8 @@ function hasChild(node: TreeNode): boolean {
 
 function createMindMapNodes(
   node: TreeNode,
-  x: number = 0,
-  y: number = 0,
+  x: number = 45,
+  y: number = 145,
   id: string = "0"
 ): Node[] {
   if (node.children.length === 0) {
@@ -37,6 +37,8 @@ function createMindMapNodes(
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
       position: { x, y },
+      parentId: "data",
+      extent: 'parent',
       draggable: false,
     },
   ];
@@ -82,9 +84,21 @@ const MindMap = () => {
     []
   );
 
+  const dataNode: Node = {
+    id: "data",
+    data: { label: "Data" },
+    position: { x: 0, y: 0 },
+    style: {
+      width: 750,
+      height: 320,
+    },
+    type: 'group',
+    draggable: false,
+  };
+
   return (
     <ReactFlow
-      nodes={mindMapNodes}
+      nodes={[dataNode, ...mindMapNodes]}
       edges={mindMapEdges}
       // onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
