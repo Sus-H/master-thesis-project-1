@@ -3,7 +3,7 @@ import type { Patient, Scenario, Vehicle } from "./model";
 import { translate } from "./languageMap";
 
 // Process k:v data to strings to display visually
-function createBasicNode(data: any, parentNodeName: string) {
+function createBasicNode(data: any, parentNodeName: string, nodeType: string) {
   const unpackedData: string[] = [
     "model",
     "name",
@@ -18,7 +18,7 @@ function createBasicNode(data: any, parentNodeName: string) {
     .map(([key, value]) =>
       createNode(`${translate(key)}: ${(value as { value: string }).value}`)
     )
-    .reduce(addChild, createNode(parentNodeName));
+    .reduce(addChild, createNode(parentNodeName, nodeType));
 }
 
 export function createScenarioNode(scenario: Scenario) {
@@ -26,7 +26,8 @@ export function createScenarioNode(scenario: Scenario) {
     scenario.accident_type?.value || "Scenario";
   const scenarioNode: TreeNode = createBasicNode(
     scenario,
-    scenarioNodeName
+    scenarioNodeName,
+    "scenario"
   );
 
   const vehicles: Vehicle[] = scenario.vehicles?.value || [];
@@ -49,7 +50,7 @@ export function createScenarioNode(scenario: Scenario) {
 
 export function createPatientNode(patient: Patient) {
   const patientNodeName: string = patient.name || "Patient";
-  return createBasicNode(patient, patientNodeName);
+  return createBasicNode(patient, patientNodeName, "patient");
 }
 
 export function createVehicleNode(vehicle: Vehicle) {
@@ -64,7 +65,7 @@ export function createVehicleNode(vehicle: Vehicle) {
     .map((vehicleForce) =>
       createNode(`${translate("impact_forces_g")}: ${vehicleForce}`)
     )
-    .reduce(addChild, createBasicNode(vehicle, vehicleNodeName));
+    .reduce(addChild, createBasicNode(vehicle, vehicleNodeName, "vehicle"));
 
   return patientNodes.reduce(addChild, vehicleNode);
 }
