@@ -30,7 +30,46 @@ const algorithms = [
     },
     image: "/images/algorithm_image_4.jpg",
   },
-  // Add other algorithms here...
+  {
+    title: "URGENCY",
+    description:
+      "URGENCY focuses on rapid assessment and prioritization of critical patients.",
+    details: {
+      origin: "Designed by Rapid Response Labs",
+      cost: "$600 per license annually",
+    },
+    image: "/images/algorithm_image_3.jpg",
+  },
+  {
+    title: "OnStar",
+    description:
+      "OnStar provides real-time crash data to assist emergency responders.",
+    details: {
+      origin: "Developed by OnStar Corporation",
+      cost: "$800 per license annually",
+    },
+    image: "/images/algorithm_image_4.jpg",
+  },
+  {
+    title: "D-call NET",
+    description:
+      "D-call NET predicts injury severity using advanced telematics.",
+    details: {
+      origin: "Created by Telematics Solutions Ltd.",
+      cost: "$900 per license annually",
+    },
+    image: "/images/algorithm_image_4.jpg",
+  },
+  {
+    title: "Nidhimoto",
+    description:
+      "Nidhimoto is an algorithm designed for optimizing emergency response times.",
+    details: {
+      origin: "Developed by Nidhimoto Research Group",
+      cost: "$400 per license annually",
+    },
+    image: "/images/algorithm_image_1.jpg",
+  },
 ];
 
 export default function AlgorithmCards() {
