@@ -28,7 +28,8 @@ const environmentItems: string[] = ["Plats", "Väder"];
 
 const medicalData: string[] = ["Patient Journal Data"];
 
-const zip = <T, U>(a: T[], b: U[]): [T, U][] => a.map((k, i) => [k, b[i]]);
+const zip = <T, U>(a: T[], b: U[]): [T, U][] =>
+  a.map((k, i) => [k, b[i]]);
 
 function createMenuItems(
   itemNames: string[],
@@ -50,7 +51,7 @@ function createMenuItems(
           key={itemName}
           className="DropdownMenuItem"
           onSelect={(event) => {
-            // event.preventDefault();
+            event.preventDefault();
             handleItemClick(item);
           }}
         >
@@ -65,7 +66,11 @@ function createMenuItems(
 }
 
 function addDeapNode(node: TreeNode, child: TreeNode): TreeNode {
-  if (node.children.filter((child) => { return ["scenario", "vehicle"].includes(child.nodeType) }).length === 0) {
+  if (
+    node.children.filter((child) => {
+      return ["scenario", "vehicle"].includes(child.nodeType);
+    }).length === 0
+  ) {
     return addChild(node, child);
   }
   const lastChild = node.children[node.children.length - 1];
@@ -86,12 +91,22 @@ function DropdownMenuComponents() {
   const handleItemClick = (
     item: string | Model.Patient | Model.Vehicle
   ) => {
-    if (typeof item === 'string')
+    if (typeof item === "string")
       setNodeTree(addDeapNode(nodeTree, createNode(item)));
     if (peopleItems.includes(item as Model.Patient))
-      setNodeTree(addDeapNode(nodeTree, createPatientNode(item as Model.Patient)));
+      setNodeTree(
+        addDeapNode(
+          nodeTree,
+          createPatientNode(item as Model.Patient)
+        )
+      );
     if (vehicleItems.includes(item as Model.Vehicle))
-      setNodeTree(addDeapNode(nodeTree, createVehicleNode(item as Model.Vehicle)));
+      setNodeTree(
+        addDeapNode(
+          nodeTree,
+          createVehicleNode(item as Model.Vehicle)
+        )
+      );
   };
 
   return (
@@ -114,11 +129,15 @@ function DropdownMenuComponents() {
             Välj komponenter till din simulering
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
-              [occupant_1.name ?? "Unknown", occupant_2.name ?? "Unknown", occupant_3.name ?? "Unknown"],
+              [
+                occupant_1.name ?? "Unknown",
+                occupant_2.name ?? "Unknown",
+                occupant_3.name ?? "Unknown",
+              ],
               peopleItems,
 
               "Personer",
-              handleItemClick,
+              handleItemClick
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
@@ -126,7 +145,7 @@ function DropdownMenuComponents() {
               vehicleItems,
 
               "Fordon",
-              handleItemClick,
+              handleItemClick
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
@@ -134,7 +153,7 @@ function DropdownMenuComponents() {
               environmentItems,
 
               "Miljö",
-              handleItemClick,
+              handleItemClick
             )}
             <DropdownMenu.Separator className="DropdownMenuSeparator" />
             {createMenuItems(
@@ -142,7 +161,7 @@ function DropdownMenuComponents() {
               medicalData,
 
               "Medicinsk Data",
-              handleItemClick,
+              handleItemClick
             )}
           </DropdownMenu.Content>
         </DropdownMenu.Portal>

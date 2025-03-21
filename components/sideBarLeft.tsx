@@ -33,7 +33,7 @@ function NodeComponent({ node }: { node: TreeNode }) {
 function TreeComponent() {
   const [nodeTree, ..._] = useContext(NodeStateContext) ?? [
     createNode("Root"),
-    (_) => { },
+    (_) => {},
   ];
   return (
     <ul className="tree">
@@ -68,11 +68,23 @@ export default function SideBarLeft() {
     <ScrollArea.Root className="h-screen w-[300px] bg-white">
       <ScrollArea.Viewport className="size-full rounded">
         <div className="grid grid-cols-1 gap-5 px-5 py-5">
-          <button className="border hover:underline active:bg-amber-700" onClick={undoNode}>
+          <button
+            className="border hover:underline active:bg-amber-700"
+            onClick={undoNode}
+          >
             Ångra
           </button>
-          <button className="border hover:underline active:bg-amber-700" onClick={redoNode}>
+          <button
+            className="border hover:underline active:bg-amber-700"
+            onClick={redoNode}
+          >
             Gör om
+          </button>
+          <button
+            className="border hover:underline active:bg-amber-700"
+            // onClick={}
+          >
+            Återställ
           </button>
           <div>Simulation Data</div>
           <div className="h-full w-full">
@@ -117,6 +129,6 @@ export default function SideBarLeft() {
         <ScrollArea.Thumb className="relative flex-1 rounded-[10px] bg-mauve10 before:absolute before:left-1/2 before:top-1/2 before:size-full before:min-h-[44px] before:min-w-[44px] before:-translate-x-1/2 before:-translate-y-1/2" />
       </ScrollArea.Scrollbar>
       <ScrollArea.Corner className="bg-blackA5" />
-    </ScrollArea.Root >
+    </ScrollArea.Root>
   );
 }

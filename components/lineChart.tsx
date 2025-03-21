@@ -39,7 +39,7 @@ const sirpSurvivalRates = [88, 83, 75]; // SIRP överlevnadschans i procent
 export function SurvivalLineChart() {
   return (
     <LineChart
-      width={500}
+      width={300}
       height={300}
       series={[
         {
@@ -77,7 +77,7 @@ export function ResourceBarChart() {
         { data: osisResources, label: "OSIS", color: "red" },
         { data: sirpResources, label: "SIRP", color: "blue" },
       ]}
-      width={500}
+      width={300}
       height={300}
     />
   );

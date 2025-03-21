@@ -1,13 +1,12 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { CheckIcon } from "@radix-ui/react-icons";
+import React, { useState } from "react";
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCardImage,
+  CCardText,
+  CCardTitle,
+} from "@coreui/react";
 
 const algorithms = [
   {
@@ -79,101 +78,49 @@ const algorithms = [
 ];
 
 export default function AlgorithmCards() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = React.useState<
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<
     null | (typeof algorithms)[number]
   >(null);
-  const [enabledAlgorithms, setEnabledAlgorithms] = React.useState<{
-    [key: string]: boolean;
-  }>({});
 
   const handleCardClick = (algorithm) => {
     setSelectedAlgorithm(algorithm);
   };
 
-  const handleEnableClick = (title: string) => {
-    setEnabledAlgorithms((prevState) => ({
-      ...prevState,
-      [title]: !prevState[title],
-    }));
-  };
-
   return (
-    <Box sx={{ display: "flex", gap: 3 }}>
+    <div style={{ display: "flex", gap: "20px" }}>
       {/* Cards Section */}
-      <Box
-        sx={{
+      <div
+        style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 3,
-          justifyContent: "center",
+          gap: "20px",
           flex: 2,
         }}
       >
         {algorithms.map((algorithm) => (
-          <Card
+          <CCard
             key={algorithm.title}
-            sx={{ maxWidth: 345, cursor: "pointer" }}
+            style={{ width: "18rem", cursor: "pointer" }}
             onClick={() => handleCardClick(algorithm)}
           >
-            <CardMedia
-              component="img"
-              height="140"
-              image={algorithm.image}
-              alt={algorithm.title}
-              sx={{
-                width: "100%",
-                height: "140px",
-                objectFit: "cover",
-                backgroundColor: "var(--gray-5)",
-              }}
+            <CCardImage
+              orientation="top"
+              src={algorithm.image}
             />
-            <CardHeader
-              title={algorithm.title}
-              subheader="Algorithm Overview"
-            />
-            <CardContent>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-              >
-                {algorithm.description}
-              </Typography>
-            </CardContent>
-            <CardActions
-              disableSpacing
-              sx={{ justifyContent: "flex-end" }}
-            >
-              <Button
-                variant="contained"
-                color={
-                  enabledAlgorithms[algorithm.title]
-                    ? "success"
-                    : "primary"
-                }
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleEnableClick(algorithm.title);
-                }}
-                startIcon={
-                  enabledAlgorithms[algorithm.title] ? (
-                    <CheckIcon />
-                  ) : null
-                }
-              >
-                {enabledAlgorithms[algorithm.title]
-                  ? "Enabled"
-                  : "Enable"}
-              </Button>
-            </CardActions>
-          </Card>
+            <CCardBody>
+              <CCardTitle>{algorithm.title}</CCardTitle>
+              <CCardText>{algorithm.description}</CCardText>
+              <CButton color="primary">Enable</CButton>
+            </CCardBody>
+          </CCard>
         ))}
-      </Box>
+      </div>
 
       {/* Information Panel */}
-      <Box
-        sx={{
+      <div
+        style={{
           flex: 1,
-          padding: 3,
+          padding: "20px",
           border: "1px solid #ddd",
           borderRadius: "8px",
           backgroundColor: "#f9f9f9",
@@ -181,66 +128,44 @@ export default function AlgorithmCards() {
       >
         {selectedAlgorithm ? (
           <>
-            <CardMedia
-              component="img"
-              height="200"
-              image={selectedAlgorithm.image}
+            <img
+              src={selectedAlgorithm.image}
               alt={selectedAlgorithm.title}
-              sx={{ marginBottom: 2, borderRadius: "8px" }}
+              style={{
+                width: "100%",
+                height: "200px",
+                objectFit: "cover",
+                marginBottom: "16px",
+                borderRadius: "8px",
+              }}
             />
-            <Typography
-              variant="h6"
-              gutterBottom
-            >
-              {selectedAlgorithm.title}
-            </Typography>
-            <Typography
-              variant="body1"
-              gutterBottom
-            >
-              {selectedAlgorithm.description}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-            >
+            <h3>{selectedAlgorithm.title}</h3>
+            <p>{selectedAlgorithm.description}</p>
+            <p>
               <strong>Origin:</strong>{" "}
               {selectedAlgorithm.details.origin}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-            >
+            </p>
+            <p>
               <strong>Cost:</strong> {selectedAlgorithm.details.cost}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-            >
+            </p>
+            <p>
               <strong>Certificates:</strong>
-            </Typography>
+            </p>
             <ul>
               {selectedAlgorithm.certificates.map(
                 (certificate, index) => (
-                  <li key={index}>
-                    <Typography variant="body2">
-                      {certificate}
-                    </Typography>
-                  </li>
+                  <li key={index}>{certificate}</li>
                 )
               )}
             </ul>
           </>
         ) : (
-          <Typography
-            variant="body1"
-            color="text.secondary"
-          >
+          <p>
             Klicka på ett kort för att se mer information om
             algoritmen.
-          </Typography>
+          </p>
         )}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }

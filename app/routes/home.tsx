@@ -9,16 +9,21 @@ import { NavButton } from "components/nav-button";
 import SideBarRight from "components/sideBarRight";
 import type { TreeNode } from "components/treeNode";
 import { useHistoryState } from "@uidotdev/usehooks";
+import { AlgorithmBrowser } from "components/algorithmBrowser";
 
 export default function Home() {
-  const { state, set, undo, redo, clear, canUndo, canRedo } = useHistoryState(
-    createScenarioNode(scenario_1)
-  );
+  const { state, set, undo, redo, clear, canUndo, canRedo } =
+    useHistoryState(createScenarioNode(scenario_1));
   return (
     <div className="">
-      <NodeStateContext.Provider value={[state, set, undo, redo, clear, canUndo, canRedo]}>
+      <NodeStateContext.Provider
+        value={[state, set, undo, redo, clear, canUndo, canRedo]}
+      >
         <div className="shadow-md z-40 mb-0.5">
           <TopBar />
+        </div>
+        <div>
+          <AlgorithmBrowser></AlgorithmBrowser>
         </div>
         <div className="flex">
           <div className="">
@@ -29,7 +34,7 @@ export default function Home() {
               <MindMap></MindMap>
             </ReactFlowProvider>
           </div>
-          <div className="bg-white w-3xl px-10 py-5">
+          <div className="bg-white px-10 py-5">
             <NavButton to="/page_summary">
               <p className="text-2xl">Visa Detaljerad summering</p>
             </NavButton>

@@ -6,7 +6,7 @@ import SimpleLineChart, {
 import { DenseTableComponent } from "./tableComponent";
 
 const SideBarRight = () => (
-  <ScrollArea.Root className="h-screen bg-white">
+  <ScrollArea.Root className="h-screen w-[300px] bg-white">
     <ScrollArea.Viewport className="">
       <DenseTableComponent></DenseTableComponent>
       <SurvivalLineChart></SurvivalLineChart>

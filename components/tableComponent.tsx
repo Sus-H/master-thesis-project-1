@@ -195,7 +195,7 @@ export const DenseTableComponent = () => {
   const theme = useTheme({
     Table: `
       display: table;
-      width: 100%;
+      width: 50%;
       border-collapse: collapse;
     `,
     Header: `
