@@ -33,7 +33,7 @@ function NodeComponent({ node }: { node: TreeNode }) {
 function TreeComponent() {
   const [nodeTree, _] = useContext(NodeStateContext) ?? [
     createNode("Root"),
-    (_) => { },
+    (_) => {},
   ];
   return (
     <ul className="tree">
@@ -70,15 +70,15 @@ export default function SideBarLeft() {
           <div className="h-full w-full">
             <SelectComponent></SelectComponent>
           </div>
-          <div>
-            <SwitchButton></SwitchButton>
-          </div>
           <button className="hover:underline">
             <DropdownMenuParameters
               checkedStates={checkedStates}
               setCheckedStates={setCheckedStates}
             />
           </button>
+          <div>
+            <SwitchButton></SwitchButton>
+          </div>
           <div className="grid gap-5">
             <div className="">
               {Object.entries(checkedStates).map(([name, _]) => (

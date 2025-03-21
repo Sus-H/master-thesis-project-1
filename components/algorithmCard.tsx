@@ -13,60 +13,60 @@ const algorithms = [
   {
     title: "SIRP",
     description:
-      "SIRP is a severity-based triage algorithm that prioritizes life-threatening cases first.",
+      "SIRP är en allvarlighetsbaserad triage-algoritm som prioriterar livshotande fall först.",
     details: {
-      origin: "Developed by Emergency Response Systems Inc.",
-      cost: "$500 per license annually",
+      origin: "Utvecklad av Emergency Response Systems Inc.",
+      cost: "500 USD per licens årligen",
     },
     image: "/images/algorithm_image_1.jpg",
   },
   {
     title: "OSISP",
     description:
-      "OSISP balances severity and resource utilization for efficient triage.",
+      "OSISP balanserar allvarlighetsgrad och resursanvändning för effektiv triage.",
     details: {
-      origin: "Created by Global Health Analytics",
-      cost: "$700 per license annually",
+      origin: "Skapad av Global Health Analytics",
+      cost: "700 USD per licens årligen",
     },
     image: "/images/algorithm_image_4.jpg",
   },
   {
     title: "URGENCY",
     description:
-      "URGENCY focuses on rapid assessment and prioritization of critical patients.",
+      "URGENCY fokuserar på snabb bedömning och prioritering av kritiska patienter.",
     details: {
-      origin: "Designed by Rapid Response Labs",
-      cost: "$600 per license annually",
+      origin: "Designad av Rapid Response Labs",
+      cost: "600 USD per licens årligen",
     },
     image: "/images/algorithm_image_3.jpg",
   },
   {
     title: "OnStar",
     description:
-      "OnStar provides real-time crash data to assist emergency responders.",
+      "OnStar tillhandahåller realtidsdata om olyckor för att hjälpa räddningstjänsten.",
     details: {
-      origin: "Developed by OnStar Corporation",
-      cost: "$800 per license annually",
+      origin: "Utvecklad av OnStar Corporation",
+      cost: "800 USD per licens årligen",
     },
     image: "/images/algorithm_image_4.jpg",
   },
   {
     title: "D-call NET",
     description:
-      "D-call NET predicts injury severity using advanced telematics.",
+      "D-call NET förutspår skadans allvar med hjälp av avancerad telematik.",
     details: {
-      origin: "Created by Telematics Solutions Ltd.",
-      cost: "$900 per license annually",
+      origin: "Skapad av Telematics Solutions Ltd.",
+      cost: "900 USD per licens årligen",
     },
     image: "/images/algorithm_image_4.jpg",
   },
   {
     title: "Nidhimoto",
     description:
-      "Nidhimoto is an algorithm designed for optimizing emergency response times.",
+      "Nidhimoto är en algoritm designad för att optimera responstider vid nödsituationer.",
     details: {
-      origin: "Developed by Nidhimoto Research Group",
-      cost: "$400 per license annually",
+      origin: "Utvecklad av Nidhimoto Research Group",
+      cost: "400 USD per licens årligen",
     },
     image: "/images/algorithm_image_1.jpg",
   },
