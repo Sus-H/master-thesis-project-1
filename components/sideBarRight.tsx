@@ -4,10 +4,14 @@ import SimpleLineChart, {
   SurvivalLineChart,
 } from "./lineChart";
 import { DenseTableComponent } from "./tableComponent";
+import { NavButton } from "./nav-button";
 
 const SideBarRight = () => (
   <ScrollArea.Root className="h-screen w-[300px] bg-white">
-    <ScrollArea.Viewport className="">
+    <ScrollArea.Viewport className="size-full rounded">
+      <NavButton to="/page_summary">
+        <p className="text-2xl">Visa Detaljerad summering</p>
+      </NavButton>
       <DenseTableComponent></DenseTableComponent>
       <SurvivalLineChart></SurvivalLineChart>
       <ResourceBarChart></ResourceBarChart>

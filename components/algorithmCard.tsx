@@ -7,6 +7,7 @@ import {
   CCardText,
   CCardTitle,
 } from "@coreui/react";
+import "@coreui/coreui/dist/css/coreui.min.css";
 
 const algorithms = [
   {
@@ -82,8 +83,20 @@ export default function AlgorithmCards() {
     null | (typeof algorithms)[number]
   >(null);
 
+  // State to track enabled status for each algorithm
+  const [enabledAlgorithms, setEnabledAlgorithms] = useState<{
+    [key: string]: boolean;
+  }>({});
+
   const handleCardClick = (algorithm) => {
     setSelectedAlgorithm(algorithm);
+  };
+
+  const handleEnableClick = (title: string) => {
+    setEnabledAlgorithms((prevState) => ({
+      ...prevState,
+      [title]: !prevState[title], // Toggle the enabled status
+    }));
   };
 
   return (
@@ -100,7 +113,11 @@ export default function AlgorithmCards() {
         {algorithms.map((algorithm) => (
           <CCard
             key={algorithm.title}
-            style={{ width: "18rem", cursor: "pointer" }}
+            style={{
+              width: "18rem",
+              cursor: "pointer",
+              wordWrap: "break-word",
+            }}
             onClick={() => handleCardClick(algorithm)}
           >
             <CCardImage
@@ -110,7 +127,25 @@ export default function AlgorithmCards() {
             <CCardBody>
               <CCardTitle>{algorithm.title}</CCardTitle>
               <CCardText>{algorithm.description}</CCardText>
-              <CButton color="primary">Enable</CButton>
+              <CButton
+                color={
+                  enabledAlgorithms[algorithm.title]
+                    ? "success"
+                    : "primary"
+                }
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent triggering the card click
+                  handleEnableClick(algorithm.title);
+                }}
+              >
+                {enabledAlgorithms[algorithm.title] ? (
+                  <>
+                    Enabled <span>✔</span>
+                  </>
+                ) : (
+                  "Enable"
+                )}
+              </CButton>
             </CCardBody>
           </CCard>
         ))}

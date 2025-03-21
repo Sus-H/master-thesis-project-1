@@ -35,9 +35,6 @@ export default function Home() {
             </ReactFlowProvider>
           </div>
           <div className="bg-white px-10 py-5">
-            <NavButton to="/page_summary">
-              <p className="text-2xl">Visa Detaljerad summering</p>
-            </NavButton>
             <SideBarRight></SideBarRight>
           </div>
         </div>
