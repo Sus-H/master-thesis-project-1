@@ -5,7 +5,7 @@ import { DropdownMenuAlgorithm } from "./dropdownMenuAlgorithm";
 export function TopBar() {
   return (
     <div>
-      <div className="p-2">
+      <div className="p-2 bg-sky-800">
         <div className="flex items-center mx-5 justify-between">
           <div className="flex items-center">
           <NavButton to="/">
@@ -31,12 +31,12 @@ export function TopBar() {
             <button className="hover:underline h-full">
               <img
                 src="images/Folder_plus.svg"
-                className="inline"
+                className="inline pr-1"
               />
               Importera Extern Data
             </button>
           </div>
-          <div className="flex gap-5  items-center">
+          <div className="flex gap-3 justify-evenly items-center">
             <button className="hover:underline text-white bg-sky-500 px-2 py-1 rounded">
               <img
                 src="images/Download.svg"

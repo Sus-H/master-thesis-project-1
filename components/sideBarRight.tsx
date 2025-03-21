@@ -15,8 +15,8 @@ const SideBarRight = () => (
       </NavButton>
       <DenseTableComponent></DenseTableComponent>
       <div className="grid gap-5">
-        <SurvivalLineChart></SurvivalLineChart>
         <ResourceBarChart></ResourceBarChart>
+        <SurvivalLineChart></SurvivalLineChart>
       </div>
     </ScrollArea.Viewport>
     <ScrollArea.Scrollbar orientation="horizontal">

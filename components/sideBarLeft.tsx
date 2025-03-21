@@ -71,7 +71,7 @@ export default function SideBarLeft() {
   return (
     <ScrollArea.Root className="h-screen w-[300px] bg-white">
       <ScrollArea.Viewport className="size-full rounded">
-        <div className="grid grid-cols-1 gap-2 px-5 py-3">
+        <div className="grid grid-cols-1 gap-2 px-3 py-3">
           <div className="grid grid-cols-3 ">
           <button
             className="border hover:underline active:bg-amber-700"
@@ -94,7 +94,9 @@ export default function SideBarLeft() {
             Återställ
           </button>
           </div>
-          <h5>Simuleringsparametrar</h5>
+          <div className="text-xl font-bold">
+            Simuleringsparametrar
+          </div>
           <button className="hover:underline flex">
             <DropdownMenuParameters
               checkedStates={checkedStates}
@@ -113,6 +115,9 @@ export default function SideBarLeft() {
             </div>
           </div>
             <SwitchButton></SwitchButton>
+          <div className="text-xl font-bold">
+            Simuleringdata
+          </div>
           <div className="">
             Scenario
             <TreeComponent />

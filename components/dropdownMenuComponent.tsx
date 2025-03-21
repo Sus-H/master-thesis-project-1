@@ -123,7 +123,7 @@ function DropdownMenuComponents() {
           <p onClick={() => setOpen(true)}>
             <img
               src="images/add_component.svg"
-              className="inline"
+              className="inline pr-1"
             />
             Lägg till komponenter
             <ChevronDownIcon className="inline"></ChevronDownIcon>

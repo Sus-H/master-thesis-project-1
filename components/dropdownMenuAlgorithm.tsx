@@ -17,7 +17,7 @@ export const DropdownMenuAlgorithm = () => {
         <p onClick={() => setOpen(true)}>
           <img
             src="images/Book_open.svg"
-            className="inline"
+            className="inline pr-1"
             alt="Open"
           />
           Algoritm Utforskaren
