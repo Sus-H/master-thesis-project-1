@@ -81,7 +81,7 @@ function addDeapNode(node: TreeNode, child: TreeNode): TreeNode {
 function DropdownMenuComponents() {
   const [open, setOpen] = useState(false);
 
-  const [nodeTree, setNodeTree] = useContext(NodeStateContext);
+  const [nodeTree, setNodeTree, ..._] = useContext(NodeStateContext);
 
   const handleItemClick = (
     item: string | Model.Patient | Model.Vehicle

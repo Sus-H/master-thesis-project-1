@@ -74,7 +74,7 @@ function createMindMapEdges(nodes: Node[]): Edge[] {
 }
 
 const MindMap = () => {
-  const [nodeTree, _] = useContext(NodeStateContext);
+  const [nodeTree, ..._] = useContext(NodeStateContext);
   const mindMapNodes = createMindMapNodes(nodeTree);
   const mindMapEdges = createMindMapEdges(mindMapNodes);
 
