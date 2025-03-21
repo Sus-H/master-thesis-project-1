@@ -13,13 +13,11 @@ import {
 import "@xyflow/react/dist/style.css";
 import { NodeStateContext } from "./nodeStateContext";
 import { type TreeNode } from "./treeNode";
-import { type Node } from '@xyflow/react';
-
+import { type Node } from "@xyflow/react";
 
 function hasChild(node: TreeNode): boolean {
   return node.children.length !== 0;
 }
-
 
 function createMindMapNodes(
   node: TreeNode,
@@ -37,6 +35,8 @@ function createMindMapNodes(
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
       position: { x, y },
+      parentId: "data",
+      extent: "parent",
       draggable: false,
     },
   ];
@@ -46,7 +46,12 @@ function createMindMapNodes(
   const childOffset = (children.length - 1) * 40;
 
   const nodeChildren = children.flatMap((child, i) =>
-    createMindMapNodes(child, x + 250, y - childOffset + i * 80, `${id}-${i}`)
+    createMindMapNodes(
+      child,
+      x + 250,
+      y - childOffset + i * 80,
+      `${id}-${i}`
+    )
   );
 
   return nodeList.concat(nodeChildren);
@@ -55,8 +60,8 @@ function createMindMapNodes(
 function createMindMapEdges(nodes: Node[]): Edge[] {
   const edges: Edge[] = [];
   nodes.forEach((node) => {
-    if (node.id.includes('-')) {
-      const parentId = node.id.substring(0, node.id.lastIndexOf('-'));
+    if (node.id.includes("-")) {
+      const parentId = node.id.substring(0, node.id.lastIndexOf("-"));
       edges.push({
         id: `${parentId}--${node.id}`,
         source: parentId,
@@ -67,7 +72,6 @@ function createMindMapEdges(nodes: Node[]): Edge[] {
   });
   return edges;
 }
-
 
 const MindMap = () => {
   const [nodeTree, _] = useContext(NodeStateContext);
@@ -82,9 +86,21 @@ const MindMap = () => {
     []
   );
 
+  const dataNode: Node = {
+    id: "data",
+    data: { label: "Data" },
+    position: { x: 0, y: 0 },
+    style: {
+      width: 750,
+      height: 320,
+    },
+    type: "group",
+    draggable: false,
+  };
+
   return (
     <ReactFlow
-      nodes={mindMapNodes}
+      nodes={[dataNode, ...mindMapNodes]}
       edges={mindMapEdges}
       // onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
@@ -92,8 +108,8 @@ const MindMap = () => {
       fitView
       attributionPosition="bottom-left"
       style={{ backgroundColor: "#F7F9FB" }}
-    // snapToGrid={true}
-    // snapGrid={[20, 20]}
+      // snapToGrid={true}
+      // snapGrid={[20, 20]}
     >
       <Background />
       <Controls position="top-left" />

@@ -29,7 +29,7 @@ export default function Home() {
               <MindMap></MindMap>
             </ReactFlowProvider>
           </div>
-          <div className="bg-white h-screen w-3xl px-10 py-5">
+          <div className="bg-white w-3xl px-10 py-5">
             <NavButton to="/page_summary">
               <p className="text-2xl">Visa Detaljerad summering</p>
             </NavButton>
