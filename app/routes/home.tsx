@@ -37,9 +37,6 @@ export default function Home() {
             <NavButton to="/page_summary">
               <p className="text-2xl">Visa Detaljerad summering</p>
             </NavButton>
-            <DenseTable></DenseTable>
-            <SurvivalLineChart></SurvivalLineChart>
-            <ResourceBarChart></ResourceBarChart>
           </div>
         </div>
       </NodeStateContext.Provider>
