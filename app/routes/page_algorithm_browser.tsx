@@ -9,8 +9,10 @@ export default function PageAlgorithmBrowser() {
         <h1>Welcome to the Algorithm Browser</h1>
         <NavButton to="/">Home</NavButton>
         {/* <AlgorithmCards></AlgorithmCards> */}
+        <button className="border hover:underline active:bg-amber-700">
+          Aktivera Algoritm
+        </button>
       </div>
-      <button>Lägg till algoritm</button>
     </div>
   );
 }

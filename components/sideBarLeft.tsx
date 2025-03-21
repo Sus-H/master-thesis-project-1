@@ -66,6 +66,12 @@ export default function SideBarLeft() {
     <ScrollArea.Root className="h-screen w-[300px] bg-white">
       <ScrollArea.Viewport className="size-full rounded">
         <div className="grid grid-cols-1 gap-5 px-5 py-5">
+          <button className="border hover:underline active:bg-amber-700">
+            Ångra
+          </button>
+          <button className="border hover:underline active:bg-amber-700">
+            Gör om
+          </button>
           <div>Simulation Data</div>
           <div className="h-full w-full">
             <SelectComponent></SelectComponent>
