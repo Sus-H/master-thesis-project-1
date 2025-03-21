@@ -1,10 +1,7 @@
 import { NavButton } from "./nav-button";
 import DropdownMenuComponents from "./dropdownMenuComponent";
-import { useContext } from "react";
-import { NodeStateContext } from "./nodeStateContext";
 
 export function TopBar() {
-  const [nodeTree, setNodeTree] = useContext(NodeStateContext);
   return (
     <div>
       <div className="p-2">
@@ -22,8 +19,6 @@ export function TopBar() {
           <div className="flex gap-5">
             <button className="hover:underline">
               <DropdownMenuComponents
-                nodeTree={nodeTree}
-                setNodeTree={setNodeTree}
               />
             </button>
 

@@ -2,13 +2,15 @@ export interface TreeNode {
   content: string;
   children: TreeNode[];
   expanded: boolean;
+  nodeType: string;
 }
 
-export function createNode(content: string): TreeNode {
+export function createNode(content: string, nodeType: string = "string"): TreeNode {
   return {
     content,
     children: [],
     expanded: true,
+    nodeType,
   };
 }
 
