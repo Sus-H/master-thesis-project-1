@@ -7,7 +7,7 @@ import SimpleLineChart, {
 
 const SideBarRight = () => (
   <ScrollArea.Root className="h-screen bg-white">
-    <ScrollArea.Viewport className="size-full">
+    <ScrollArea.Viewport className="">
       <DenseTable></DenseTable>
       <SurvivalLineChart></SurvivalLineChart>
       <ResourceBarChart></ResourceBarChart>
