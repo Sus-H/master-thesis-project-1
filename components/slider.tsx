@@ -12,7 +12,7 @@ export function SliderComponent({
   const stepSize = max / steps;
   return (
     <div hidden={!checkedStates[name]}>
-      <p>{name}</p>
+      <p className="text-sm">{name}</p>
       <Slider.Root
         className="relative flex h-5 w-[200px] touch-none select-none content-center place-items-center"
         defaultValue={[0]}

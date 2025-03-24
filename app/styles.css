@@ -536,23 +536,21 @@ body {
 .SelectTrigger {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   border-radius: 4px;
-  padding: 0 15px;
+  padding: 0;
   font-size: 13px;
   line-height: 1;
   height: 35px;
   gap: 5px;
   background-color: white;
   color: var(--violet-11);
-  box-shadow: 0 2px 10px var(--black-a7);
 }
 .SelectTrigger:hover {
   background-color: var(--mauve-3);
 }
 .SelectTrigger:focus {
-  box-shadow: 0 0 0 2px black;
 }
+
 .SelectTrigger[data-placeholder] {
   color: var(--violet-9);
 }
@@ -670,4 +668,25 @@ body {
   font-size: 15px;
   line-height: 1;
   user-select: none;
+}
+
+/* Bouncing animation */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.bounce {
+  animation: bounce 1.5s infinite;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

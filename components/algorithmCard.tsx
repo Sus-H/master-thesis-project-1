@@ -13,7 +13,7 @@ const algorithms = [
   {
     title: "SIRP",
     description:
-      "SIRP är en allvarlighetsbaserad triage-algoritm som prioriterar livshotande fall först.",
+      "SIRP (Serious injury risk prediction) är en allvarlighetsbaserad triage-algoritm som prioriterar livshotande fall först.",
     details: {
       origin: "Utvecklad av Emergency Response Systems Inc.",
       cost: "500 USD per licens årligen",
@@ -24,9 +24,10 @@ const algorithms = [
   {
     title: "OSISP",
     description:
-      "OSISP balanserar allvarlighetsgrad och resursanvändning för effektiv triage.",
+      "OSISP (On scene injury sverity prediction) är en algoritm som använder telematikdata för att förutsäga skadans allvar och optimera resursanvändning vid trafikolyckor. Den är särskilt användbar för att minska responstider och förbättra patientutfall.",
     details: {
-      origin: "Skapad av Global Health Analytics",
+      origin:
+        "Utvecklad baserat på forskning av Telematics Research Group.",
       cost: "700 USD per licens årligen",
     },
     certificates: ["ISO 9001:2015", "CE-certifierad"],
@@ -35,7 +36,7 @@ const algorithms = [
   {
     title: "URGENCY",
     description:
-      "URGENCY fokuserar på snabb bedömning och prioritering av kritiska patienter.",
+      "URGENCY (Urgent Response and Critical Evaluation System) fokuserar på snabb bedömning och prioritering av kritiska patienter.",
     details: {
       origin: "Designad av Rapid Response Labs",
       cost: "600 USD per licens årligen",
@@ -46,7 +47,7 @@ const algorithms = [
   {
     title: "OnStar",
     description:
-      "OnStar tillhandahåller realtidsdata om olyckor för att hjälpa räddningstjänsten.",
+      "OnStar tillhandahåller realtidsdata om olyckor för att hjälpa räddningstjänsten med snabbare insatser.",
     details: {
       origin: "Utvecklad av OnStar Corporation",
       cost: "800 USD per licens årligen",
@@ -57,7 +58,7 @@ const algorithms = [
   {
     title: "D-call NET",
     description:
-      "D-call NET förutspår skadans allvar med hjälp av avancerad telematik.",
+      "D-call NET (Dynamic Call Network) förutspår skadans allvar med hjälp av avancerad telematik och realtidsdata.",
     details: {
       origin: "Skapad av Telematics Solutions Ltd.",
       cost: "900 USD per licens årligen",
@@ -68,7 +69,7 @@ const algorithms = [
   {
     title: "Nidhimoto",
     description:
-      "Nidhimoto är en algoritm designad för att optimera responstider vid nödsituationer.",
+      "Nidhimoto är en algoritm designad för att optimera responstider vid nödsituationer genom avancerad analys.",
     details: {
       origin: "Utvecklad av Nidhimoto Research Group",
       cost: "400 USD per licens årligen",

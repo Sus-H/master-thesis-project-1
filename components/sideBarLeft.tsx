@@ -37,7 +37,7 @@ function NodeComponent({ node }: { node: TreeNode }) {
 function TreeComponent() {
   const [nodeTree, ..._] = useContext(NodeStateContext) ?? [
     createNode("Root"),
-    (_) => { },
+    (_) => {},
   ];
   return (
     <ul className="tree">
@@ -66,44 +66,48 @@ export default function SideBarLeft() {
     "Position i bil": false,
   });
 
-  const [, setNode, undoNode, redoNode, ..._] = useContext(NodeStateContext);
+  const [, setNode, undoNode, redoNode, ..._] =
+    useContext(NodeStateContext);
 
   return (
     <ScrollArea.Root className="h-screen w-[300px] bg-white">
       <ScrollArea.Viewport className="size-full rounded">
         <div className="grid grid-cols-1 gap-2 px-3 py-3">
           <div className="grid grid-cols-3 ">
-          <button
-            className="border hover:underline active:bg-amber-700"
-            onClick={undoNode}
-          >
-            Ångra
-          </button>
-          <button
-            className="border hover:underline active:bg-amber-700"
-            onClick={redoNode}
-          >
-            Gör om
-          </button>
-          <button
-            className="border hover:underline active:bg-amber-700"
-            onClick={() => {
-              setNode(createScenarioNode(scenario_1));
-            }}
-          >
-            Återställ
-          </button>
+            <button
+              className="border hover:underline active:bg-amber-700"
+              onClick={undoNode}
+            >
+              Ångra
+            </button>
+            <button
+              className="border hover:underline active:bg-amber-700"
+              onClick={redoNode}
+            >
+              Gör om
+            </button>
+            <button
+              className="border hover:underline active:bg-amber-700"
+              onClick={() => {
+                setNode(createScenarioNode(scenario_1));
+              }}
+            >
+              Återställ
+            </button>
           </div>
           <div className="text-xl font-bold">
             Simuleringsparametrar
           </div>
-          <button className="hover:underline flex">
+          <div>
+            <p className="text-sm inline px-1">Typ av olycka: </p>
+            <SelectComponent></SelectComponent>
+          </div>
+          <button className="flex px-1">
             <DropdownMenuParameters
               checkedStates={checkedStates}
               setCheckedStates={setCheckedStates}
             />
           </button>
-            <SelectComponent></SelectComponent>
           <div className="grid gap-5">
             <div className="">
               {Object.entries(checkedStates).map(([name, _]) => (
@@ -114,10 +118,8 @@ export default function SideBarLeft() {
               ))}
             </div>
           </div>
-            <SwitchButton></SwitchButton>
-          <div className="text-xl font-bold">
-            Simuleringdata
-          </div>
+          <SwitchButton></SwitchButton>
+          <div className="text-xl font-bold">Simuleringdata</div>
           <div className="">
             Scenario
             <TreeComponent />

@@ -21,7 +21,7 @@ const survivalData = [
 ];
 
 const survivalOptions = {
-  title: "Survival Rates by Patient Group",
+  title: "Överlevnadschanser för patienter",
   hAxis: {
     title: "Patient Group",
     slantedText: true, // Enables slanted text for x-axis labels

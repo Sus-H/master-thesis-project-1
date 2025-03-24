@@ -5,20 +5,18 @@ import { DropdownMenuAlgorithm } from "./dropdownMenuAlgorithm";
 export function TopBar() {
   return (
     <div>
-      <div className="p-2 bg-sky-800">
+      <div className="p-2 ">
         <div className="flex items-center mx-5 justify-between">
           <div className="flex items-center">
-          <NavButton to="/">
-            <img
-                  src="images/DHS_Icon.svg"
-                  alt=""
-                  className="inline pr-5"
-                />
+            <NavButton to="/">
+              <img
+                src="images/DHS_Icon.svg"
+                alt=""
+                className="inline pr-5"
+              />
             </NavButton>
             <NavButton to="/home">
-              <p>
-                Min nya simulering
-              </p>
+              <p>Min nya simulering</p>
             </NavButton>
           </div>
           <div className="flex gap-5">
@@ -72,16 +70,14 @@ export function TopBarStartingPage() {
         <div className="flex items-center mx-5 justify-between">
           <div className="flex items-center ">
             <NavButton to="/">
-            <img
-                  src="images/DHS_Icon.svg"
-                  alt=""
-                  className="inline pr-5"
-                />
+              <img
+                src="images/DHS_Icon.svg"
+                alt=""
+                className="inline pr-5"
+              />
             </NavButton>
             <NavButton to="/home">
-              <p>
-                DHS Sandbox
-              </p>
+              <p>DHS Sandbox</p>
             </NavButton>
           </div>
           <div className="flex gap-5">

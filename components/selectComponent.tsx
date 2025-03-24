@@ -10,9 +10,7 @@ import "app/styles.css";
 
 const SelectComponent = () => (
   <Select.Root>
-    <Select.Trigger
-      className="SelectTrigger"
-    >
+    <Select.Trigger className="SelectTrigger">
       <Select.Value placeholder="Välj typ av olycka..." />
       <Select.Icon className="SelectIcon">
         <ChevronDownIcon />
@@ -29,8 +27,7 @@ const SelectComponent = () => (
               SINGEL
             </Select.Label>
             <SelectItem value="Krock med fast objekt">
-              {" "}
-              Krock med fast objekt{" "}
+              Krock med fast objekt
             </SelectItem>
             <SelectItem value="Vilt">Vilt</SelectItem>
           </Select.Group>

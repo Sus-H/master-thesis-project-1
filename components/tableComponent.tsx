@@ -119,29 +119,25 @@ const denseNodes = [
     id: "2",
     faktor: "Förare (16 år)",
     sirp: "🔴Prioritet 1",
-    osisp:
-      "🔴Prioritet 1",
+    osisp: "🔴Prioritet 1",
   },
   {
     id: "3",
     faktor: "Framsätespassagerare (44 år)",
     sirp: "🟡Prioritet 2",
-    osisp:
-      "🟡 Prioritet 2",
+    osisp: "🟡 Prioritet 2",
   },
   {
     id: "4",
     faktor: "Baksätespassagerare (70 år)",
     sirp: "🔴Prioritet 1",
-    osisp:
-      "🔴Prioritet 1",
+    osisp: "🔴Prioritet 1",
   },
   {
     id: "5",
     faktor: "Antal ambulanser",
     sirp: "🚑 3 ambulanser",
-    osisp:
-      "🚑 2 ambulanser",
+    osisp: "🚑 2 ambulanser",
   },
 ];
 
