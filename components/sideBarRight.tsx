@@ -92,18 +92,18 @@ const SideBarRight = () => {
             </div> */}
 
             <p className="mb-5"></p>
-            <NavButton to="/page_summary">
-              <p className="border px-4 py-2 bg-[#6e56cf] text-white rounded hover:bg-purple-600">
-                Visa Detaljerad summering
-                <ArrowRightIcon className="inline"></ArrowRightIcon>
-              </p>
-            </NavButton>
             <p className="text-xl">Beräknad resursplan</p>
             <DenseTableComponent />
             <div className="grid gap-5">
               <ResourceBarChart />
               <SurvivalLineChart />
             </div>
+            <NavButton to="/page_summary">
+              <p className="border px-4 py-2 bg-[#6e56cf] text-white rounded hover:bg-purple-600">
+                Visa Detaljerad summering
+                <ArrowRightIcon className="inline"></ArrowRightIcon>
+              </p>
+            </NavButton>
           </>
         )}
       </ScrollArea.Viewport>

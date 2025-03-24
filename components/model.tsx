@@ -29,8 +29,8 @@ export enum CarAccidentType {
 }
 
 export enum AccidentLocation {
-  URBAN,
-  RURAL,
+  URBAN = "Urban",
+  RURAL = "Rural",
 }
 
 export enum AirbagDeployment {
