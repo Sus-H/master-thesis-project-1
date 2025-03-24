@@ -11,6 +11,7 @@ import { createScenarioNode } from "./createNode";
 import { scenario_1 } from "./exampleData";
 import { SelectSeparator } from "@radix-ui/react-select";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
+import ToggleGroupButton from "./toggleButton";
 
 function NodeComponent({ node }: { node: TreeNode }) {
   if (node.children.length === 0) {
@@ -118,7 +119,10 @@ export default function SideBarLeft() {
               ))}
             </div>
           </div>
-          <SwitchButton></SwitchButton>
+          <p>Olycksplats</p>
+          <div className="flex">
+            <ToggleGroupButton></ToggleGroupButton>
+          </div>
           <div className="text-xl font-bold">Simuleringdata</div>
           <div className="">
             Scenario

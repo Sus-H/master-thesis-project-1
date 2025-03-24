@@ -14,7 +14,7 @@ export function SliderComponent({
     <div hidden={!checkedStates[name]}>
       <p className="text-sm text-violet-700">{name}</p>
       <Slider.Root
-        className="relative flex h-5 w-[200px] touch-none select-none content-center place-items-center"
+        className="relative mb-3 flex h-5 w-[200px] touch-none select-none content-center place-items-center"
         defaultValue={[0]}
         max={max}
         step={stepSize}

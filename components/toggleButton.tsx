@@ -13,14 +13,14 @@ const ToggleGroupButton = () => (
       value="left"
       aria-label="Left aligned"
     >
-      One
+      Urban
     </ToggleGroup.Item>
     <ToggleGroup.Item
       className="ToggleGroupItem"
       value="center"
       aria-label="Center aligned"
     >
-      Two
+      Lantlig
     </ToggleGroup.Item>
   </ToggleGroup.Root>
 );
