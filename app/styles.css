@@ -537,7 +537,7 @@ body {
   display: inline-flex;
   align-items: center;
   border-radius: 4px;
-  padding: 0;
+  padding: 0 15px;
   font-size: 13px;
   line-height: 1;
   height: 35px;
@@ -550,7 +550,6 @@ body {
 }
 .SelectTrigger:focus {
 }
-
 .SelectTrigger[data-placeholder] {
   color: var(--violet-9);
 }

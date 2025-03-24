@@ -99,17 +99,17 @@ export default function SideBarLeft() {
             Simuleringsparametrar
           </div>
           <div>
-            <p className="text-sm inline px-1">Typ av olycka: </p>
+            <p className="inline">Typ av olycka: </p>
             <SelectComponent></SelectComponent>
           </div>
-          <button className="flex px-1">
+          <button className="">
             <DropdownMenuParameters
               checkedStates={checkedStates}
               setCheckedStates={setCheckedStates}
             />
           </button>
           <div className="grid gap-5">
-            <div className="">
+            <div className="px-3">
               {Object.entries(checkedStates).map(([name, _]) => (
                 <SliderComponent
                   name={name}

@@ -1,6 +1,11 @@
 import "app/styles.css";
 import { DropdownMenu } from "radix-ui";
-import { CheckIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  PlusCircledIcon,
+  PlusIcon,
+} from "@radix-ui/react-icons";
 import { useState } from "react";
 
 export let accidentItems: string[] = [
@@ -87,18 +92,18 @@ function DropdownMenuParameters({
       <DropdownMenu.Trigger asChild>
         <p
           onClick={() => setOpen(true)}
-          className="SelectTrigger "
+          className="flex"
         >
           {/* <img
             src="images/Sliders.svg"
             className="inline"
           /> */}
           Välj Parametrar
-          <ChevronDownIcon className="inline"></ChevronDownIcon>
+          <ChevronDownIcon className="ml-1 mt-1.5 inline"></ChevronDownIcon>
         </p>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="DropdownMenuContent absolute -right-70">
+        <DropdownMenu.Content className="DropdownMenuContent absolute">
           <DropdownMenu.Separator className="DropdownMenuSeparator" />
           {createMenuItems(
             accidentItems,
