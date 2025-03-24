@@ -123,7 +123,7 @@ export default function SideBarLeft() {
           <div className="flex">
             <ToggleGroupButton></ToggleGroupButton>
           </div>
-          <div className="text-xl font-bold">Simuleringdata</div>
+          <div className="text-xl font-bold mt-5">Simuleringdata</div>
           <div className="">
             Scenario
             <TreeComponent />

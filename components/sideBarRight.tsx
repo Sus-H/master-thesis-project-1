@@ -80,7 +80,7 @@ const SideBarRight = () => {
             <SummaryText></SummaryText>
 
             {/* Chevron Icon with Bounce Animation */}
-            <div
+            {/* <div
               className={`flex justify-center ${
                 showChevron ? "bounce" : "hidden"
               }`}
@@ -89,7 +89,7 @@ const SideBarRight = () => {
                 className="w-6 h-6 text-gray-500 cursor-pointer"
                 onClick={handleChevronClick} // Add click handler
               />
-            </div>
+            </div> */}
 
             <p className="mb-5"></p>
             <NavButton to="/page_summary">
