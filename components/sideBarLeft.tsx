@@ -128,7 +128,6 @@ export default function SideBarLeft() {
             Scenario
             <TreeComponent />
           </div>
-          <div className="components-list-view"></div>
         </div>
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar
